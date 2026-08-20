@@ -25,8 +25,7 @@ export default function Home() {
     </section>
 
     <section className="catalog shell" id="hotels">
-      <span id="hotels-море" className="anchor-target"/><span id="hotels-горы" className="anchor-target"/><span id="hotels-отели" className="anchor-target"/>
-      <div className="section-head"><div><p className="micro">Отели коллекции</p><h2>Место для<br/>вашей поездки</h2></div><a className="line-link" href="#hotels">Все 21 отель <span>↗</span></a></div>
+      <div className="section-head"><div><p className="micro">Отели коллекции</p><h2>Место для<br/>вашей поездки</h2></div><button type="button" className="line-link">Выбрать отель</button></div>
       <div className="filters" aria-label="Фильтры отелей"><button className="active">Все</button><button>Море</button><button>Горы</button><button>С детьми</button><button>SPA</button><button>Всё включено</button></div>
       <div className="hotel-grid">{hotels.map((hotel,index)=><article className="hotel-card" key={hotel.name}><a className="hotel-photo" href="#booking" style={{backgroundImage:`url('${hotel.image}')`}} aria-label={`Подробнее: ${hotel.name}`}><span>0{index+1}</span><i>↗</i></a><div><p>{hotel.place}</p><h3>{hotel.name}</h3><span>{hotel.note}</span></div></article>)}</div>
     </section>
@@ -46,7 +45,7 @@ export default function Home() {
 
     <section className="development"><div className="shell development-grid"><div><p className="micro">Alean Development</p><h2>Создаем новые<br/>места силы</h2><a href="#top">О девелопменте ↗</a></div><div className="development-photo" role="img" aria-label="Проект курортного отеля Alean"/><p>Развиваем гостиничные проекты, соединяя сильную локацию, продуманный продукт и опыт управления курортными отелями.</p></div></section>
 
-    <section className="contact shell" id="booking"><div><p className="micro">Контакты</p><h2>Путешествие<br/>начинается здесь</h2><a href="tel:88002500030">8 800 250 00 30</a><a href="mailto:booking@aleancollection.ru">booking@aleancollection.ru</a></div><div className="map"><span>Анапа</span><span>Геленджик</span><span>Сочи</span><span>Архыз</span><i>A</i></div></section>
+    <section className="contact shell" id="booking"><div><p className="micro">Контакты</p><h2>Путешествие<br/>начинается здесь</h2><a href="tel:88002500030">8 800 250 00 30</a><a href="mailto:booking@aleancollection.ru">booking@aleancollection.ru</a></div><div className="map" aria-label="Карта курортов Alean Collection"><iframe title="Карта курортов Alean Collection" src="https://www.openstreetmap.org/export/embed.html?bbox=36.8%2C43.2%2C42.0%2C45.4&amp;layer=mapnik" loading="lazy"/><span className="map-point map-anapa"><i/>Анапа</span><span className="map-point map-gelendzhik"><i/>Геленджик</span><span className="map-point map-sochi"><i/>Сочи</span><span className="map-point map-arkhyz"><i/>Архыз</span></div></section>
 
     <footer><div className="shell footer-top"><div><img src="/alean-logo.svg" alt="Alean Collection"/><p>Курортные отели 4* и 5* в России</p></div><div><p>Отдых</p><a href="#hotels">Отели</a><a href="#brands">Бренды</a><a href="#offers">Акции</a><a href="#loyalty">Лояльность</a></div><div><p>Компания</p><a href="#top">О нас</a><a href="#top">Девелопмент</a><a href="#top">Карьера</a><a href="#top">Партнерам</a></div><a className="footer-up" href="#top">↑</a></div><div className="shell footer-bottom"><span>© 2026 Alean Collection</span><span>Концепция для тендерного предложения</span><span>Правовая информация</span></div></footer>
   </main>;

@@ -25,7 +25,7 @@ export function AleanHeroCarousel() {
     </header>
     <div className="hero-stage shell">
       <div className="hero-photo" style={{ backgroundImage: `url('${current.image}')` }} role="img" aria-label={current.text}>
-        <div className="hero-copy"><p>{current.eyebrow} · Alean Collection</p><h1>{current.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><div className="hero-note"><span>21 отель</span><p>{current.text}</p></div></div>
+        <div className="hero-copy"><p>{current.eyebrow} · Alean Collection</p><h1>{current.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><div className="hero-note"><p>{current.text}</p></div></div>
         <div className="halo" aria-hidden="true"><span>A</span></div>
       </div>
     </div>
@@ -46,9 +46,9 @@ export function AleanRouteCarousel() {
   return <div className="route-explorer">
     <div className="route-frame" role="img" aria-label={slides[active].text}>
       <div className="route-images" aria-hidden="true">{slides.map((slide, index) => <span key={slide.eyebrow} className={index === active ? "active" : ""} style={{backgroundImage:`url('${slide.image}')`}} />)}</div>
-      <nav className="route-tabs" aria-label="Направления отдыха">
-        {slides.map((slide, index) => <a key={slide.eyebrow} className={index === active ? "active" : ""} href={`#hotels-${slide.eyebrow.toLowerCase()}`} onMouseEnter={() => setActive(index)}><span className="direction-icon"><DirectionIcon type={slide.eyebrow as "Море" | "Горы" | "Отели"}/></span><strong>{slide.eyebrow}</strong><i>0{index + 1}</i></a>)}
-      </nav>
+      <div className="route-tabs" aria-label="Направления отдыха">
+        {slides.map((slide, index) => <button type="button" key={slide.eyebrow} className={index === active ? "active" : ""} onClick={() => setActive(index)} onMouseEnter={() => setActive(index)} aria-pressed={index === active}><span className="direction-icon"><DirectionIcon type={slide.eyebrow as "Море" | "Горы" | "Отели"}/></span><strong>{slide.eyebrow}</strong><i>0{index + 1}</i></button>)}
+      </div>
     </div>
   </div>;
 }
