@@ -120,4 +120,196 @@ body{background:#f8f8f6}
 .map:after{content:"";position:absolute;inset:0;background:rgba(241,242,239,.14);pointer-events:none}
 .map-point{position:absolute!important;z-index:2;display:flex;align-items:center;gap:8px;padding:8px 11px;background:rgba(255,255,255,.86);border:1px solid rgba(11,33,64,.14);border-radius:999px;box-shadow:0 9px 24px rgba(11,33,64,.12);font-size:10px!important;letter-spacing:.12em;backdrop-filter:blur(8px)}
 .map-point i{width:9px!important;height:9px!important;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(0,112,130,.13)}
-.map-anapa{left:8%!important;top:20%!important}.map-gelendzhik{left:20%!important;top:38%!important}.map-sochi{right:34%!important;bottom:14%!important}.map-arkhyz{right:8%!important;bottom:15%!important}
+
+/* Фотоматериалы с официального сайта Alean Collection */
+.brand-family{background-image:url('/alean-official-brand-family-hotel.png')}
+.brand-club{background-image:url('/alean-official-brand-mountains.webp')}
+.brand-select{background-image:url('/alean-official-brand-select.webp')}
+.faq-more{display:inline-flex;align-items:center;gap:34px;margin-top:38px;padding-bottom:9px;border-bottom:1px solid var(--ink);font-size:13px}
+.faq-more span{transition:transform .2s ease}.faq-more:hover span{transform:translate(3px,-3px)}
+.faq-toggle{position:relative;flex:0 0 22px;width:22px;height:22px;margin-left:18px}
+.faq-toggle:before,.faq-toggle:after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1px;background:currentColor;transform:translate(-50%,-50%);transition:transform .2s ease}
+.faq-toggle:after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-list details[open] .faq-toggle:after{transform:translate(-50%,-50%) rotate(0deg)}
+
+/* Меню и шапка на основе структуры официального сайта Alean Collection */
+.nav{grid-template-columns:160px minmax(0,1fr) auto;gap:24px}
+.nav nav{gap:18px;justify-content:flex-start;white-space:nowrap;font-size:11px}
+.nav-actions{gap:12px;white-space:nowrap}.nav-phone{font-weight:600}.callback-link{border-bottom:1px solid currentColor;padding-bottom:3px}.booking-link{border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:10px 14px}
+.menu-button{display:flex;align-items:center;gap:9px;cursor:pointer}.menu-button .menu-icon{width:18px;margin:0;font-size:20px;line-height:1;text-align:center}
+.site-menu{position:fixed;z-index:9;inset:0;background:rgba(247,241,231,.98);color:var(--ink);opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .25s ease,visibility .25s ease,transform .25s ease;overflow:auto;padding:118px 0 48px}
+.site-menu.open{opacity:1;visibility:visible;transform:none}.menu-open{overflow:hidden}
+.site-menu-inner{display:grid;grid-template-columns:1.55fr 1fr;gap:60px 70px}.site-menu-inner>div>p{margin:0 0 22px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.16em}
+.site-menu-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 34px}.site-menu-main nav a{display:flex;justify-content:space-between;gap:18px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}.site-menu-main nav a span{font-size:12px}
+.hotel-explorer{display:grid;grid-template-columns:minmax(190px,.82fr) minmax(220px,1.18fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.hotel-groups{padding:18px 28px 18px 0;border-right:1px solid var(--line)}.hotel-groups button{width:100%;border:0;background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:9px 0;text-align:left;cursor:pointer;font-size:15px}.hotel-groups button i{font-style:normal;font-size:20px;color:var(--muted);transition:transform .2s ease}.hotel-groups button:hover,.hotel-groups button.active{color:var(--teal)}.hotel-groups button.active i{transform:translateX(4px);color:var(--teal)}
+.hotel-group-item{display:contents}.mobile-group-hotels{display:none}
+.group-hotels{padding:25px 0 25px 30px}.group-hotels>strong{display:block;margin-bottom:14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.group-hotels nav{display:grid;grid-template-columns:1fr;gap:0}.group-hotels nav a{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}.group-hotels nav a span{font-size:11px}.empty-group{max-width:230px;margin:20px 0!important;color:var(--muted);font-size:13px!important;line-height:1.6;text-transform:none!important;letter-spacing:0!important}.all-hotels-link{display:inline-flex;gap:36px;margin-top:20px;padding-bottom:8px;border-bottom:1px solid var(--ink);font-size:13px}
+.site-menu-contact{grid-column:1/3;display:flex;align-items:center;gap:30px;border-top:1px solid var(--line);padding-top:24px}.site-menu-contact p{margin:0!important}.site-menu-contact a{font-size:14px}
+@media(max-width:1280px){.nav nav a:nth-last-child(-n+3){display:none}.callback-link{display:none}}
+@media(max-width:900px){.nav nav,.nav-actions>a{display:none}.site-menu{padding-top:96px}.site-menu-inner{grid-template-columns:1fr;gap:42px}.site-menu-contact{grid-column:auto;align-items:flex-start;flex-direction:column;gap:12px}.site-menu-columns{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.hotel-explorer{display:block}.hotel-groups{border-right:0;border-bottom:1px solid var(--line);padding:8px 0}.hotel-group-item{display:block;border-bottom:1px solid var(--line)}.hotel-group-item:last-child{border-bottom:0}.hotel-groups button{min-height:48px;padding:8px 0}.hotel-groups button.active i{transform:rotate(90deg);color:var(--teal)}.group-hotels{display:none}.mobile-group-hotels{display:none;padding:0 0 14px 14px}.mobile-group-hotels[aria-hidden="false"]{display:block}.mobile-group-hotels nav{display:grid}.mobile-group-hotels nav a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid rgba(11,33,64,.1);font-size:12px}.mobile-group-hotels nav a:last-child{border-bottom:0}.mobile-group-hotels nav a span{font-size:10px}.mobile-group-hotels p{margin:0;padding:4px 28px 8px 0;color:var(--muted);font-size:12px;line-height:1.55}}
+@media(max-width:560px){.menu-label{display:none}.menu-button{width:44px;height:44px;justify-content:center;padding:0!important}.menu-button .menu-icon{margin:0}.site-menu{padding:88px 0 36px}.site-menu-main nav a{font-size:13px;padding:10px 0}.site-menu-columns{grid-template-columns:1fr;gap:18px}.site-menu-inner{gap:34px}.hotel-explorer{display:block}.hotel-groups{border-right:0;border-bottom:1px solid var(--line);padding:8px 0}.hotel-group-item{display:block;border-bottom:1px solid var(--line)}.hotel-group-item:last-child{border-bottom:0}.hotel-groups button{min-height:48px;padding:8px 0}.hotel-groups button.active i{transform:rotate(90deg);color:var(--teal)}.group-hotels{display:none}.mobile-group-hotels{display:none;padding:0 0 14px 14px}.mobile-group-hotels[aria-hidden="false"]{display:block}.mobile-group-hotels nav{display:grid}.mobile-group-hotels nav a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid rgba(11,33,64,.1);font-size:12px}.mobile-group-hotels nav a:last-child{border-bottom:0}.mobile-group-hotels nav a span{font-size:10px}.mobile-group-hotels p{margin:0;padding:4px 28px 8px 0;color:var(--muted);font-size:12px;line-height:1.55}.group-hotels nav a{font-size:13px}}
+
+/* Интерактивная форма поиска */
+.booking{overflow:visible}.booking-field{position:relative;border-right:1px solid var(--line)}
+.booking .booking-trigger{width:100%;height:100%;min-height:76px;margin:0;border:0;background:transparent;display:grid;grid-template-columns:1fr auto;align-content:center;justify-content:initial;align-items:initial;gap:7px 18px;padding:0 26px;text-align:left;cursor:pointer;color:var(--ink)}
+.booking-trigger>span{grid-column:1;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.booking-trigger strong{grid-column:1;font-size:14px;font-weight:600}.booking-trigger i{grid-column:2;grid-row:1/3;align-self:center;font-style:normal;font-size:18px;transition:transform .2s ease}.booking-field.active .booking-trigger i{transform:rotate(180deg)}
+.booking-field.active{box-shadow:inset 0 -2px 0 var(--teal)}
+.booking-dropdown{position:absolute;z-index:20;left:10px;right:10px;top:calc(100% + 10px);padding:10px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 55px rgba(7,25,48,.18);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s ease,visibility .18s ease,transform .18s ease}
+.booking-dropdown[aria-hidden="true"]{pointer-events:none}.booking-dropdown[aria-hidden="false"]{opacity:1;visibility:visible;transform:none;pointer-events:auto}.booking-dropdown>button:not(.dropdown-done){width:100%;border:0;background:transparent;color:var(--ink);display:flex;justify-content:space-between;text-align:left;padding:11px 12px;border-radius:9px;cursor:pointer;font-size:13px}.booking-dropdown>button:not(.dropdown-done):hover,.booking-dropdown>button.selected{background:#edf5f5;color:var(--teal)}
+.dates-dropdown{min-width:390px;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px}.dates-dropdown label{display:block;padding:0;border:0}.dates-dropdown label span{display:block;margin-bottom:7px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}.dates-dropdown input{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 10px;background:#fff;color:var(--ink);font:inherit;font-size:12px}.dropdown-done{grid-column:1/3;border:0;border-radius:9px;padding:12px;background:var(--teal);color:#fff;cursor:pointer}.dropdown-done:disabled{opacity:.4;cursor:not-allowed}
+.guests-dropdown{min-width:330px;padding:18px}.guests-dropdown label{display:grid;grid-template-columns:1fr 82px;align-items:center;gap:18px;padding:11px 0;border:0;border-bottom:1px solid var(--line)}.guests-dropdown label span{font-size:12px;color:var(--ink)}.guests-dropdown input{width:82px;border:1px solid var(--line);border-radius:9px;padding:10px;background:#fff;color:var(--ink);font:inherit;font-size:13px;text-align:center}.guests-dropdown .dropdown-done{width:100%;margin:14px 0 0}
+.booking-submit{border-radius:var(--radius-small)!important}
+@media(max-width:900px){.booking-field{min-height:75px}.booking-trigger{min-height:75px}.booking-dropdown{left:8px;right:8px}.dates-dropdown{min-width:0;left:8px;width:calc(200% - 16px)}}
+@media(max-width:560px){.booking{display:grid;grid-template-columns:1fr!important}.booking-field{border-right:0;border-bottom:1px solid var(--line)}.booking-submit{min-height:58px!important}.booking-dropdown{position:fixed;left:14px!important;right:14px!important;top:auto;bottom:18px;width:auto!important;max-height:60vh;overflow:auto}.dates-dropdown{grid-template-columns:1fr}.dropdown-done{grid-column:1}.booking-trigger{padding:0 18px}.guests-dropdown{min-width:0}}
+.offer-large{background-image:url('/alean-official-offer-pool.webp')}
+.offer-small{background-image:url('/alean-official-offer-kids.jpg')}
+.development-photo{background-image:url('/alean-official-development.webp')}
+.development-copy>p:not(.micro){max-width:470px;margin:32px 0 42px;font-size:14px;line-height:1.7;color:rgba(255,255,255,.82)}
+@media(max-width:900px){.development-copy{min-height:auto!important;padding-bottom:44px!important}.development-copy>p:not(.micro){margin:26px 0 34px}.development-grid a{margin-top:0}}
+.map{min-height:0;aspect-ratio:1160/516;background:#f5f6f3}
+.map img{display:block;width:100%;height:100%;object-fit:cover}
+.map:after{display:none}
+.halo img{width:150px;height:154px;object-fit:contain}
+.loyalty-orbit img{width:170px;height:174px;object-fit:contain}
+.offer-small h3{font-size:clamp(38px,4vw,48px);line-height:1}
+@media(max-width:560px){.halo img{width:100px;height:103px}.loyalty-orbit img{width:120px;height:123px}.offer-small h3{font-size:38px}}
+.outline-arrows button{cursor:pointer;transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .25s ease}
+.outline-arrows button:hover{background:var(--teal);border-color:var(--teal);color:#fff;transform:translateY(-2px)}
+.outline-arrows button:active{transform:translateY(0) scale(.96)}
+.outline-arrows button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.offer-track{animation:offer-reveal .5s ease both}
+.offer-track article{transition:transform .35s ease,filter .35s ease}
+.offer-track article:hover{transform:translateY(-4px);filter:saturate(1.06)}
+.offer-pagination{display:flex;align-items:center;gap:12px;margin-top:24px;font-size:10px;letter-spacing:.14em;color:var(--muted)}
+.offer-pagination i{display:block;width:84px;height:1px;background:var(--line)}
+@keyframes offer-reveal{from{opacity:.25;transform:translateX(12px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.offer-track{animation:none}.outline-arrows button,.offer-track article{transition:none}}
+.map-anapa{left:10%!important;top:20%!important;right:auto!important;bottom:auto!important}.map-gelendzhik{left:25%!important;top:37%!important;right:auto!important;bottom:auto!important}.map-sochi{right:44%!important;bottom:15%!important;left:auto!important;top:auto!important}.map-arkhyz{right:17%!important;bottom:25%!important;left:auto!important;top:auto!important}
+
+.brand-card>a{display:inline-flex;align-items:center}
+.brand-card>a i{margin-left:18px}
+
+.moments-more{display:inline-flex;align-items:center;gap:10px;margin-top:18px;border-bottom:1px solid var(--ink);padding-bottom:6px;font-size:12px;cursor:pointer}
+.moments-more span{font-style:normal}
+.moment-grid blockquote>p{margin:0}
+.booking .guests-dropdown .dropdown-done{width:100%;min-height:50px;margin:14px 0 0;padding:14px 24px;display:flex;align-items:center;justify-content:center;font-weight:600}
+.dates-dropdown:before{content:"Выберите даты поездки";grid-column:1/3;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.booking .dates-dropdown label{background:#f7f8f6;border:1px solid transparent;border-radius:11px;padding:12px}
+.booking .dates-dropdown label:focus-within{background:#fff;border-color:var(--teal);box-shadow:0 0 0 3px rgba(4,85,117,.1)}
+.booking .dates-dropdown input{height:44px;border-color:#cfd7d8;background:#fff;color:var(--ink);color-scheme:light;cursor:pointer}
+.booking .dates-dropdown input:focus{outline:0;border-color:var(--teal)}
+.booking .dates-dropdown input::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.72;padding:6px;border-radius:7px;background-color:#edf5f5}
+.booking .dates-dropdown .dropdown-done{grid-column:1/3;width:100%;min-height:50px;margin:2px 0 0;padding:14px 24px;display:flex;align-items:center;justify-content:center;font-weight:600}
+@media(max-width:560px){.dates-dropdown:before,.booking .dates-dropdown .dropdown-done{grid-column:1}}
+
+/* Фирменный календарь бронирования */
+.booking .dates-dropdown{left:50%;right:auto;width:430px;min-width:430px;display:block;padding:0;overflow:hidden;transform:translate(-50%,-6px);border-color:rgba(11,33,64,.12);border-radius:var(--radius);background:#fffdf8;box-shadow:0 24px 70px rgba(7,25,48,.2)}
+.booking .dates-dropdown[aria-hidden="false"]{transform:translate(-50%,0)}
+.dates-dropdown:before{display:none}
+.calendar-panel{padding:24px 24px 18px}
+.calendar-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.calendar-heading>div:first-child{display:flex;flex-direction:column;gap:6px}
+.calendar-heading span{font-size:9px;line-height:1.2;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+.calendar-heading strong{font-size:21px;font-weight:500;line-height:1.25;text-transform:capitalize;color:var(--ink)}
+.calendar-nav{display:flex;gap:7px}
+.booking .calendar-nav button{flex:0 0 40px;width:40px;height:40px;min-height:40px!important;aspect-ratio:1;margin:0;padding:0!important;display:flex;align-items:center!important;justify-content:center!important;text-align:center;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font-size:18px;line-height:1;cursor:pointer;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.booking .calendar-nav button:hover{border-color:var(--teal);background:var(--teal);color:#fff}
+.calendar-weekdays,.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.calendar-weekdays{padding:17px 0 8px}
+.calendar-weekdays span{text-align:center;font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--muted)}
+.calendar-grid{row-gap:3px}
+.booking .calendar-grid button{position:relative;width:100%;aspect-ratio:1;margin:0;padding:0;display:grid;place-items:center;border:0;border-radius:0;background:transparent;color:var(--ink);cursor:pointer;font-size:13px;isolation:isolate}
+.booking .calendar-grid button span{position:relative;z-index:2;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;transition:background-color .18s ease,color .18s ease}
+.booking .calendar-grid button:hover:not(:disabled) span{background:#e7f0ef;color:var(--teal)}
+.booking .calendar-grid button.outside{color:#aeb4b5}
+.booking .calendar-grid button:disabled{color:#d4d7d6;cursor:not-allowed}
+.booking .calendar-grid button.in-range:before,.booking .calendar-grid button.range-start:before,.booking .calendar-grid button.range-end:before{content:"";position:absolute;z-index:0;left:0;right:0;top:50%;height:36px;transform:translateY(-50%);background:#e1efee}
+.booking .calendar-grid button.range-start:before{left:50%;border-radius:18px 0 0 18px}
+.booking .calendar-grid button.range-end:before{right:50%;border-radius:0 18px 18px 0}
+.booking .calendar-grid button.range-start span,.booking .calendar-grid button.range-end span{background:var(--teal);color:#fff;font-weight:700;box-shadow:0 7px 18px rgba(4,85,117,.22)}
+.calendar-hint{margin:13px 0 0;text-align:center;font-size:11px;color:var(--muted)}
+.calendar-summary{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#f5f5f1}
+.calendar-summary span{min-height:66px;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:0 24px}
+.calendar-summary span+span{border-left:1px solid var(--line)}
+.calendar-summary small{font-size:8px;text-transform:uppercase;letter-spacing:.15em;color:var(--muted)}
+.calendar-summary strong{font-size:12px;font-weight:600;color:var(--ink)}
+.booking .dates-dropdown .dropdown-done{width:calc(100% - 32px);min-height:48px;margin:16px;padding:0 22px;display:flex;align-items:center;justify-content:center;border-radius:999px;background:var(--teal);font-size:12px;font-weight:600}
+.booking .dates-dropdown .dropdown-done:hover:not(:disabled){background:var(--ink)}
+@media(max-width:560px){.booking .dates-dropdown{left:14px!important;right:14px!important;bottom:14px;width:auto!important;min-width:0;transform:translateY(10px)}.booking .dates-dropdown[aria-hidden="false"]{transform:none}.calendar-panel{padding:20px 15px 14px}.calendar-heading{padding:0 5px 16px}.calendar-heading strong{font-size:18px}.booking .calendar-grid button span{width:34px;height:34px}.calendar-summary span{padding:0 18px}.booking .dates-dropdown .dropdown-done{width:calc(100% - 28px);margin:14px}}
+
+/* Единая линия CTA в карточках */
+.brand-card>.brand-copy{flex:1;min-width:0}
+.brand-card>a{width:auto;height:auto;margin-left:28px;padding:0 0 7px;gap:20px;border:0;border-bottom:1px solid rgba(255,255,255,.72);border-radius:0;white-space:nowrap;font-size:12px}
+.brand-card>a i{margin:0}
+.offer-track article:nth-child(n+3){display:none}
+.mobile-phone{display:none}
+.booking-icon{display:none}
+.mobile-phone svg,.booking-icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+@media(max-width:900px){
+  .section-head>.line-link,.section-head>.outline-arrows{justify-self:start}
+  .hero-facts{bottom:116px;grid-template-columns:repeat(4,minmax(0,1fr))}
+  .hero-facts span{min-width:0;min-height:52px;padding:0 12px;justify-content:center;text-align:center;border-bottom:0!important}
+  .hero-facts span:nth-child(2){border-right:1px solid rgba(255,255,255,.25)}
+  .hero-facts strong{white-space:normal;line-height:1.25}
+  .guests-dropdown{left:auto;right:8px}
+  .offer-track{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;user-select:none}
+  .offer-track.dragging{cursor:grabbing;scroll-snap-type:none}
+  .offer-track::-webkit-scrollbar{display:none}
+  .offer-track article,.offer-track article:nth-child(n+3){display:flex;flex:0 0 100%;width:100%;scroll-snap-align:start;scroll-snap-stop:always}
+  .offers .outline-arrows,.offers .offer-pagination{display:none}
+}
+
+@media(min-width:561px) and (max-width:900px){
+  .hero .nav{grid-template-columns:150px 1fr;padding:0 20px}
+  .hero .nav-actions{justify-self:end;display:grid;grid-template-columns:44px auto 44px;align-items:center;gap:10px}
+  .hero .nav-actions .mobile-phone,.hero .nav-actions .booking-link{display:flex}
+  .mobile-phone{width:44px;height:44px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.5);border-radius:50%;font-size:18px;color:#fff}
+  .booking-link{align-items:center;justify-content:center;min-height:42px;padding:0 17px!important;border:1px solid rgba(255,255,255,.55);border-radius:999px;font-size:11px}
+  .booking-link .booking-text{display:none}
+  .booking-link .booking-icon{display:grid;place-items:center}
+  .booking-link{width:44px;height:44px;min-height:44px;padding:0!important;border-radius:50%}
+  .menu-label{display:none}
+  .menu-button{width:44px;height:44px;margin:0!important;padding:0!important;justify-content:center}
+  .menu-button .menu-icon{margin:0}
+}
+
+@media(max-width:560px){
+  .hero .nav{display:grid;height:72px;padding:0 12px;grid-template-columns:1fr auto;align-items:center}
+  .hero .logo{display:flex;height:48px}
+  .hero .logo img{width:104px;max-height:44px}
+  .hero .nav-actions{width:auto;height:72px;display:grid;grid-template-columns:44px 44px 44px;align-items:center;gap:7px}
+  .hero .nav-actions>a{display:none}
+  .hero .nav-actions .mobile-phone,.hero .nav-actions .booking-link{display:flex}
+  .mobile-phone{width:44px;height:44px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.5);border-radius:50%;font-size:18px;color:#fff}
+  .booking-link{justify-self:center;align-items:center;justify-content:center;width:44px;height:44px;min-height:44px;padding:0!important;border:1px solid rgba(255,255,255,.55);border-radius:50%}
+  .booking-link .booking-text{display:none}
+  .booking-link .booking-icon{display:grid;place-items:center}
+  .menu-button{justify-self:end;margin:0!important}
+
+  .hero-photo{height:100svh;min-height:620px;max-height:760px}
+  .hero-copy{padding:98px 20px 260px}
+  .hero-facts{position:absolute;left:10px;right:10px;bottom:257px;width:auto;margin:0;transform:none;grid-template-columns:repeat(4,minmax(0,1fr));background:rgba(7,25,48,.72);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}
+  .hero-facts span{min-width:0;min-height:42px;padding:0 5px;justify-content:center;text-align:center;border-right:1px solid rgba(255,255,255,.2);border-bottom:0!important}
+  .hero-facts span:nth-child(2n){border-right:1px solid rgba(255,255,255,.2)}
+  .hero-facts span:last-child{border-right:0}
+  .hero-facts strong{font-size:9px;white-space:normal;line-height:1.2}
+
+  .booking{position:absolute;left:10px;right:10px;bottom:10px;width:auto;margin:0;transform:none;display:grid;grid-template-columns:1fr!important;border-radius:var(--radius);overflow:visible}
+  .booking-field,.booking-field:nth-child(3){min-height:56px;border-right:0;border-bottom:1px solid var(--line)}
+  .booking .booking-trigger{min-height:56px;padding:0 14px;grid-template-columns:105px 1fr auto;align-content:center;align-items:center;gap:8px;text-align:left;touch-action:manipulation}
+  .booking-trigger>span{grid-column:1;grid-row:1;font-size:8px;letter-spacing:.1em}
+  .booking-trigger strong{grid-column:2;grid-row:1;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .booking-trigger i{grid-column:3;grid-row:1;font-size:14px}
+  .booking-submit{position:relative;grid-column:1;min-height:48px!important;margin:7px!important;justify-content:center!important;text-align:center;font-size:12px}
+  .booking-submit span{position:absolute;right:18px;margin:0!important}
+  .booking-dropdown{z-index:30}
+
+  .brand-card{display:flex;align-items:flex-end;gap:18px}
+  .brand-card>a{position:relative;flex:0 0 auto;width:42px;height:42px;margin-left:0;padding:0;display:block;border:1px solid rgba(255,255,255,.65);border-radius:50%;font-size:0;color:transparent}
+  .brand-card>a i{position:absolute;left:50%;top:50%;margin:0;font-size:13px;line-height:1;color:#fff;transform:translate(-50%,-50%)}
+  .section-head>.line-link{margin-top:4px;justify-self:start}
+  .offer-track{width:calc(100% - 20px)}
+  .offer-track article{height:440px;padding:26px}
+}
