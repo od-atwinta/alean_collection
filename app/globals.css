@@ -261,6 +261,63 @@ body{background:#f8f8f6}
   .offers .outline-arrows,.offers .offer-pagination{display:none}
 }
 
+/* Draw interface arrows with CSS so iOS cannot replace them with emoji glyphs. */
+.arrow-ne,
+.mobile-group-hotels a>span:last-child,
+.group-hotels a>span:last-child,
+.all-hotels-link>span:last-child,
+.site-menu-columns a>span:last-child,
+.booking-submit>span:last-child{
+  position:relative;
+  display:inline-block;
+  flex:0 0 auto;
+  width:15px;
+  height:15px;
+  margin-left:8px;
+  color:inherit;
+  font-size:0!important;
+  line-height:0;
+  transform:none!important;
+}
+.arrow-ne::before,
+.mobile-group-hotels a>span:last-child::before,
+.group-hotels a>span:last-child::before,
+.all-hotels-link>span:last-child::before,
+.site-menu-columns a>span:last-child::before,
+.booking-submit>span:last-child::before{
+  content:"";
+  position:absolute;
+  top:2px;
+  right:1px;
+  width:7px;
+  height:7px;
+  border-top:1.5px solid currentColor;
+  border-right:1.5px solid currentColor;
+}
+.arrow-ne::after,
+.mobile-group-hotels a>span:last-child::after,
+.group-hotels a>span:last-child::after,
+.all-hotels-link>span:last-child::after,
+.site-menu-columns a>span:last-child::after,
+.booking-submit>span:last-child::after{
+  content:"";
+  position:absolute;
+  left:2px;
+  top:8px;
+  width:13px;
+  height:1.5px;
+  background:currentColor;
+  transform:rotate(-45deg);
+  transform-origin:center;
+}
+.hotel-photo i.arrow-ne{width:42px;height:42px;margin:0;background:#fff;color:var(--ink);border-radius:50%}
+.hotel-photo i.arrow-ne::before{top:13px;right:12px}
+.hotel-photo i.arrow-ne::after{left:12px;top:21px}
+@media(max-width:560px){
+  .booking-submit>span:last-child{position:absolute;right:18px;margin:0}
+  .brand-card>a i.arrow-ne{position:absolute;left:50%;top:50%;margin:0;transform:translate(-50%,-50%)!important;color:#fff}
+}
+
 @media(min-width:561px) and (max-width:900px){
   .hero .nav{grid-template-columns:150px 1fr;padding:0 20px}
   .hero .nav-actions{justify-self:end;display:grid;grid-template-columns:44px auto 44px;align-items:center;gap:10px}
