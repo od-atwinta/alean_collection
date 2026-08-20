@@ -21,7 +21,7 @@ async function rewriteDirectory(directory) {
 
     const source = await readFile(pathname, "utf8");
     const rewritten = source.replace(
-      /(["'(])\/(?!\/|alean_collection\/)([^"'()\s?#]+\.(?:avif|gif|ico|jpe?g|png|svg|webp))(?=["')?#])/gi,
+      /([`"'(])\/(?!\/|alean_collection\/)([^`"'()\s?#]+\.(?:avif|gif|ico|jpe?g|png|svg|webp))(?=[`"')?#])/gi,
       `$1${publicPrefix}$2`,
     );
 
