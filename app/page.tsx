@@ -12,7 +12,7 @@ export default function Home() {
     <AleanHeroCarousel />
 
     <section className="signal shell" aria-label="Преимущества Alean Collection">
-      <p className="micro">Коллекция решений для отдыха</p><h2>Разные маршруты.<br/>Единый уровень заботы.</h2>
+      <p className="micro">Коллекция решений для отдыха</p><h2>Разные маршруты —<br/>единый уровень заботы</h2>
       <AleanRouteCarousel />
     </section>
 
