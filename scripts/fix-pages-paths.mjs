@@ -30,3 +30,12 @@ async function rewriteDirectory(directory) {
 }
 
 await rewriteDirectory(outputDirectory);
+
+const indexPath = join(outputDirectory, "index.html");
+const indexSource = await readFile(indexPath, "utf8");
+const cacheVersion = process.env.GITHUB_SHA?.slice(0, 12) ?? Date.now().toString(36);
+const versionedIndex = indexSource.replace(
+  /(\/alean_collection\/assets\/[^"'?]+\.(?:css|js))(["'])/g,
+  `$1?v=${cacheVersion}$2`,
+);
+await writeFile(indexPath, versionedIndex);
