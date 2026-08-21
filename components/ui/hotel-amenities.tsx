@@ -32,7 +32,7 @@ const categories = [
     label: "Спорт и досуг",
     items: [
       { title: "Тренажёрный зал и фитнес", text: "Залы с профессиональным оборудованием", image: "/alean-official-offer-pool.webp" },
-      { title: "Игровая мансарда", text: "Бильярд, аэрохоккей, кикер и игровые приставки", image: "/alean-04.jpg" },
+      { title: "Игровая мансарда", text: "Бильярд, аэрохоккей, кикер и игровые приставки", image: "/sophia-game-loft.webp" },
       { title: "Академия спорта", text: "Занятия для взрослых и детей — от выносливости до техники", image: "/sophia-sport-academy.webp" },
     ],
   },

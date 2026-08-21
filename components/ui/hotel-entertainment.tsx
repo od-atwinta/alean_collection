@@ -14,11 +14,11 @@ const activities = {
     { title: "Спа-комплекс", text: "Хаммам, финская и арома-сауна, спа-программы", image: "/sophia-spa.jpg" },
   ],
   winter: [
-    { title: "Горные лыжи и сноуборд", text: "200 метров до канатных дорог курорта Архыз", image: "/alean-official-brand-mountains.webp" },
+    { title: "Горные лыжи и сноуборд", text: "200 метров до канатных дорог курорта Архыз", image: "/sophia-ski.jpg" },
     { title: "Академия спорта", text: "Занятия для всей семьи в любую погоду", image: "/sophia-sport-academy.webp" },
     { title: "Крытый бассейн", text: "С подогревом — работает круглый год", image: "/sophia-pool.webp" },
     { title: "Спа-комплекс", text: "Хаммам, финская и арома-сауна после склона", image: "/sophia-spa.jpg" },
-    { title: "Игровая мансарда", text: "Бильярд, аэрохоккей, кикер и игровые приставки", image: "/alean-04.jpg" },
+    { title: "Игровая мансарда", text: "Бильярд, аэрохоккей, кикер и игровые приставки", image: "/sophia-game-loft.webp" },
     { title: "Вечера в лаунж-баре", text: "Напитки и снеки по системе «Всё включено»", image: "/sophia-lounge-bar.webp" },
   ],
 };
