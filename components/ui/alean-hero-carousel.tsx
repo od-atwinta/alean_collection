@@ -10,6 +10,33 @@ const slides = [
   { eyebrow: "Отели", title: "Место,\nкуда хочется\nвернуться", text: "Курортные отели 4* и 5* с единым стандартом заботы", image: "/alean-official-route-hotels.webp" },
 ];
 
+export function BrandLocationCards() {
+  return <>
+    <article className="brand-card brand-family"><div className="brand-copy"><h3>Отдых у моря<br/>для всей семьи</h3><p>Анапа, Геленджик и Сочи. Первая береговая линия, детские клубы, SPA и формат «Ультра все включено».</p><ul><li>7 семейных курортов</li><li>Отели 4* и 5*</li></ul></div><a href="https://aleancollection.ru/brands/">Все бренды <i className="arrow-ne" aria-hidden="true" /></a></article>
+    <article className="brand-card brand-club"><div className="brand-copy"><h3>Архыз<br/>круглый год</h3><p>Зимой - катание, летом - маршруты, воздух и тишина. Для семейных поездок и отдыха вдвоем.</p><ul><li>Горнолыжный сезон</li><li>SPA и бассейны</li></ul></div><a href="https://aleancollection.ru/hotels/">Все локации <i className="arrow-ne" aria-hidden="true" /></a></article>
+  </>;
+}
+
+const developmentHotels = [
+  { name: "Alean Family Doville", image: "/alean-official-hotel-doville.webp" },
+  { name: "Alean Club Sophia", image: "/alean-official-hotel-sophia.webp" },
+  { name: "Alean Select Pino", image: "/alean-official-hotel-pino.webp" },
+];
+
+export function DevelopmentShowcase() {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const timer = window.setInterval(() => setActive((value) => (value + 1) % developmentHotels.length), 5000);
+    return () => window.clearInterval(timer);
+  }, []);
+  return <div className="development-showcase">
+    <div className="development-photo" role="img" aria-label={developmentHotels[active].name}>
+      {developmentHotels.map((hotel, index) => <span key={hotel.name} className={index === active ? "active" : ""} style={{ backgroundImage: `url('${hotel.image}')` }} />)}
+    </div>
+    <p className="development-caption">{developmentHotels[active].name}</p>
+  </div>;
+}
+
 const headerLinks = [
   { label: "Бренды", href: "https://aleancollection.ru/brands/" },
   { label: "Отели", href: "https://aleancollection.ru/hotels/" },
@@ -127,12 +154,6 @@ function BookingCalendar({ arrival, departure, onChange, onComplete }: { arrival
   </div>;
 }
 
-function DirectionIcon({ type }: { type: "Море" | "Горы" | "Отели" }) {
-  if (type === "Море") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5s2.5 2 5 2 2.5-2 5-2c1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1C7 13 7 11 9.5 11s2.5 2 5 2 2.5-2 5-2c1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1C7 19 7 17 9.5 17s2.5 2 5 2 2.5-2 5-2c1.3 0 1.9.5 2.5 1"/></svg>;
-  if (type === "Горы") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 3 4 8 3-4 7 14H2L8 3Z"/><path d="m5.5 11 2.5-2 2.5 2"/><path d="m13.5 9 1.5 2 1.5-2"/></svg>;
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12a11 11 0 0 1 22 0H1Z"/><path d="M5 12a7 7 0 0 1 14 0"/><path d="M12 2v16a2 2 0 0 0 4 0"/></svg>;
-}
-
 function PhoneIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.5 9.6 8 7.9 9.7c1.3 2.5 3.9 5.1 6.4 6.4l1.7-1.7 4.5 2.4-.5 3c-.2.9-1 1.6-2 1.6C10.1 21.4 2.6 13.9 2.6 6c0-1 .7-1.8 1.6-2l3-.5Z" /></svg>;
 }
@@ -217,9 +238,9 @@ export function AleanHeroCarousel() {
       <div className={`booking-field${bookingOpen === "guests" ? " active" : ""}`}>
         <button type="button" className="booking-trigger" aria-expanded={bookingOpen === "guests"} onClick={() => setBookingOpen(bookingOpen === "guests" ? null : "guests")}><span>Гости</span><strong>{guestLabel}</strong><i aria-hidden="true">⌄</i></button>
         <div className="booking-dropdown guests-dropdown" aria-hidden={bookingOpen !== "guests"}>
-          <label><span>Взрослых</span><input type="number" inputMode="numeric" min="1" max="10" value={adults} onChange={(event) => setAdults(Math.max(1, Math.min(10, Number(event.target.value) || 1)))} /></label>
-          <label><span>Дети до 15 лет</span><input type="number" inputMode="numeric" min="0" max="10" value={childrenUnder15} onChange={(event) => setChildrenUnder15(Math.max(0, Math.min(10, Number(event.target.value) || 0)))} /></label>
-          <label><span>Дети 16-18 лет</span><input type="number" inputMode="numeric" min="0" max="10" value={children16to18} onChange={(event) => setChildren16to18(Math.max(0, Math.min(10, Number(event.target.value) || 0)))} /></label>
+          <label><span>Взрослых</span><input type="number" inputMode="numeric" min="1" max="10" value={adults} onFocus={(event) => event.currentTarget.select()} onChange={(event) => setAdults(Math.max(1, Math.min(10, Number(event.target.value) || 1)))} /></label>
+          <label><span>Дети до 15 лет</span><input type="number" inputMode="numeric" min="0" max="10" value={childrenUnder15} onFocus={(event) => event.currentTarget.select()} onChange={(event) => setChildrenUnder15(Math.max(0, Math.min(10, Number(event.target.value) || 0)))} /></label>
+          <label><span>Дети 16-18 лет</span><input type="number" inputMode="numeric" min="0" max="10" value={children16to18} onFocus={(event) => event.currentTarget.select()} onChange={(event) => setChildren16to18(Math.max(0, Math.min(10, Number(event.target.value) || 0)))} /></label>
           <button type="button" className="dropdown-done" onClick={() => setBookingOpen(null)}>Готово</button>
         </div>
       </div>
@@ -238,9 +259,7 @@ export function AleanRouteCarousel() {
   return <div className="route-explorer">
     <div className="route-frame" role="img" aria-label={slides[active].text}>
       <div className="route-images" aria-hidden="true">{slides.map((slide, index) => <span key={slide.eyebrow} className={index === active ? "active" : ""} style={{backgroundImage:`url('${slide.image}')`}} />)}</div>
-      <div className="route-tabs" aria-label="Направления отдыха">
-        {slides.map((slide, index) => <button type="button" key={slide.eyebrow} className={index === active ? "active" : ""} onClick={() => setActive(index)} onMouseEnter={() => setActive(index)} aria-pressed={index === active}><span className="direction-icon"><DirectionIcon type={slide.eyebrow as "Море" | "Горы" | "Отели"}/></span><strong>{slide.eyebrow}</strong><i>0{index + 1}</i></button>)}
-      </div>
+      <div className="route-mission"><p>Alean Collection: больше хороших мест для отдыха в России<br/>и сервис, ради которого хочется возвращаться</p></div>
     </div>
   </div>;
 }
