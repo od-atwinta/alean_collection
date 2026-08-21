@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState, type PointerEvent } from "react";
+import { useRef, useState, type PointerEvent, type ReactNode } from "react";
 
-const offers = [
+const defaultOffers = [
   {
     label: "До 31 августа",
     title: "Лето в Alean",
@@ -27,7 +27,9 @@ const offers = [
   },
 ];
 
-export function OffersCarousel() {
+type Offer = { label: string; title: string; text?: string; image: string };
+
+export function OffersCarousel({ offers = defaultOffers, eyebrow = "Специальные предложения", heading = <>Поводы остаться<br/>чуть дольше</>, sectionId = "offers" }: { offers?: Offer[]; eyebrow?: string; heading?: ReactNode; sectionId?: string }) {
   const [start, setStart] = useState(0);
   const [visibleIndex, setVisibleIndex] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -65,9 +67,9 @@ export function OffersCarousel() {
     trackRef.current.classList.remove("dragging");
   };
 
-  return <section className="offers" id="offers">
+  return <section className="offers" id={sectionId}>
     <div className="shell section-head light">
-      <div><p className="micro">Специальные предложения</p><h2>Поводы остаться<br/>чуть дольше</h2></div>
+      <div><p className="micro">{eyebrow}</p><h2>{heading}</h2></div>
       <div className="outline-arrows" aria-label="Переключение предложений">
         <button type="button" onClick={() => move(-1)} aria-label="Предыдущие предложения">←</button>
         <button type="button" onClick={() => move(1)} aria-label="Следующие предложения">→</button>

@@ -20,10 +20,16 @@ async function rewriteDirectory(directory) {
     if (!textExtensions.has(extname(entry.name))) continue;
 
     const source = await readFile(pathname, "utf8");
-    const rewritten = source.replace(
-      /([`"'(])\/(?!\/|alean_collection\/)([^`"'()\s?#]+\.(?:avif|gif|ico|jpe?g|png|svg|webp|mp4|webm))(?=[`"')?#])/gi,
-      `$1${publicPrefix}$2`,
-    );
+    const rewritten = source
+      .replace(
+        /([`"'(])\/(?!\/|alean_collection\/)([^`"'()\s?#]+\.(?:avif|gif|ico|jpe?g|png|svg|webp|mp4|webm))(?=[`"')?#])/gi,
+        `$1${publicPrefix}$2`,
+      )
+      // Internal page routes (e.g. /hotels/alean-club-sophia, /#loyalty) need the same prefix as assets.
+      .replace(
+        /([`"'(])\/(?!\/|alean_collection\/)(hotels\/[^`"'()\s]*|#[^`"'()\s]*)(?=[`"')])/g,
+        `$1${publicPrefix}$2`,
+      );
 
     if (rewritten !== source) await writeFile(pathname, rewritten);
   }

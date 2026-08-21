@@ -363,3 +363,126 @@ body{background:#f8f8f6}
   .offer-track{width:calc(100% - 20px)}
   .offer-track article{height:440px;padding:26px}
 }
+
+/* Hotel subsite: Alean Club Sophia */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.revealed{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
+
+.hotel-hero-stage{position:relative;min-height:760px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate}
+.hotel-hero-parallax{position:absolute;inset:-60px 0;z-index:0;will-change:transform}
+.hotel-hero-parallax span{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease}
+.hotel-hero-parallax span.active{opacity:1}
+.hotel-hero-gradient{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,10,21,.1),rgba(6,10,21,.8) 88%)}
+.hotel-hero-copy{position:relative;z-index:2;color:#fff;padding:0 0 72px}
+.hotel-hero-copy .micro{color:#c7b9a6;margin-bottom:16px}
+.hotel-hero-copy h1{margin:0;font-size:clamp(44px,6vw,88px);line-height:.94;letter-spacing:-.05em;font-weight:500}
+.hotel-hero-note{max-width:520px;font-size:14px;line-height:1.6;margin:22px 0 0;color:rgba(255,255,255,.86)}
+.hotel-hero-dots{position:absolute;right:0;bottom:32px;z-index:2;display:flex;gap:8px}
+.hotel-hero-dots span{width:24px;height:3px;background:rgba(255,255,255,.32);transition:background .3s ease}
+.hotel-hero-dots span.active{background:#fff}
+
+.hotel-inpage-nav{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.14)}
+.hotel-inpage-links{display:flex;gap:26px;overflow:auto;font-size:12px}
+.hotel-inpage-links a{color:rgba(255,255,255,.72);white-space:nowrap;transition:color .2s ease}
+.hotel-inpage-links a:hover{color:#fff}
+.season-toggle{display:flex;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:3px;flex:0 0 auto}
+.season-toggle button{border:0;background:none;color:rgba(255,255,255,.7);font-size:11px;padding:7px 16px;border-radius:999px;cursor:pointer;transition:background .25s ease,color .25s ease}
+.season-toggle button.active{background:#fff;color:var(--ink)}
+
+
+/* Full-bleed layered alpine panorama: the sky blends out of the page, so the ridges never sit on a plate. */
+.about-parallax{position:relative;width:100vw;margin-left:calc(50% - 50vw);min-height:1150px;padding:120px 0 0;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,var(--ice) 0%,#dfe7ec 34%,#c9d7e0 62%,#b7c8d2 100%)}
+.about-parallax-content{position:relative;z-index:3}
+.about-parallax-layers{position:absolute;inset:0;z-index:1;pointer-events:none}
+.about-parallax-layers>div{position:absolute;left:-6%;width:112%;background-repeat:no-repeat;background-position:center bottom;will-change:transform}
+.ridge-far{bottom:-120px;height:720px;background-image:url('/arkhyz-ridge-main.png');background-size:100% auto}
+/* The cutout's own bottom crop is ragged: this band hides it and hands over to the next section's colour. */
+.about-parallax:after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;z-index:2;background:#f8f8f6}
+@media(prefers-reduced-motion:reduce){.about-parallax-layers>div,.about-text{transform:none!important}}
+
+.about-text{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;will-change:transform}
+.about-parallax h2{font-size:clamp(50px,6vw,94px);line-height:.96;letter-spacing:-.065em;font-weight:500;margin:0}
+.about-parallax .micro{color:var(--teal)}
+.about-lead{background:rgba(255,253,248,.94);border:1px solid rgba(255,255,255,.7);border-radius:var(--radius-small);padding:32px 34px;box-shadow:0 18px 44px rgba(11,33,64,.1);margin-top:8px}
+.about-lead p{margin:0;font-size:15px;line-height:1.8;color:var(--ink)}
+/* Glass stat panels read over both the sky and the ridge below them. */
+.hotel-advantages{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:none;margin-top:96px;background:none}
+.hotel-advantages span{display:flex;flex-direction:column;gap:8px;padding:22px 24px;font-size:12px;color:var(--ink);border:1px solid rgba(255,255,255,.6);border-radius:var(--radius-small);background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(255,255,255,.24));backdrop-filter:blur(16px) saturate(130%);-webkit-backdrop-filter:blur(16px) saturate(130%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 34px rgba(11,33,64,.1)}
+.hotel-advantages strong{font-size:26px;color:var(--ink);font-weight:500;letter-spacing:-.02em}
+
+.active-rest{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:110px auto;align-items:stretch}
+.active-rest-visual{min-height:420px;background-size:cover;background-position:center;border-radius:var(--radius-small)}
+.active-rest-copy{background:var(--ice);padding:60px;display:flex;flex-direction:column;justify-content:center;border-radius:var(--radius-small)}
+.active-rest-copy p{color:var(--muted);font-size:14px;line-height:1.7;max-width:420px;margin:18px 0 0}
+.active-rest-copy a{margin-top:26px;border-bottom:1px solid var(--ink);padding-bottom:8px;font-size:13px;align-self:flex-start;display:flex;align-items:center}
+
+
+.amenities{padding:0 0 130px}
+.amenity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.amenity-card{position:relative;height:340px;overflow:hidden;border-radius:var(--radius-small);isolation:isolate}
+.amenity-card img,.amenity-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.amenity-card:hover img,.amenity-card:hover video{transform:scale(1.05)}
+.amenity-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,21,0),rgba(6,10,21,.78) 80%);z-index:1}
+.amenity-card>div{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:20px;color:#fff}
+.amenity-card h3{margin:0 0 6px;font-size:16px;font-weight:500}
+.amenity-card p{margin:0;font-size:12px;color:rgba(255,255,255,.82);line-height:1.5}
+
+.entertainment{padding:0 0 130px}
+.outline-arrows.dark button{border-color:var(--line);color:var(--ink)}
+.activity-gallery{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;cursor:grab;scrollbar-width:thin}
+.activity-gallery.dragging{cursor:grabbing;scroll-snap-type:none}
+.activity-gallery article{flex:0 0 324px;scroll-snap-align:start}
+.activity-photo{height:300px;background-size:cover;background-position:center;border-radius:var(--radius);transition:transform .45s ease}
+.activity-gallery article:hover .activity-photo{transform:scale(1.02)}
+.activity-gallery h3{margin:18px 2px 8px;font-size:18px;font-weight:500}
+.activity-gallery p{margin:0 2px;font-size:13px;color:var(--muted);line-height:1.6}
+
+.hotel-reviews{padding:130px 0}
+.hotel-reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.hotel-reviews-grid blockquote{margin:0;background:var(--ice);padding:32px;font-size:15px;line-height:1.6;display:flex;flex-direction:column;justify-content:space-between;min-height:200px;border-radius:var(--radius-small)}
+.hotel-reviews-grid cite{font-style:normal;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:20px;display:block}
+
+@media(max-width:900px){
+  .hotel-hero-stage{min-height:600px}
+  .hotel-inpage-nav{flex-direction:column;align-items:flex-start;gap:14px}
+  .active-rest,.amenity-grid,.hotel-reviews-grid{grid-template-columns:1fr}
+  .hotel-advantages{grid-template-columns:1fr 1fr;margin-top:60px}
+  .about-text{grid-template-columns:1fr;gap:28px}
+  .about-parallax{padding-top:85px}
+  .about-parallax-content{padding-bottom:250px}
+  .ridge-far{height:440px;bottom:-90px}
+  .about-parallax:after{height:90px}
+  .active-rest-copy{padding:36px 28px}
+  .hotel-reviews{padding:85px 0}
+  .amenities,.entertainment{padding:0 0 85px}
+}
+@media(max-width:560px){
+  .hotel-hero-stage{min-height:520px}
+  .hotel-advantages{grid-template-columns:1fr}
+  .about-parallax-content{padding-bottom:180px}
+  .ridge-far{height:320px;bottom:-70px}
+  .about-parallax:after{height:70px}
+  .hotel-inpage-links{gap:18px}
+}
+
+/* Season palette: summer runs warm/orange, winter runs cold turquoise. */
+.season-summer{--season-accent:#c9611f;--season-accent-soft:#f3d9c4;--season-wash:#fbf1e7;--season-sky-top:#f7efe6;--season-sky-mid:#f0dcc6;--season-sky-low:#e3c3a2}
+.season-winter{--season-accent:#0d7c8c;--season-accent-soft:#c6e2e6;--season-wash:#eef5f6;--season-sky-top:#eef4f6;--season-sky-mid:#d5e6ec;--season-sky-low:#b6d2dc}
+.season-summer .about-parallax,.season-winter .about-parallax{background:linear-gradient(180deg,var(--season-sky-top) 0%,var(--season-sky-mid) 46%,var(--season-sky-low) 100%)}
+.season-summer .about-parallax .micro,.season-winter .about-parallax .micro,
+.season-summer .entertainment .micro,.season-winter .entertainment .micro{color:var(--season-accent)}
+.season-summer .season-toggle button.active,.season-winter .season-toggle button.active{background:var(--season-accent);color:#fff}
+.season-summer .filters button.active,.season-winter .filters button.active{background:var(--season-accent);border-color:var(--season-accent)}
+.season-summer .entertainment,.season-winter .entertainment{background:var(--season-wash)}
+.season-summer .entertainment,.season-winter .entertainment{padding-top:90px}
+.season-summer .hotel-advantages strong,.season-winter .hotel-advantages strong{color:var(--season-accent)}
+.season-summer .room-book,.season-winter .room-book{background:var(--season-accent)}
+.season-summer .outline-arrows.dark button:hover,.season-winter .outline-arrows.dark button:hover{border-color:var(--season-accent);color:var(--season-accent)}
+.about-parallax,.entertainment,.season-toggle button,.filters button,.hotel-advantages strong,.room-book{transition:background-color .5s ease,color .5s ease,border-color .5s ease,background .5s ease}
+
+/* Room cards: facts row and booking CTA */
+.room-facts{list-style:none;display:flex;gap:8px;padding:0;margin:12px 0 16px}
+.room-facts li{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:11px;color:var(--muted)}
+.room-book{display:inline-flex;align-items:center;background:var(--ink);color:#fff;border-radius:999px;padding:11px 18px;font-size:12px}
+.room-book .arrow-ne{margin-left:10px}

@@ -1,11 +1,13 @@
 import { AleanHeroCarousel, AleanRouteCarousel, BrandLocationCards, DevelopmentShowcase } from "../components/ui/alean-hero-carousel";
 import { OffersCarousel } from "../components/ui/offers-carousel";
+import { LoyaltySection } from "../components/ui/loyalty-section";
 import { ScrollToTop } from "../components/ui/scroll-to-top";
+import { SiteFooter } from "../components/ui/site-footer";
 
 const hotels = [
-  { name: "Alean Family Doville", place: "Анапа · 5*", note: "Ультра все включено", image: "/alean-official-hotel-doville.webp" },
-  { name: "Alean Club Sophia", place: "Архыз · 4*", note: "Все включено в горах", image: "/alean-official-hotel-sophia.webp" },
-  { name: "Alean Select Pino", place: "Архыз · 4*", note: "Отдых по вашему сценарию", image: "/alean-official-hotel-pino.webp" },
+  { name: "Alean Family Doville", place: "Анапа · 5*", note: "Ультра все включено", image: "/alean-official-hotel-doville.webp", href: "#booking" },
+  { name: "Alean Club Sophia", place: "Архыз · 4*", note: "Все включено в горах", image: "/alean-official-hotel-sophia.webp", href: "/hotels/alean-club-sophia" },
+  { name: "Alean Select Pino", place: "Архыз · 4*", note: "Отдых по вашему сценарию", image: "/alean-official-hotel-pino.webp", href: "#booking" },
 ];
 
 export default function Home() {
@@ -28,12 +30,12 @@ export default function Home() {
     <section className="catalog shell" id="hotels">
       <div className="section-head"><div><p className="micro">Отели коллекции</p><h2>Место для<br/>вашей поездки</h2></div><button type="button" className="line-link">Выбрать отель <span className="arrow-ne" aria-hidden="true" /></button></div>
       <div className="filters" aria-label="Фильтры отелей"><button className="active">Все</button><button>Море</button><button>Горы</button><button>С детьми</button><button>SPA</button><button>Всё включено</button></div>
-      <div className="hotel-grid">{hotels.map((hotel)=><article className="hotel-card" key={hotel.name}><a className="hotel-photo" href="#booking" style={{backgroundImage:`url('${hotel.image}')`}} aria-label={`Подробнее: ${hotel.name}`}></a><div><p>{hotel.place}</p><h3>{hotel.name}</h3><span>{hotel.note}</span></div></article>)}</div>
+      <div className="hotel-grid">{hotels.map((hotel)=><article className="hotel-card" key={hotel.name}><a className="hotel-photo" href={hotel.href} style={{backgroundImage:`url('${hotel.image}')`}} aria-label={`Подробнее: ${hotel.name}`}></a><div><p>{hotel.place}</p><h3>{hotel.name}</h3><span>{hotel.note}</span></div></article>)}</div>
     </section>
 
     <OffersCarousel />
 
-    <section className="loyalty shell" id="loyalty"><div className="loyalty-visual"><span className="loyalty-orbit"><img src="/alean-mark.svg" alt="Фирменный знак Alean"/></span><p>Alean Club</p></div><div className="loyalty-copy"><p className="micro">Программа лояльности</p><h2>В благодарность<br/>за постоянство</h2><p>Получайте 5% от оплаченной суммы бронирования бонусами и используйте их в следующем путешествии.</p><ul><li>5% бонусами</li><li>Комплимент при заезде</li><li>Особые условия для гостей клуба</li></ul><a className="dark-button" href="#booking">Вступить в клуб <span className="arrow-ne" aria-hidden="true" /></a></div></section>
+    <LoyaltySection />
 
     <section className="moments shell"><div className="section-head"><div><p className="micro">Моменты Alean</p><h2>Истории,<br/>которые остаются</h2></div><p>Отзывы гостей, кадры из поездок и свежие новости коллекции.</p></div><div className="moment-grid"><figure className="moment-a"><img src="/alean-official-offer-dolphins.jpg" alt="Дельфины в море на закате"/><figcaption>Море впечатлений</figcaption></figure><figure className="moment-b"><img src="/alean-official-moment-restaurant.webp" alt="Ресторан отеля Alean"/><figcaption>Вечер в Alean</figcaption></figure><blockquote><div><p>«Впервые за долгое время отдыхали всей семьей и никому не пришлось выбирать между спокойствием…»</p><a className="moments-more" href="#booking">Читать полностью<span className="arrow-ne" aria-hidden="true" /></a></div><cite>Гости Alean Family</cite></blockquote></div></section>
 
@@ -69,6 +71,6 @@ export default function Home() {
 
     <ScrollToTop />
 
-    <footer><div className="shell footer-top"><div><img src="/alean-logo.svg" alt="Alean Collection"/><p>Курортные отели 4* и 5* в России</p></div><div><p>Отдых</p><a href="#hotels">Отели</a><a href="#brands">Бренды</a><a href="#offers">Акции</a><a href="#loyalty">Лояльность</a></div><div><p>Компания</p><a href="https://aleancollection.ru/purchase/">Тендеры</a><a href="https://aleancollection.ru/sale-of-property/">Реализация имущества</a><a href="https://aleancollection.ru/career/">Карьера</a><a href="https://aleancollection.ru/partners/">Сотрудничество</a></div></div><div className="shell footer-bottom"><span>© 2026 Alean Collection</span><span>Концепция для тендерного предложения</span><span>Правовая информация</span></div></footer>
+    <SiteFooter />
   </main>;
 }
