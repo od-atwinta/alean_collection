@@ -8,18 +8,18 @@ const activities = {
   summer: [
     { title: "Маршруты к природе", text: "Живописные тропы, канатная дорога и сплав на мини-плоту", image: "/sophia-nature-routes.webp" },
     { title: "Академия спорта", text: "Занятия для взрослых и детей: выносливость, техника, личный рекорд", image: "/sophia-sport-academy.webp" },
-    { title: "Поездки на перевал Пхия", text: "Групповые выезды только для гостей Alean Club Sophia", image: "/alean-official-route-mountains.webp" },
+    { title: "Поездки на перевал Пхия", text: "Групповые выезды только для гостей Alean Club Sophia", image: "/sophia-phiya-pass.jpg" },
     { title: "Индивидуальные экскурсии", text: "Комфортные поездки к значимым местам курорта", image: "/alean-official-brand-mountains.webp" },
-    { title: "Анимация", text: "Профессиональная команда работает с 10:00 до 23:00", image: "/alean-vk-squirrels-birthday.jpg" },
-    { title: "Ужин на террасе", text: "Гастрономические вечера и закат над хребтом", image: "/alean-official-offer-together.webp" },
+    { title: "Анимация", text: "Профессиональная команда работает с 10:00 до 23:00", image: "/sophia-animation.webp" },
+    { title: "Спа-комплекс", text: "Хаммам, финская и арома-сауна, спа-программы", image: "/sophia-spa.jpg" },
   ],
   winter: [
     { title: "Горные лыжи и сноуборд", text: "200 метров до канатных дорог курорта Архыз", image: "/alean-official-brand-mountains.webp" },
     { title: "Академия спорта", text: "Занятия для всей семьи в любую погоду", image: "/sophia-sport-academy.webp" },
     { title: "Крытый бассейн", text: "С подогревом — работает круглый год", image: "/sophia-pool.webp" },
-    { title: "Спа-комплекс", text: "Хаммам, финская и арома-сауна после склона", image: "/alean-official-moment-garden.webp" },
+    { title: "Спа-комплекс", text: "Хаммам, финская и арома-сауна после склона", image: "/sophia-spa.jpg" },
     { title: "Игровая мансарда", text: "Бильярд, аэрохоккей, кикер и игровые приставки", image: "/alean-04.jpg" },
-    { title: "Вечера в лаунж-баре", text: "Напитки и снеки по системе «Всё включено»", image: "/alean-official-moment-restaurant.webp" },
+    { title: "Вечера в лаунж-баре", text: "Напитки и снеки по системе «Всё включено»", image: "/sophia-lounge-bar.webp" },
   ],
 };
 

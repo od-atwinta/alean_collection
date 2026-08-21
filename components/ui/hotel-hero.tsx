@@ -30,21 +30,35 @@ function SeasonToggle() {
   </div>;
 }
 
-const galleryImages = [
-  "/alean-official-hotel-sophia.webp",
-  "/alean-official-brand-mountains.webp",
-  "/alean-official-route-mountains.webp",
-  "/alean-04.jpg",
-];
+const seasonGallery = {
+  summer: [
+    "/sophia-summer-1.jpg",
+    "/sophia-summer-2.webp",
+    "/alean-official-hotel-sophia.webp",
+    "/sophia-nature-routes.webp",
+  ],
+  winter: [
+    "/sophia-winter-1.webp",
+    "/sophia-winter-2.webp",
+    "/sophia-winter-3.webp",
+    "/sophia-pool.webp",
+  ],
+};
 
 export function HotelHero() {
+  const { season } = useSeason();
+  const galleryImages = seasonGallery[season];
   const [activeSlide, setActiveSlide] = useState(0);
   const parallaxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setActiveSlide(0);
+  }, [season]);
+
+  useEffect(() => {
     const timer = window.setInterval(() => setActiveSlide((value) => (value + 1) % galleryImages.length), 4500);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [galleryImages.length]);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

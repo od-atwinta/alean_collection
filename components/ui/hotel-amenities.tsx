@@ -9,21 +9,21 @@ const categories = [
     items: [
       { title: "Ресторан", text: "Завтраки, обеды и ужины в формате «шведской линии»", image: "/sophia-restaurant.webp" },
       { title: "Снек-бар на шведской линии", text: "Свежесваренный кофе, прохладительные напитки и закуски", image: "/alean-official-moment-restaurant.webp" },
-      { title: "Лаунж-бар", text: "Напитки, снеки и печенье по системе «Всё включено»", image: "/alean-official-offer-together.webp" },
+      { title: "Лаунж-бар", text: "Напитки, снеки и печенье по системе «Всё включено»", image: "/sophia-lounge-bar.webp" },
     ],
   },
   {
     label: "Для детей",
     items: [
       { title: "Клуб «Вики Чики»", text: "Досуг малышей от 0 до 7 лет с развивающими играми и аниматорами", image: "/sophia-kids.webp" },
-      { title: "Анимация", text: "Команда аниматоров работает с 10:00 до 23:00", image: "/alean-vk-squirrels-birthday.jpg" },
+      { title: "Анимация", text: "Команда аниматоров работает с 10:00 до 23:00", image: "/sophia-animation.webp" },
       { title: "Детская академия спорта", text: "Занятия, где юные гости ставят свой личный рекорд", image: "/sophia-sport-academy.webp" },
     ],
   },
   {
     label: "Спа-комплекс",
     items: [
-      { title: "Банный комплекс", text: "Хаммам, финская и арома-сауна", image: "/alean-official-moment-garden.webp" },
+      { title: "Банный комплекс", text: "Хаммам, финская и арома-сауна", image: "/sophia-spa.jpg" },
       { title: "Спа-программы", text: "Наборы процедур для расслабления, восстановления и ухода за кожей", image: "/world-mountain.jpg" },
       { title: "Бассейн", text: "Крытый бассейн отеля — работает круглый год", image: "/sophia-pool.webp" },
     ],
