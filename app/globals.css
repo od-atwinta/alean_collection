@@ -401,11 +401,10 @@ body{background:#f8f8f6}
 .about-parallax:after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;z-index:2;background:#f8f8f6}
 @media(prefers-reduced-motion:reduce){.about-parallax-layers>div,.about-text{transform:none!important}}
 
-.about-text{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;will-change:transform}
+.about-text{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;will-change:transform}
 .about-parallax h2{font-size:clamp(50px,6vw,94px);line-height:.96;letter-spacing:-.065em;font-weight:500;margin:0}
 .about-parallax .micro{color:var(--teal)}
-.about-lead{background:rgba(255,253,248,.94);border:1px solid rgba(255,255,255,.7);border-radius:var(--radius-small);padding:32px 34px;box-shadow:0 18px 44px rgba(11,33,64,.1);margin-top:8px}
-.about-lead p{margin:0;font-size:15px;line-height:1.8;color:var(--ink)}
+.about-lead p{margin:0;font-size:18px;line-height:1.72;color:var(--ink)}
 /* Glass stat panels read over both the sky and the ridge below them. */
 .hotel-advantages{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:none;margin-top:96px;background:none}
 .hotel-advantages span{display:flex;flex-direction:column;gap:8px;padding:22px 24px;font-size:12px;color:var(--ink);border:1px solid rgba(255,255,255,.6);border-radius:var(--radius-small);background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(255,255,255,.24));backdrop-filter:blur(16px) saturate(130%);-webkit-backdrop-filter:blur(16px) saturate(130%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 34px rgba(11,33,64,.1)}
@@ -497,4 +496,3 @@ body{background:#f8f8f6}
 .season-winter .about-parallax{background:linear-gradient(180deg,#eef4f6 0%,#dbe8ee 40%,#cadde5 100%)}
 .season-winter .ridge-far{left:0;width:100%;inset:auto 0 0 0;height:78%;background-image:url('/sophia-winter-1.webp');background-size:cover;background-position:center 30%}
 .season-winter .about-parallax:after{background:#f8f8f6}
-.season-winter .about-lead{background:rgba(255,255,255,.94)}
