@@ -550,3 +550,7 @@ section[id],div[id]{scroll-margin-top:104px}
 .site-menu-page .season-toggle button{color:var(--muted)}
 .site-menu-page .season-toggle button:hover{color:var(--ink)}
 .site-menu-page .season-toggle button.active{background:var(--season-accent,var(--teal));color:#fff}
+/* Поле с уже выбранным отелем залито фоном, поэтому скругляем его по краю формы:
+   в строку — слева, а на телефоне форма встаёт столбиком, и поле оказывается сверху. */
+.booking-field.locked{border-radius:var(--radius) 0 0 var(--radius)}
+@media(max-width:560px){.booking-field.locked{border-radius:var(--radius) var(--radius) 0 0}}
