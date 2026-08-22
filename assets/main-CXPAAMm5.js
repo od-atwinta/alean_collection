@@ -1,4 +1,4 @@
-import{a as e,c as t,i as n,n as r,o as i,r as a,s as o,t as s}from"./globals-1n3Thl8L.js";var c=o(),l=t(),u=i(),d={eyebrow:`Море`,title:`К морю
+import{a as e,c as t,i as n,n as r,o as i,r as a,s as o,t as s}from"./globals-C7G1jGu7.js";var c=o(),l=t(),u=i(),d={eyebrow:`Море`,title:`К морю
 за общими
 впечатлениями`,text:`Семейные курорты в Анапе, Геленджике и Сочи`,image:`/alean_collection/alean-official-hero-beach.webp`},f=[{eyebrow:`Море`,title:`К морю
 за общими
