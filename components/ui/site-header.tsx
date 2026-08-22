@@ -70,6 +70,7 @@ function CalendarIcon() {
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHotelGroup, setActiveHotelGroup] = useState<number | null>(null);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", menuOpen);
@@ -81,8 +82,15 @@ export function SiteHeader() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return <>
-    <header className="nav shell">
+    <header className={`nav shell${scrolled ? " scrolled" : ""}`}>
       <a className="logo" href="#top" aria-label="Alean Collection"><img src="/alean-logo.svg" alt="Alean Collection" /></a>
       <nav aria-label="Основная навигация">{headerLinks.map((item) => <a key={item.label} href={item.href}>{item.label}</a>)}</nav>
       <div className="nav-actions"><a className="mobile-phone" href="tel:88002500030" aria-label="Позвонить"><PhoneIcon /></a><a className="nav-phone" href="tel:88002500030">8 800 250 00 30</a><a className="callback-link" href="https://aleancollection.ru/contacts/">Заказать звонок</a><a className="booking-link" href="https://booking.aleancollection.ru/" aria-label="Открыть бронирование"><span className="booking-text">Бронирование</span><span className="booking-icon"><CalendarIcon /></span></a><button className="menu-button" type="button" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => { if (!menuOpen) setActiveHotelGroup(null); setMenuOpen((value) => !value); }}><span className="menu-label">Меню</span><span className="menu-icon" aria-hidden="true">{menuOpen ? "×" : "≡"}</span></button></div>

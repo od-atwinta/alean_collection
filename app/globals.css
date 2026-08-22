@@ -15,7 +15,7 @@ footer{background:var(--ink);color:#fff;padding:70px 0 24px}.footer-top{display:
 /* Resort-led direction: full-screen visual, calmer type and one radius system */
 body{background:#f8f8f6}
 .hero{padding:0;position:relative;background:var(--ink)}
-.hero .nav{position:absolute;z-index:10;top:0;left:0;transform:none;width:100%;max-width:none;height:84px;padding:0 32px;background:rgba(11,33,64,.44);backdrop-filter:blur(18px);border:0;border-bottom:1px solid rgba(255,255,255,.18);border-radius:0 0 var(--radius) var(--radius);color:#fff;box-shadow:0 16px 45px rgba(3,12,25,.14)}
+.hero .nav{position:fixed;z-index:30;top:0;left:0;transform:none;width:100%;max-width:none;height:84px;padding:0 32px;background:rgba(11,33,64,.44);backdrop-filter:blur(18px);border:0;border-bottom:1px solid rgba(255,255,255,.18);border-radius:0 0 var(--radius) var(--radius);color:#fff;box-shadow:0 16px 45px rgba(3,12,25,.14)}
 .hero .logo{height:58px;display:flex;align-items:center;overflow:hidden}
 .hero .logo img{filter:brightness(0) invert(1);width:132px;max-height:52px;object-fit:contain}
 .hero .nav-actions button{background:rgba(255,255,255,.94);color:var(--ink)}
@@ -404,6 +404,9 @@ body{background:#f8f8f6}
 .about-text{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;will-change:transform}
 .about-parallax h2{font-size:clamp(50px,6vw,94px);line-height:.96;letter-spacing:-.065em;font-weight:500;margin:0}
 .about-parallax .micro{color:var(--teal)}
+/* Optically centre against the heading x-height, not its cap line:
+   measured cap 0.72em vs x-height 0.54em, so the block drops half the difference. */
+.about-lead{transform:translateY(clamp(5px,0.6vw,9.3px))}
 .about-lead p{margin:0;font-size:18px;line-height:1.72;color:var(--ink)}
 /* Glass stat panels read over both the sky and the ridge below them. */
 .hotel-advantages{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:none;margin-top:96px;background:none}
@@ -496,3 +499,7 @@ body{background:#f8f8f6}
 .season-winter .about-parallax{background:linear-gradient(180deg,#eef4f6 0%,#dbe8ee 40%,#cadde5 100%)}
 .season-winter .ridge-far{left:0;width:100%;inset:auto 0 0 0;height:78%;background-image:url('/sophia-winter-1.webp');background-size:cover;background-position:center 30%}
 .season-winter .about-parallax:after{background:#f8f8f6}
+
+/* Fixed header: keep it solid once it leaves the hero, and stop anchors hiding under it. */
+.hero .nav.scrolled{background:rgba(11,33,64,.93);box-shadow:0 12px 34px rgba(3,12,25,.24)}
+section[id],div[id]{scroll-margin-top:104px}
