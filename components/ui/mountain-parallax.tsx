@@ -19,10 +19,17 @@ export function MountainParallax({ text, stats }: { text: ReactNode; stats: Reac
       const rect = node.getBoundingClientRect();
       // -1 while the section sits below the fold, +1 once it has scrolled past the top.
       const progress = Math.max(-1, Math.min(1, (rect.top + rect.height / 2 - window.innerHeight / 2) / ((window.innerHeight + rect.height) / 2)));
-      // Nearer planes travel further, which is what sells the depth.
-      if (ridgeRef.current) ridgeRef.current.style.transform = `translate3d(0, ${progress * 42}px, 0)`;
-      if (midRef.current) midRef.current.style.transform = `translate3d(0, ${progress * 96}px, 0)`;
-      if (nearRef.current) nearRef.current.style.transform = `translate3d(0, ${progress * 168}px, 0)`;
+      // Размах каждого плана задаётся в CSS: у зимы одна фотография, у лета три слоя.
+      const styles = getComputedStyle(node);
+      const shift = (name: string, fallback: number) => {
+        const value = parseFloat(styles.getPropertyValue(name));
+        return Number.isFinite(value) ? value : fallback;
+      };
+      // Передний план стоит на месте и держит низ кадра, дальние планы отстают и опускаются:
+      // иначе гряда, которая есть на всех трёх слоях, двоилась бы.
+      if (ridgeRef.current) ridgeRef.current.style.transform = `translate3d(0, ${progress * shift("--shift-far", 42)}px, 0)`;
+      if (midRef.current) midRef.current.style.transform = `translate3d(0, ${progress * shift("--shift-mid", 0)}px, 0)`;
+      if (nearRef.current) nearRef.current.style.transform = `translate3d(0, ${progress * shift("--shift-near", 0)}px, 0)`;
       if (textRef.current) textRef.current.style.transform = `translate3d(0, ${progress * 22}px, 0)`;
     };
     const onScroll = () => {

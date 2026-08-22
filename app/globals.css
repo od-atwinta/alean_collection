@@ -411,11 +411,16 @@ body{background:#f8f8f6}
 .about-parallax-layers{position:absolute;inset:0;z-index:1;pointer-events:none}
 .about-parallax-layers>div{position:absolute;left:-6%;width:112%;background-repeat:no-repeat;background-position:center bottom;will-change:transform}
 .ridge-far{bottom:-120px;height:720px;background-image:url('/arkhyz-ridge-main.png');background-size:100% auto}
-/* Летняя панорама собрана из трёх вырезок: дальние пики, зелёная гряда, ближний склон. */
+/* Летняя панорама - один кадр перевала Федосеева, разрезанный на три слоя.
+   Слои одного размера и совмещены; смещение по bottom подобрано так, чтобы ближние
+   планы никогда не поднимались выше своего места и не открывали дубль гряды. */
 .ridge-mid,.ridge-near{background-size:100% auto;opacity:0}
-.season-summer .ridge-far{bottom:60px;height:980px;background-image:url('/arkhyz-summer-far.png')}
-.season-summer .ridge-mid{bottom:-30px;height:760px;background-image:url('/arkhyz-summer-mid.png');opacity:1}
-.season-summer .ridge-near{bottom:-150px;height:760px;background-image:url('/arkhyz-summer-near.png');opacity:1}
+.season-summer .about-parallax-layers>div{left:-6%;width:112%;height:auto;aspect-ratio:3/2;background-size:100% 100%;background-position:center bottom}
+/* Дальние планы стоят ниже ровно на свой размах, поэтому выше исходного места не поднимаются. */
+.season-summer .about-parallax{--shift-far:-60;--shift-mid:-30;--shift-near:0}
+.season-summer .ridge-far{bottom:-60px;background-image:url('/arkhyz-summer-far.png')}
+.season-summer .ridge-mid{bottom:-30px;background-image:url('/arkhyz-summer-mid.png');opacity:1}
+.season-summer .ridge-near{bottom:0;background-image:url('/arkhyz-summer-near.png');opacity:1}
 /* The cutout's own bottom crop is ragged: this band hides it and hands over to the next section's colour. */
 .about-parallax:after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;z-index:2;background:#f8f8f6}
 @media(prefers-reduced-motion:reduce){.about-parallax-layers>div,.about-text{transform:none!important}}
@@ -471,11 +476,9 @@ body{background:#f8f8f6}
   .hotel-advantages{grid-template-columns:1fr 1fr;margin-top:60px}
   .about-text{grid-template-columns:1fr;gap:28px}
   .about-parallax{padding-top:85px}
-  .about-parallax-content{padding-bottom:250px}
+  .about-parallax-content{padding-bottom:430px}
   .ridge-far{height:440px;bottom:-90px}
-  .season-summer .ridge-far{height:620px;bottom:40px}
-  .season-summer .ridge-mid{height:470px;bottom:-20px}
-  .season-summer .ridge-near{height:470px;bottom:-95px}
+  .season-summer .about-parallax-layers>div{left:-24%;width:148%}
   .about-parallax:after{height:90px}
   .active-rest-copy{padding:36px 28px}
   .hotel-reviews{padding:85px 0}
@@ -484,11 +487,9 @@ body{background:#f8f8f6}
 @media(max-width:560px){
   .hotel-hero-stage{min-height:520px}
   .hotel-advantages{grid-template-columns:1fr}
-  .about-parallax-content{padding-bottom:180px}
+  .about-parallax-content{padding-bottom:400px}
   .ridge-far{height:320px;bottom:-70px}
-  .season-summer .ridge-far{height:450px;bottom:30px}
-  .season-summer .ridge-mid{height:340px;bottom:-15px}
-  .season-summer .ridge-near{height:340px;bottom:-70px}
+  .season-summer .about-parallax-layers>div{left:-45%;width:190%}
   .about-parallax:after{height:70px}
   .hotel-inpage-links{gap:18px}
 }
