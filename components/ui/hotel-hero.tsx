@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { BookingBar } from "./booking-bar";
 import { SiteHeader } from "./site-header";
 
 type Season = "summer" | "winter";
@@ -78,7 +79,7 @@ export function HotelHero() {
   }, []);
 
   return <section className="hero hotel-hero" id="top">
-    <SiteHeader />
+    <SiteHeader homeHref="/#top" bookingHref="https://booking.aleancollection.ru/" bookingLabel="Забронировать Sophia" title="Alean Club Sophia" menuSections={<HotelMenuSections />} />
     <div className="hotel-hero-stage">
       <div className="hotel-hero-parallax" ref={parallaxRef} aria-hidden="true">
         {galleryImages.map((image, index) => <span key={image} className={index === activeSlide ? "active" : ""} style={{ backgroundImage: `url('${image}')` }} />)}
@@ -91,9 +92,56 @@ export function HotelHero() {
       </div>
       <div className="hotel-hero-dots" aria-hidden="true">{galleryImages.map((image, index) => <span key={image} className={index === activeSlide ? "active" : ""} />)}</div>
     </div>
+    <div className="hotel-booking-band">
+      <BookingBar destinations={null} fixedDestination="Alean Club Sophia" submitLabel="Подобрать номер" action="#rooms" />
+    </div>
+  </section>;
+}
+
+// Разделы страницы для выпадающего меню: на телефоне полосы разделов нет.
+function HotelMenuSections() {
+  return <>
+    <p>Разделы отеля</p>
+    <div className="site-menu-page-links">
+      <nav aria-label="Разделы страницы отеля">{inPageLinks.map((item) => <a key={item.href} href={item.href}>{item.label}<span aria-hidden="true">↓</span></a>)}</nav>
+      <SeasonToggle />
+    </div>
+  </>;
+}
+
+// Какой раздел сейчас читают: последний, чей верх уже ушёл под шапку.
+function useActiveSection() {
+  const [active, setActive] = useState("");
+  useEffect(() => {
+    const ids = inPageLinks.map((item) => item.href.slice(1));
+    const pick = () => {
+      let current = "";
+      ids.forEach((id) => {
+        const node = document.getElementById(id);
+        if (node && node.getBoundingClientRect().top <= 160) current = id;
+      });
+      setActive(current);
+    };
+    // Первый расчёт откладываем на кадр, чтобы не менять состояние прямо в эффекте.
+    const frame = requestAnimationFrame(pick);
+    window.addEventListener("scroll", pick, { passive: true });
+    window.addEventListener("resize", pick);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", pick);
+      window.removeEventListener("resize", pick);
+    };
+  }, []);
+  return active;
+}
+
+// Отдельная полоса: липнет под шапкой и остаётся доступной на всей странице отеля.
+export function HotelInPageNav() {
+  const active = useActiveSection();
+  return <div className="hotel-inpage-bar">
     <nav className="hotel-inpage-nav shell" aria-label="Разделы страницы отеля">
-      <div className="hotel-inpage-links">{inPageLinks.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</div>
+      <div className="hotel-inpage-links">{inPageLinks.map((item) => <a key={item.href} href={item.href} className={active === item.href.slice(1) ? "active" : ""} aria-current={active === item.href.slice(1) ? "true" : undefined}>{item.label}</a>)}</div>
       <SeasonToggle />
     </nav>
-  </section>;
+  </div>;
 }

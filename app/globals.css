@@ -150,7 +150,12 @@ body{background:#f8f8f6}
 .faq-list details[open] .faq-toggle:after{transform:translate(-50%,-50%) rotate(0deg)}
 
 /* Меню и шапка на основе структуры официального сайта Alean Collection */
-.nav{grid-template-columns:160px minmax(0,1fr) auto;gap:24px}
+.nav{grid-template-columns:minmax(160px,auto) minmax(0,1fr) auto;gap:24px}
+/* Название страницы проявляется только в плотной шапке — над обложкой оно мешало бы заголовку. */
+.nav-brand{display:flex;align-items:center;gap:16px;min-width:0}
+.nav-page-title{position:relative;padding-left:16px;font-size:13px;font-weight:600;white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
+.nav-page-title:before{content:"";position:absolute;left:0;top:50%;width:1px;height:18px;margin-top:-9px;background:currentColor;opacity:.35}
+.nav.scrolled .nav-page-title{opacity:1;transform:none;pointer-events:auto}
 .nav nav{gap:18px;justify-content:flex-start;white-space:nowrap;font-size:11px}
 .nav-actions{gap:12px;white-space:nowrap}.nav-phone{font-weight:600}.callback-link{border-bottom:1px solid currentColor;padding-bottom:3px}.booking-link{border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:10px 14px}
 .menu-button{display:flex;align-items:center;gap:9px;cursor:pointer}.menu-button .menu-icon{width:18px;margin:0;font-size:20px;line-height:1;text-align:center}
@@ -161,6 +166,12 @@ body{background:#f8f8f6}
 .hotel-explorer{display:grid;grid-template-columns:minmax(190px,.82fr) minmax(220px,1.18fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.hotel-groups{padding:18px 28px 18px 0;border-right:1px solid var(--line)}.hotel-groups button{width:100%;border:0;background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:9px 0;text-align:left;cursor:pointer;font-size:15px}.hotel-groups button i{font-style:normal;font-size:20px;color:var(--muted);transition:transform .2s ease}.hotel-groups button:hover,.hotel-groups button.active{color:var(--teal)}.hotel-groups button.active i{transform:translateX(4px);color:var(--teal)}
 .hotel-group-item{display:contents}.mobile-group-hotels{display:none}
 .group-hotels{padding:25px 0 25px 30px}.group-hotels>strong{display:block;margin-bottom:14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.group-hotels nav{display:grid;grid-template-columns:1fr;gap:0}.group-hotels nav a{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}.group-hotels nav a span{font-size:11px}.empty-group{max-width:230px;margin:20px 0!important;color:var(--muted);font-size:13px!important;line-height:1.6;text-transform:none!important;letter-spacing:0!important}.all-hotels-link{display:inline-flex;gap:36px;margin-top:20px;padding-bottom:8px;border-bottom:1px solid var(--ink);font-size:13px}
+/* На телефоне липкой полосы разделов нет, поэтому разделы отеля живут в меню. */
+.site-menu-page{grid-column:1/3;border-bottom:1px solid var(--line);padding-bottom:24px}
+.site-menu-page-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
+.site-menu-page-links nav{display:flex;flex-wrap:wrap;gap:10px 26px}
+.site-menu-page-links a{display:flex;align-items:center;gap:8px;font-size:14px}
+.site-menu-page-links a span{color:var(--muted);font-size:11px}
 .site-menu-contact{grid-column:1/3;display:flex;align-items:center;gap:30px;border-top:1px solid var(--line);padding-top:24px}.site-menu-contact p{margin:0!important}.site-menu-contact a{font-size:14px}
 @media(max-width:1280px){.nav nav a:nth-last-child(-n+3){display:none}.callback-link{display:none}}
 @media(max-width:900px){.nav nav,.nav-actions>a{display:none}.site-menu{padding-top:96px}.site-menu-inner{grid-template-columns:1fr;gap:42px}.site-menu-contact{grid-column:auto;align-items:flex-start;flex-direction:column;gap:12px}.site-menu-columns{grid-template-columns:1fr 1fr}}
@@ -365,9 +376,10 @@ body{background:#f8f8f6}
 }
 
 /* Hotel subsite: Alean Club Sophia */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
-.reveal.revealed{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
+/* Блоки прячутся только если скрипт анимации запустился — иначе контент виден всегда. */
+.reveal-ready .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal-ready .reveal.revealed{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal-ready .reveal{transition:none;opacity:1;transform:none}}
 
 .hotel-hero-stage{position:relative;min-height:760px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate}
 .hotel-hero-parallax{position:absolute;inset:-60px 0;z-index:0;will-change:transform}
@@ -386,6 +398,8 @@ body{background:#f8f8f6}
 .hotel-inpage-links{display:flex;gap:26px;overflow:auto;font-size:12px}
 .hotel-inpage-links a{color:rgba(255,255,255,.72);white-space:nowrap;transition:color .2s ease}
 .hotel-inpage-links a:hover{color:#fff}
+.hotel-inpage-links a.active{color:#fff;position:relative}
+.hotel-inpage-links a.active:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:currentColor;border-radius:2px}
 .season-toggle{display:flex;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:3px;flex:0 0 auto}
 .season-toggle button{border:0;background:none;color:rgba(255,255,255,.7);font-size:11px;padding:7px 16px;border-radius:999px;cursor:pointer;transition:background .25s ease,color .25s ease}
 .season-toggle button.active{background:#fff;color:var(--ink)}
@@ -397,6 +411,11 @@ body{background:#f8f8f6}
 .about-parallax-layers{position:absolute;inset:0;z-index:1;pointer-events:none}
 .about-parallax-layers>div{position:absolute;left:-6%;width:112%;background-repeat:no-repeat;background-position:center bottom;will-change:transform}
 .ridge-far{bottom:-120px;height:720px;background-image:url('/arkhyz-ridge-main.png');background-size:100% auto}
+/* Летняя панорама собрана из трёх вырезок: дальние пики, зелёная гряда, ближний склон. */
+.ridge-mid,.ridge-near{background-size:100% auto;opacity:0}
+.season-summer .ridge-far{bottom:60px;height:980px;background-image:url('/arkhyz-summer-far.png')}
+.season-summer .ridge-mid{bottom:-30px;height:760px;background-image:url('/arkhyz-summer-mid.png');opacity:1}
+.season-summer .ridge-near{bottom:-150px;height:760px;background-image:url('/arkhyz-summer-near.png');opacity:1}
 /* The cutout's own bottom crop is ragged: this band hides it and hands over to the next section's colour. */
 .about-parallax:after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;z-index:2;background:#f8f8f6}
 @media(prefers-reduced-motion:reduce){.about-parallax-layers>div,.about-text{transform:none!important}}
@@ -454,6 +473,9 @@ body{background:#f8f8f6}
   .about-parallax{padding-top:85px}
   .about-parallax-content{padding-bottom:250px}
   .ridge-far{height:440px;bottom:-90px}
+  .season-summer .ridge-far{height:620px;bottom:40px}
+  .season-summer .ridge-mid{height:470px;bottom:-20px}
+  .season-summer .ridge-near{height:470px;bottom:-95px}
   .about-parallax:after{height:90px}
   .active-rest-copy{padding:36px 28px}
   .hotel-reviews{padding:85px 0}
@@ -464,6 +486,9 @@ body{background:#f8f8f6}
   .hotel-advantages{grid-template-columns:1fr}
   .about-parallax-content{padding-bottom:180px}
   .ridge-far{height:320px;bottom:-70px}
+  .season-summer .ridge-far{height:450px;bottom:30px}
+  .season-summer .ridge-mid{height:340px;bottom:-15px}
+  .season-summer .ridge-near{height:340px;bottom:-70px}
   .about-parallax:after{height:70px}
   .hotel-inpage-links{gap:18px}
 }
@@ -498,8 +523,30 @@ body{background:#f8f8f6}
 /* Winter uses a full photographic scene instead of the summer cut-out ridge. */
 .season-winter .about-parallax{background:linear-gradient(180deg,#eef4f6 0%,#dbe8ee 40%,#cadde5 100%)}
 .season-winter .ridge-far{left:0;width:100%;inset:auto 0 0 0;height:78%;background-image:url('/sophia-winter-1.webp');background-size:cover;background-position:center 30%}
+.season-winter .ridge-mid,.season-winter .ridge-near{display:none}
 .season-winter .about-parallax:after{background:#f8f8f6}
 
 /* Fixed header: keep it solid once it leaves the hero, and stop anchors hiding under it. */
 .hero .nav.scrolled{background:rgba(11,33,64,.93);box-shadow:0 12px 34px rgba(3,12,25,.24)}
 section[id],div[id]{scroll-margin-top:104px}
+
+/* Меню страницы отеля липнет под шапкой и остаётся доступным на всей странице. */
+.hotel-inpage-bar{position:sticky;top:84px;z-index:8;background:var(--season-band,var(--ink));box-shadow:0 14px 34px rgba(3,12,25,.16)}
+/* Форма подбора номера на странице отеля: отдельная полоса под фото, отель уже выбран. */
+.hotel-booking-band{position:relative;z-index:6;padding:22px 0 26px}
+.hotel-booking-band .booking{position:relative;left:auto;right:auto;bottom:auto;transform:none;margin-inline:auto}
+.booking-field.locked{background:#f4f6f4}
+.booking-field.locked .booking-static{width:100%;min-height:76px;display:grid;align-content:center;gap:7px;padding:0 26px;text-align:left}
+.booking-field.locked .booking-static>span{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.booking-field.locked .booking-static strong{font-size:14px;font-weight:600}
+@media(max-width:560px){.hotel-booking-band{padding:14px 10px 18px}.hotel-booking-band .booking{width:auto}}
+.season-summer section[id],.season-winter section[id]{scroll-margin-top:168px}
+@media(max-width:900px){.hotel-inpage-bar{display:none}.season-summer section[id],.season-winter section[id]{scroll-margin-top:96px}}
+@media(max-width:560px){.nav-page-title{display:none}.site-menu-page-links{flex-direction:column;align-items:flex-start}}
+/* Мобильное меню: один столбец, чтобы разделы отеля читались сверху, а отели шли ниже. */
+@media(max-width:900px){.site-menu .site-menu-inner{grid-template-columns:1fr;gap:34px}.site-menu .site-menu-page{grid-column:auto;padding-bottom:20px}.site-menu .site-menu-columns{grid-template-columns:1fr}.site-menu-page-links{flex-direction:column;align-items:stretch;gap:14px}.site-menu-page-links nav{display:grid;gap:0}.site-menu-page-links nav a{justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line)}.site-menu-page-links nav a:last-child{border-bottom:0}}
+/* Переключатель сезона в меню стоит на светлом фоне, поэтому цвета инвертированы. */
+.site-menu-page .season-toggle{border-color:var(--line)}
+.site-menu-page .season-toggle button{color:var(--muted)}
+.site-menu-page .season-toggle button:hover{color:var(--ink)}
+.site-menu-page .season-toggle button.active{background:var(--season-accent,var(--teal));color:#fff}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HotelHero, SeasonProvider } from "../../../components/ui/hotel-hero";
+import { HotelHero, HotelInPageNav, SeasonProvider } from "../../../components/ui/hotel-hero";
 import { HotelEntertainment } from "../../../components/ui/hotel-entertainment";
 import { HotelAmenities } from "../../../components/ui/hotel-amenities";
 import { LoyaltySection } from "../../../components/ui/loyalty-section";
@@ -40,6 +40,7 @@ export default function AleanClubSophiaPage() {
   return <SeasonProvider>
     <main>
       <HotelHero />
+      <HotelInPageNav />
 
       <OffersCarousel
         sectionId="hotel-offers"

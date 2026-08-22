@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { BookingBar } from "./booking-bar";
 import { SiteHeader } from "./site-header";
 
 const hero = { eyebrow: "Море", title: "К морю\nза общими\nвпечатлениями", text: "Семейные курорты в Анапе, Геленджике и Сочи", image: "/alean-official-hero-beach.webp" };
@@ -13,8 +14,8 @@ const slides = [
 
 export function BrandLocationCards() {
   return <>
-    <article className="brand-card brand-family"><div className="brand-copy"><h3>Отдых у моря<br/>для всей семьи</h3><p>Анапа, Геленджик и Сочи. Первая береговая линия, детские клубы, SPA и формат «Ультра все включено».</p><ul><li>7 семейных курортов</li><li>Отели 4* и 5*</li></ul></div><a href="https://aleancollection.ru/brands/">Все бренды <i className="arrow-ne" aria-hidden="true" /></a></article>
-    <article className="brand-card brand-club"><div className="brand-copy"><h3>Архыз<br/>круглый год</h3><p>Зимой - катание, летом - маршруты, воздух и тишина. Для семейных поездок и отдыха вдвоем.</p><ul><li>Горнолыжный сезон</li><li>SPA и бассейны</li></ul></div><a href="https://aleancollection.ru/hotels/">Все локации <i className="arrow-ne" aria-hidden="true" /></a></article>
+    <article className="brand-card brand-family reveal"><div className="brand-copy"><h3>Отдых у моря<br/>для всей семьи</h3><p>Анапа, Геленджик и Сочи. Первая береговая линия, детские клубы, SPA и формат «Ультра все включено».</p><ul><li>7 семейных курортов</li><li>Отели 4* и 5*</li></ul></div><a href="https://aleancollection.ru/brands/">Все бренды <i className="arrow-ne" aria-hidden="true" /></a></article>
+    <article className="brand-card brand-club reveal"><div className="brand-copy"><h3>Архыз<br/>круглый год</h3><p>Зимой - катание, летом - маршруты, воздух и тишина. Для семейных поездок и отдыха вдвоем.</p><ul><li>Горнолыжный сезон</li><li>SPA и бассейны</li></ul></div><a href="https://aleancollection.ru/hotels/">Все локации <i className="arrow-ne" aria-hidden="true" /></a></article>
   </>;
 }
 
@@ -38,95 +39,8 @@ export function DevelopmentShowcase() {
   </div>;
 }
 
-const calendarWeekdays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
-
-function toDateKey(date: Date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-function fromDateKey(value: string) {
-  return value ? new Date(`${value}T00:00:00`) : null;
-}
-
-function BookingCalendar({ arrival, departure, onChange, onComplete }: { arrival: string; departure: string; onChange: (arrival: string, departure: string) => void; onComplete: () => void }) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const initialDate = fromDateKey(arrival) || today;
-  const [visibleMonth, setVisibleMonth] = useState(() => new Date(initialDate.getFullYear(), initialDate.getMonth(), 1));
-  const firstGridDate = new Date(visibleMonth);
-  firstGridDate.setDate(1 - ((visibleMonth.getDay() + 6) % 7));
-  const days = Array.from({ length: 42 }, (_, index) => {
-    const date = new Date(firstGridDate);
-    date.setDate(firstGridDate.getDate() + index);
-    return date;
-  });
-  const arrivalDate = fromDateKey(arrival);
-  const departureDate = fromDateKey(departure);
-  const monthLabel = visibleMonth.toLocaleDateString("ru-RU", { month: "long", year: "numeric" });
-
-  const selectDate = (date: Date) => {
-    const key = toDateKey(date);
-    if (!arrival || departure || (arrivalDate && date <= arrivalDate)) onChange(key, "");
-    else {
-      onChange(arrival, key);
-      onComplete();
-    }
-  };
-
-  return <div className="calendar-panel" aria-label="Выбор дат поездки">
-    <div className="calendar-heading">
-      <div><span>Даты поездки</span><strong>{monthLabel}</strong></div>
-      <div className="calendar-nav">
-        <button type="button" aria-label="Предыдущий месяц" onClick={() => setVisibleMonth(new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() - 1, 1))}>←</button>
-        <button type="button" aria-label="Следующий месяц" onClick={() => setVisibleMonth(new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + 1, 1))}>→</button>
-      </div>
-    </div>
-    <div className="calendar-weekdays">{calendarWeekdays.map((day) => <span key={day}>{day}</span>)}</div>
-    <div className="calendar-grid">{days.map((date) => {
-      const key = toDateKey(date);
-      const outside = date.getMonth() !== visibleMonth.getMonth();
-      const disabled = date < today;
-      const isStart = key === arrival;
-      const isEnd = key === departure;
-      const inRange = Boolean(arrivalDate && departureDate && date > arrivalDate && date < departureDate);
-      return <button type="button" key={key} disabled={disabled} className={`${outside ? "outside " : ""}${inRange ? "in-range " : ""}${isStart ? "range-start " : ""}${isEnd ? "range-end" : ""}`.trim()} aria-pressed={isStart || isEnd} onClick={() => selectDate(date)}><span>{date.getDate()}</span></button>;
-    })}</div>
-    <p className="calendar-hint">{!arrival ? "Выберите дату заезда" : !departure ? "Теперь выберите дату выезда" : "Даты выбраны"}</p>
-  </div>;
-}
-
 export function AleanHeroCarousel() {
   const current = hero;
-  const [bookingOpen, setBookingOpen] = useState<"destination" | "dates" | "guests" | null>(null);
-  const [destination, setDestination] = useState("Все направления");
-  const [arrival, setArrival] = useState("");
-  const [departure, setDeparture] = useState("");
-  const [adults, setAdults] = useState(2);
-  const [childrenUnder15, setChildrenUnder15] = useState(0);
-  const [children16to18, setChildren16to18] = useState(0);
-  const bookingRef = useRef<HTMLFormElement>(null);
-
-  useEffect(() => {
-    const closeDropdowns = (event: PointerEvent) => {
-      if (bookingRef.current && !bookingRef.current.contains(event.target as Node)) setBookingOpen(null);
-    };
-    const closeOnEscape = (event: KeyboardEvent) => event.key === "Escape" && setBookingOpen(null);
-    document.addEventListener("pointerdown", closeDropdowns);
-    window.addEventListener("keydown", closeOnEscape);
-    return () => {
-      document.removeEventListener("pointerdown", closeDropdowns);
-      window.removeEventListener("keydown", closeOnEscape);
-    };
-  }, []);
-
-  const dateLabel = arrival && departure
-    ? `${new Date(`${arrival}T00:00:00`).toLocaleDateString("ru-RU", { day: "2-digit", month: "short" })} - ${new Date(`${departure}T00:00:00`).toLocaleDateString("ru-RU", { day: "2-digit", month: "short" })}`
-    : "Выберите даты";
-  const childrenTotal = childrenUnder15 + children16to18;
-  const guestLabel = `${adults} ${adults === 1 ? "взрослый" : adults < 5 ? "взрослых" : "взрослых"}${childrenTotal ? `, ${childrenTotal} ${childrenTotal === 1 ? "ребенок" : childrenTotal < 5 ? "ребенка" : "детей"}` : ""}`;
 
   return <section className="hero" id="top">
     <SiteHeader />
@@ -139,26 +53,7 @@ export function AleanHeroCarousel() {
     <div className="hero-facts" aria-label="Alean Collection в цифрах">
       {["23 500+ номеров", "8 городов", "21 отель", "20 лет на рынке"].map((item) => <span key={item}><strong>{item}</strong></span>)}
     </div>
-    <form className="booking shell" action="#hotels" ref={bookingRef} onSubmit={() => setBookingOpen(null)}>
-      <div className={`booking-field${bookingOpen === "destination" ? " active" : ""}`}>
-        <button type="button" className="booking-trigger" aria-expanded={bookingOpen === "destination"} onClick={() => setBookingOpen(bookingOpen === "destination" ? null : "destination")}><span>Куда</span><strong>{destination}</strong><i aria-hidden="true">⌄</i></button>
-        <div className="booking-dropdown destination-dropdown" aria-hidden={bookingOpen !== "destination"}>{["Все направления", "Анапа", "Геленджик", "Сочи", "Архыз", "Ессентуки"].map((item) => <button type="button" className={destination === item ? "selected" : ""} key={item} onClick={() => { setDestination(item); setBookingOpen(null); }}>{item}<span aria-hidden="true">{destination === item ? "✓" : ""}</span></button>)}</div>
-      </div>
-      <div className={`booking-field${bookingOpen === "dates" ? " active" : ""}`}>
-        <button type="button" className="booking-trigger" aria-expanded={bookingOpen === "dates"} onClick={() => setBookingOpen(bookingOpen === "dates" ? null : "dates")}><span>Заезд - выезд</span><strong>{dateLabel}</strong><i aria-hidden="true">⌄</i></button>
-        <div className="booking-dropdown dates-dropdown" aria-hidden={bookingOpen !== "dates"} onPointerDown={(event) => event.stopPropagation()}><BookingCalendar arrival={arrival} departure={departure} onChange={(nextArrival, nextDeparture) => { setArrival(nextArrival); setDeparture(nextDeparture); }} onComplete={() => setBookingOpen(null)} /></div>
-      </div>
-      <div className={`booking-field${bookingOpen === "guests" ? " active" : ""}`}>
-        <button type="button" className="booking-trigger" aria-expanded={bookingOpen === "guests"} onClick={() => setBookingOpen(bookingOpen === "guests" ? null : "guests")}><span>Гости</span><strong>{guestLabel}</strong><i aria-hidden="true">⌄</i></button>
-        <div className="booking-dropdown guests-dropdown" aria-hidden={bookingOpen !== "guests"}>
-          <label><span>Взрослых</span><input type="number" inputMode="numeric" min="1" max="10" value={adults} onFocus={(event) => event.currentTarget.select()} onChange={(event) => setAdults(Math.max(1, Math.min(10, Number(event.target.value) || 1)))} /></label>
-          <label><span>Дети до 15 лет</span><input type="number" inputMode="numeric" min="0" max="10" value={childrenUnder15} onFocus={(event) => event.currentTarget.select()} onChange={(event) => setChildrenUnder15(Math.max(0, Math.min(10, Number(event.target.value) || 0)))} /></label>
-          <label><span>Дети 16-18 лет</span><input type="number" inputMode="numeric" min="0" max="10" value={children16to18} onFocus={(event) => event.currentTarget.select()} onChange={(event) => setChildren16to18(Math.max(0, Math.min(10, Number(event.target.value) || 0)))} /></label>
-          <button type="button" className="dropdown-done" onClick={() => setBookingOpen(null)}>Готово</button>
-        </div>
-      </div>
-      <button className="booking-submit" type="submit">Найти отель <span>↗</span></button>
-    </form>
+    <BookingBar />
   </section>;
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 const headerLinks = [
   { label: "Бренды", href: "https://aleancollection.ru/brands/" },
@@ -67,7 +67,16 @@ function CalendarIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2Z"/><path d="M7 2v4M17 2v4M3 9h18"/></svg>;
 }
 
-export function SiteHeader() {
+// На странице отеля логотип ведёт на главную, а кнопка брони — на бронирование этого отеля.
+export function SiteHeader({ homeHref = "#top", bookingHref = "https://booking.aleancollection.ru/", bookingLabel = "Бронирование", title, menuSections }: {
+  homeHref?: string;
+  bookingHref?: string;
+  bookingLabel?: string;
+  // Название страницы проявляется в плотной шапке, когда обложка уже уехала вверх.
+  title?: string;
+  // Разделы конкретной страницы: на телефоне это единственный способ до них добраться.
+  menuSections?: ReactNode;
+} = {}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHotelGroup, setActiveHotelGroup] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -91,12 +100,16 @@ export function SiteHeader() {
 
   return <>
     <header className={`nav shell${scrolled ? " scrolled" : ""}`}>
-      <a className="logo" href="#top" aria-label="Alean Collection"><img src="/alean-logo.svg" alt="Alean Collection" /></a>
+      <div className="nav-brand">
+        <a className="logo" href={homeHref} aria-label="Alean Collection - на главную"><img src="/alean-logo.svg" alt="Alean Collection" /></a>
+        {title ? <span className="nav-page-title">{title}</span> : null}
+      </div>
       <nav aria-label="Основная навигация">{headerLinks.map((item) => <a key={item.label} href={item.href}>{item.label}</a>)}</nav>
-      <div className="nav-actions"><a className="mobile-phone" href="tel:88002500030" aria-label="Позвонить"><PhoneIcon /></a><a className="nav-phone" href="tel:88002500030">8 800 250 00 30</a><a className="callback-link" href="https://aleancollection.ru/contacts/">Заказать звонок</a><a className="booking-link" href="https://booking.aleancollection.ru/" aria-label="Открыть бронирование"><span className="booking-text">Бронирование</span><span className="booking-icon"><CalendarIcon /></span></a><button className="menu-button" type="button" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => { if (!menuOpen) setActiveHotelGroup(null); setMenuOpen((value) => !value); }}><span className="menu-label">Меню</span><span className="menu-icon" aria-hidden="true">{menuOpen ? "×" : "≡"}</span></button></div>
+      <div className="nav-actions"><a className="mobile-phone" href="tel:88002500030" aria-label="Позвонить"><PhoneIcon /></a><a className="nav-phone" href="tel:88002500030">8 800 250 00 30</a><a className="callback-link" href="https://aleancollection.ru/contacts/">Заказать звонок</a><a className="booking-link" href={bookingHref} aria-label={bookingLabel}><span className="booking-text">{bookingLabel}</span><span className="booking-icon"><CalendarIcon /></span></a><button className="menu-button" type="button" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => { if (!menuOpen) setActiveHotelGroup(null); setMenuOpen((value) => !value); }}><span className="menu-label">Меню</span><span className="menu-icon" aria-hidden="true">{menuOpen ? "×" : "≡"}</span></button></div>
     </header>
     <div className={`site-menu${menuOpen ? " open" : ""}`} id="site-menu" aria-hidden={!menuOpen}>
       <div className="site-menu-inner shell">
+        {menuSections ? <div className="site-menu-page">{menuSections}</div> : null}
         <div className="site-menu-hotels"><p>Alean Collection</p><div className="hotel-explorer"><div className="hotel-groups" role="tablist" aria-label="Группы отелей">{hotelGroups.map((group, index) => <div className={`hotel-group-item${activeHotelGroup === index ? " active" : ""}`} key={group.name}><button type="button" role="tab" aria-selected={activeHotelGroup === index} aria-expanded={activeHotelGroup === index} className={activeHotelGroup === index ? "active" : ""} onClick={() => setActiveHotelGroup(activeHotelGroup === index ? null : index)}><span>{group.name}</span><i aria-hidden="true">›</i></button><div className="mobile-group-hotels" aria-hidden={activeHotelGroup !== index}>{group.hotels.length ? <nav aria-label={`Отели ${group.name}`}>{group.hotels.map((item) => <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a>)}</nav> : <p>Новые отели группы появятся в коллекции позже</p>}</div></div>)}</div><div className="group-hotels" role="tabpanel">{activeHotelGroup === null ? <p className="empty-group">Выберите группу отелей</p> : <><strong>{hotelGroups[activeHotelGroup].name}</strong>{hotelGroups[activeHotelGroup].hotels.length ? <nav aria-label={`Отели ${hotelGroups[activeHotelGroup].name}`}>{hotelGroups[activeHotelGroup].hotels.map((item) => <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a>)}</nav> : <p className="empty-group">Новые отели группы появятся в коллекции позже</p>}</>}</div></div><a className="all-hotels-link" href="https://aleancollection.ru/hotels/" onClick={() => setMenuOpen(false)}>Все отели <span aria-hidden="true">↗</span></a></div>
         <div className="site-menu-main"><p>Разделы</p><div className="site-menu-columns">{menuColumns.map((column, index) => <nav aria-label={`Разделы сайта, столбец ${index + 1}`} key={index}>{column.map((item) => <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a>)}</nav>)}</div></div>
         <div className="site-menu-contact"><p>Единая служба бронирования</p><a href="tel:88002500030">8 800 250 00 30</a><a href="mailto:booking@aleancollection.ru">booking@aleancollection.ru</a></div>
