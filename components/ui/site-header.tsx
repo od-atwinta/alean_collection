@@ -32,7 +32,7 @@ const menuColumns = [
 
 const hotelGroups = [
   { name: "Alean Family", hotels: [
-    { label: "Alean Family Doville", href: "https://dovilleresort.ru" },
+    { label: "Alean Family Doville", href: "/hotels/alean-family-doville" },
     { label: "Alean Family Riviera", href: "https://rivieraresort.ru" },
     { label: "Alean Family Biarritz", href: "https://biarritzresort.ru" },
     { label: "Alean Family Sputnik", href: "https://sputnikresort.ru" },

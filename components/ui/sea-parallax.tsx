@@ -104,6 +104,7 @@ export function SeaParallax({ text, stats }: { text: ReactNode; stats: ReactNode
   return <section className="about-parallax sea-parallax" id="about" ref={sectionRef} aria-label="О курорте">
     <div className="sea-layers" aria-hidden="true">
       <div className="sea-sun" ref={sunRef} />
+      <div className="sea-water" />
       <div className="sea-horizon" />
       <Wave className="sea-far" inner={(element) => { farRef.current = element; }} />
       <Wave className="sea-mid" inner={(element) => { midRef.current = element; }} />
