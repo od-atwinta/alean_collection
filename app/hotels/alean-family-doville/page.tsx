@@ -46,7 +46,8 @@ const amenities = [
     { title: "Парк и аллеи", text: "Зелёные маршруты для прогулок по всей территории курорта", image: "/doville-g2-787.webp" },
   ]},
   { label: "Бассейны", items: [
-    { title: "Открытые бассейны", text: "Взрослые и детские — с аквагоркой", image: "/doville-pools.webp" },
+    { title: "Открытые бассейны", text: "Взрослые и детские — работают весь сезон", image: "/doville-pools.webp" },
+    { title: "Аквагорки", text: "Детский бассейн с горками — под присмотром спасателей", image: "/doville-g-027.webp" },
     { title: "Крытый бассейн", text: "С подогревом — работает круглый год", image: "/doville-g-101.webp" },
     { title: "Бар у бассейна", text: "Освежающие напитки и мороженое рядом с водой", image: "/doville-pool-bar.webp" },
   ]},
@@ -60,12 +61,15 @@ const amenities = [
   ]},
   { label: "Красота и здоровье", items: [
     { title: "Спа-комплекс", text: "Один из крупнейших в регионе, отделка из натуральных материалов", image: "/doville-spa.webp" },
+    { title: "Акватермальный комплекс", text: "Дождевой тоннель, купели и каскады — для взрослых и детей", image: "/doville-g-105.webp" },
+    { title: "Зоны отдыха спа", text: "Тихие лаунж-зоны между процедурами", image: "/doville-g2-6c5.webp" },
     { title: "Оздоровление", text: "Программы для взрослых и детей, консультации терапевта и педиатра", image: "/doville-health.webp" },
     { title: "Медицинский пост и аптека", text: "Неотложная помощь и аптечный пункт на территории", image: "/doville-medpost.webp" },
   ]},
   { label: "Развлечения и спорт", items: [
-    { title: "Спортивные площадки", text: "Волейбол, баскетбол, мини-футбол и теннис", image: "/doville-g-027.webp" },
+    { title: "Спортивные площадки", text: "Волейбол, баскетбол, мини-футбол и теннис, детский игровой комплекс", image: "/doville-wide-1.webp" },
     { title: "Игровая терраса", text: "Бильярд, аэрохоккей и настольный теннис для всей семьи", image: "/doville-game-terrace.webp" },
+    { title: "Мастер-классы", text: "Кулинарные и творческие занятия для юных гостей", image: "/doville-g2-963.webp" },
     { title: "Анимация", text: "Команда, которая ведёт день от утренней зарядки до вечернего шоу", image: "/doville-animation.webp" },
   ]},
 ];
@@ -232,7 +236,7 @@ export default function AleanFamilyDovillePage() {
           <a href="https://yandex.ru/maps/?text=Анапа, Пионерский проспект, 14" target="_blank" rel="noreferrer">г. Анапа, Пионерский проспект, д. 14</a>
         </div>
         <div className="map" aria-label="Карта: Анапа, Alean Family Doville">
-          <iframe src="https://yandex.ru/map-widget/v1/?ll=37.2995%2C44.9265&z=14&l=map" title="Карта: Alean Family Doville, Анапа" loading="lazy" allowFullScreen />
+          <iframe src="https://yandex.ru/map-widget/v1/?ll=37.3080%2C44.9060&z=15&l=map" title="Карта: Alean Family Doville, Анапа" loading="lazy" allowFullScreen />
         </div>
       </section>
 

@@ -703,6 +703,7 @@ html{overflow-x:clip}
   .sea-parallax{min-height:820px;padding-top:85px}
   .doville .about-parallax-content{padding-bottom:270px}
   .sea-far,.sea-mid,.sea-near{left:-24%;width:148%}
+  .doville .about-lead{margin-left:0;padding-inline:20px}
   .sea-far{bottom:150px;height:220px}
   .sea-mid{bottom:78px;height:220px}
   .sea-near{bottom:0;height:240px}
@@ -716,8 +717,9 @@ html{overflow-x:clip}
   .dv-hero-facts{gap:18px 24px}
   .dv-hero-facts li{width:calc(50% - 12px)}
   .dv-tile-video{height:260px}
+  /* В колонку высота плашки задаётся напрямую: flex-basis:0 обнулял бы её. */
   .dv-side{flex-direction:column}
-  .dv-side .dv-tile{height:190px}
+  .dv-side .dv-tile{flex:0 0 auto;height:190px}
   .dv-pillar-grid{grid-template-columns:1fr}
   .dv-pillars{padding-bottom:90px}
   .sea-parallax{min-height:700px}
