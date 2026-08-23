@@ -55,21 +55,21 @@ export default function AleanClubSophiaPage() {
       />
 
       <MountainParallax
-        text={<>
-          <div className="about-heading">
-            <p className="micro">Об отеле</p>
-            <h2>Тишина гор,<br/>забота Alean</h2>
+        text={<div className="about-heading">
+          <p className="micro">Об отеле</p>
+          <h2>Тишина гор,<br/>забота Alean</h2>
+        </div>}
+        stats={<>
+          <div className="hotel-advantages">
+            <span className="reveal"><strong>4*</strong>Категория отеля</span>
+            <span className="reveal"><strong>200 м</strong>До канатных дорог</span>
+            <span className="reveal"><strong>Всё включено</strong>Формат питания</span>
+            <span className="reveal"><strong>Круглый год</strong>Сезон работы</span>
           </div>
-          <div className="about-lead">
+          <div className="about-lead reveal">
             <p>Отель «Всё включено» в горах — всего в 200 метрах от канатных дорог горнолыжного курорта Архыз. Семейный курортный отель с оптимальным перечнем услуг для комфортного отдыха с детьми без переплаты за дополнительные сервисы.</p>
           </div>
         </>}
-        stats={<div className="hotel-advantages">
-          <span className="reveal"><strong>4*</strong>Категория отеля</span>
-          <span className="reveal"><strong>200 м</strong>До канатных дорог</span>
-          <span className="reveal"><strong>Всё включено</strong>Формат питания</span>
-          <span className="reveal"><strong>Круглый год</strong>Сезон работы</span>
-        </div>}
       />
 
       <section className="active-rest shell reveal" aria-label="Активный отдых">

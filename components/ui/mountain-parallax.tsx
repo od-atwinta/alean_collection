@@ -68,8 +68,9 @@ export function MountainParallax({ text, stats }: { text: ReactNode; stats: Reac
         draw();
         return;
       }
-      // За 100 мс проходим около 80% оставшегося пути, с какой бы частотой ни шли кадры.
-      current += distance * (1 - Math.pow(0.2, step / 100));
+      // За 100 мс проходим около 40% оставшегося пути, с какой бы частотой ни шли кадры:
+      // половина пути за 150 мс, почти весь - за полсекунды. Мягче, чем шаг в шаг за прокруткой.
+      current += distance * (1 - Math.pow(0.6, step / 100));
       draw();
       frame = requestAnimationFrame(tick);
     };

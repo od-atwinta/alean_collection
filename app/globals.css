@@ -425,13 +425,15 @@ body{background:#f8f8f6}
 .about-parallax:after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;z-index:2;background:#f8f8f6}
 @media(prefers-reduced-motion:reduce){.about-parallax-layers>div,.about-text{transform:none!important}}
 
-.about-text{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;will-change:transform}
+.about-text{display:grid;grid-template-columns:minmax(0,1fr);gap:48px;align-items:center;will-change:transform}
 .about-parallax h2{font-size:clamp(50px,6vw,94px);line-height:.96;letter-spacing:-.065em;font-weight:500;margin:0}
 .about-parallax .micro{color:var(--teal)}
 /* Optically centre against the heading x-height, not its cap line:
    measured cap 0.72em vs x-height 0.54em, so the block drops half the difference. */
-.about-lead{transform:translateY(clamp(5px,0.6vw,9.3px))}
-.about-lead p{margin:0;font-size:18px;line-height:1.72;color:var(--ink)}
+
+/* Описание лежит на горах под плашками, поэтому белым и с мягкой тенью для читаемости. */
+.about-lead{max-width:740px;margin:120px 0 0 -40px;padding:26px 40px;background:radial-gradient(85% 120% at 22% 50%,rgba(7,22,34,.5) 0%,rgba(7,22,34,.3) 45%,rgba(7,22,34,0) 78%)}
+.about-lead p{margin:0;font-size:18px;line-height:1.72;color:#fff;text-shadow:0 1px 2px rgba(6,26,16,.45),0 2px 30px rgba(6,26,16,.5)}
 /* Glass stat panels read over both the sky and the ridge below them. */
 .hotel-advantages{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:none;margin-top:96px;background:none}
 .hotel-advantages span{display:flex;flex-direction:column;gap:8px;padding:22px 24px;font-size:12px;color:var(--ink);border:1px solid rgba(255,255,255,.6);border-radius:var(--radius-small);background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(255,255,255,.24));backdrop-filter:blur(16px) saturate(130%);-webkit-backdrop-filter:blur(16px) saturate(130%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 34px rgba(11,33,64,.1)}
@@ -478,7 +480,7 @@ body{background:#f8f8f6}
   .about-parallax{padding-top:85px}
   .about-parallax-content{padding-bottom:430px}
   .ridge-far{height:440px;bottom:-90px}
-  .season-summer .about-parallax-layers>div{left:-24%;width:148%}
+  .season-summer .about-parallax-layers>div,.season-winter .about-parallax-layers>div{left:-24%;width:148%}
   .about-parallax:after{height:90px}
   .active-rest-copy{padding:36px 28px}
   .hotel-reviews{padding:85px 0}
@@ -489,14 +491,15 @@ body{background:#f8f8f6}
   .hotel-advantages{grid-template-columns:1fr}
   .about-parallax-content{padding-bottom:400px}
   .ridge-far{height:320px;bottom:-70px}
-  .season-summer .about-parallax-layers>div{left:-45%;width:190%}
+  .season-summer .about-parallax-layers>div,.season-winter .about-parallax-layers>div{left:-45%;width:190%}
   .about-parallax:after{height:70px}
   .hotel-inpage-links{gap:18px}
 }
 
 /* Season palette: summer runs warm/orange, winter runs cold turquoise. */
 .season-summer{--season-accent:#c9611f;--season-accent-soft:#f3d9c4;--season-wash:#fbf1e7;--season-sky-top:#f7efe6;--season-sky-mid:#f0dcc6;--season-sky-low:#e3c3a2}
-.season-winter{--season-accent:#0d7c8c;--season-accent-soft:#c6e2e6;--season-wash:#eef5f6;--season-sky-top:#eef4f6;--season-sky-mid:#d5e6ec;--season-sky-low:#b6d2dc}
+/* Сезон меняет только небо в блоке с параллаксом. Фирменный цвет страницы остаётся прежним. */
+.season-winter{--season-accent:#c9611f;--season-accent-soft:#f3d9c4;--season-wash:#fbf1e7;--season-sky-top:#eef4f6;--season-sky-mid:#d5e6ec;--season-sky-low:#b6d2dc}
 .season-summer .about-parallax,.season-winter .about-parallax{background:linear-gradient(180deg,var(--season-sky-top) 0%,var(--season-sky-mid) 46%,var(--season-sky-low) 100%)}
 .season-summer .about-parallax .micro,.season-winter .about-parallax .micro,
 .season-summer .entertainment .micro,.season-winter .entertainment .micro{color:var(--season-accent)}
@@ -515,16 +518,18 @@ body{background:#f8f8f6}
 .room-book .arrow-ne{margin-left:10px}
 
 /* The in-page nav band picks up the season temperature too. */
-.season-summer{--season-band:#3a2416;--season-band-line:rgba(255,224,196,.2)}
-.season-winter{--season-band:#08323a;--season-band-line:rgba(198,226,230,.22)}
+.season-summer,.season-winter{--season-band:var(--ink);--season-band-line:rgba(255,255,255,.18)}
 .season-summer .hotel-hero,.season-winter .hotel-hero{background-color:var(--season-band)}
 .season-summer .hotel-inpage-nav,.season-winter .hotel-inpage-nav{border-top-color:var(--season-band-line)}
 .season-summer .season-toggle,.season-winter .season-toggle{border-color:var(--season-band-line)}
 
 /* Winter uses a full photographic scene instead of the summer cut-out ridge. */
-.season-winter .about-parallax{background:linear-gradient(180deg,#eef4f6 0%,#dbe8ee 40%,#cadde5 100%)}
-.season-winter .ridge-far{left:0;width:100%;inset:auto 0 0 0;height:78%;background-image:url('/sophia-winter-1.webp');background-size:cover;background-position:center 30%}
-.season-winter .ridge-mid,.season-winter .ridge-near{display:none}
+/* Зима собрана так же, как лето: гряда, ельник, крыша отеля - три слоя одного кадра. */
+.season-winter .about-parallax-layers>div{left:-6%;width:112%;height:auto;aspect-ratio:129/68;background-size:100% 100%;background-position:center bottom}
+.season-winter .about-parallax{--shift-far:-95;--shift-mid:-48;--shift-near:0}
+.season-winter .ridge-far{bottom:-95px;background-image:url('/sophia-winter-far.webp')}
+.season-winter .ridge-mid{bottom:-48px;background-image:url('/sophia-winter-mid.webp');opacity:1}
+.season-winter .ridge-near{bottom:0;background-image:url('/sophia-winter-near.webp');opacity:1}
 .season-winter .about-parallax:after{background:#f8f8f6}
 
 /* Fixed header: keep it solid once it leaves the hero, and stop anchors hiding under it. */
@@ -555,3 +560,27 @@ section[id],div[id]{scroll-margin-top:104px}
    в строку — слева, а на телефоне форма встаёт столбиком, и поле оказывается сверху. */
 .booking-field.locked{border-radius:var(--radius) 0 0 var(--radius)}
 @media(max-width:560px){.booking-field.locked{border-radius:var(--radius) var(--radius) 0 0}}
+
+/* Запас прочности для других браузеров и систем.
+   1. Блок с панорамой во всю ширину использует 100vw. В Windows и Linux полоса прокрутки
+      занимает место, и 100vw оказывается шире окна - появляется горизонтальная прокрутка.
+      overflow-x:clip убирает её и, в отличие от hidden, не ломает липкую полосу разделов.
+   2. Safari до 15-й версии не знает aspect-ratio: без запасной высоты слои схлопнулись бы в ноль.
+   3. Firefox до 103-й и старый Android не умеют размывать фон: делаем плашки плотнее,
+      иначе цифры на них теряются на фоне фотографии. */
+html{overflow-x:clip}
+@supports not (aspect-ratio:3/2){
+  .about-parallax-layers>div{height:860px}
+  @media(max-width:900px){.about-parallax-layers>div{height:620px}}
+  @media(max-width:560px){.about-parallax-layers>div{height:470px}}
+}
+@supports not ((backdrop-filter:blur(4px)) or (-webkit-backdrop-filter:blur(4px))){
+  .hotel-advantages span{background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(255,255,255,.74));border-color:rgba(255,255,255,.9)}
+}
+
+/* На телефоне панорама начинается ниже описания, фотографии под текстом нет,
+   поэтому белый шрифт с затемнением там читался бы как серая плашка на бежевом. */
+@media(max-width:560px){
+  .about-lead{max-width:none;margin:34px 0 0;padding:0;background:none}
+  .about-lead p{font-size:16px;color:var(--ink);text-shadow:none}
+}
