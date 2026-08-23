@@ -764,3 +764,9 @@ body.gallery-open{overflow:hidden}
    Главная и курорт в Анапе остаются на своих фирменных цветах. */
 .season-summer footer,.season-winter footer{background:var(--brand-orange-deep)}
 .doville footer{background:var(--dv-deep)}
+
+/* Шапка горной страницы лежит на оранжевой подложке: синяя плёнка поверх неё давала
+   мутный коричневый. Делаем плёнку своего цвета - так же, как на морской странице. */
+.season-summer .hero .nav,.season-winter .hero .nav{background:rgba(225,116,70,.62);border-bottom-color:rgba(255,255,255,.22)}
+.season-summer .hero .nav.scrolled,.season-winter .hero .nav.scrolled{background:#fff}
+
