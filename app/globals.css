@@ -419,12 +419,12 @@ body{background:#f8f8f6}
 .ridge-mid,.ridge-near{background-size:100% auto;opacity:0}
 .season-summer .about-parallax-layers>div{left:-6%;width:112%;height:auto;aspect-ratio:3/2;background-size:100% 100%;background-position:center bottom}
 /* Дальние планы стоят ниже ровно на свой размах, поэтому выше исходного места не поднимаются. */
-.season-summer .about-parallax{--shift-far:-95;--shift-mid:-48;--shift-near:0}
-.season-summer .ridge-far{bottom:-95px;background-image:url('/arkhyz-summer-far.webp')}
-.season-summer .ridge-mid{bottom:-48px;background-image:url('/arkhyz-summer-mid.webp');opacity:1}
+.season-summer .about-parallax{--shift-far:-70;--shift-mid:-55;--shift-near:0}
+.season-summer .ridge-far{bottom:-70px;background-image:url('/arkhyz-summer-far.webp')}
+.season-summer .ridge-mid{bottom:-55px;background-image:url('/arkhyz-summer-mid.webp');opacity:1}
 .season-summer .ridge-near{bottom:0;background-image:url('/arkhyz-summer-near.webp');opacity:1}
 /* The cutout's own bottom crop is ragged: this band hides it and hands over to the next section's colour. */
-.about-parallax:after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;z-index:2;background:#f8f8f6}
+.about-parallax:after{content:"";position:absolute;left:0;right:0;bottom:0;height:150px;z-index:2;background:linear-gradient(180deg,rgba(248,248,246,0) 0%,rgba(248,248,246,.85) 55%,#f8f8f6 100%)}
 @media(prefers-reduced-motion:reduce){.about-parallax-layers>div,.about-text{transform:none!important}}
 
 .about-text{display:grid;grid-template-columns:minmax(0,1fr);gap:48px;align-items:center;will-change:transform}
@@ -533,7 +533,7 @@ body{background:#f8f8f6}
 .season-winter .ridge-far{bottom:-95px;background-image:url('/sophia-winter-far.webp')}
 .season-winter .ridge-mid{bottom:-48px;background-image:url('/sophia-winter-mid.webp');opacity:1}
 .season-winter .ridge-near{bottom:0;background-image:url('/sophia-winter-near.webp');opacity:1}
-.season-winter .about-parallax:after{background:#f8f8f6}
+.season-winter .about-parallax:after{background:linear-gradient(180deg,rgba(248,248,246,0) 0%,rgba(248,248,246,.85) 55%,#f8f8f6 100%)}
 
 /* Fixed header: keep it solid once it leaves the hero, and stop anchors hiding under it. */
 .hero .nav.scrolled{background:rgba(11,33,64,.93);box-shadow:0 12px 34px rgba(3,12,25,.24)}

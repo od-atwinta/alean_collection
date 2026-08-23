@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { BookingBar } from "./booking-bar";
 import { SiteHeader } from "./site-header";
@@ -45,8 +46,10 @@ export function DovilleHero() {
     if (!node) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       node.pause();
-      setPaused(true);
-      return;
+      node.dataset.userPaused = "1";
+      // Состояние меняем на следующем кадре: правка прямо в эффекте вызывает лишний проход отрисовки.
+      const frame = requestAnimationFrame(() => setPaused(true));
+      return () => cancelAnimationFrame(frame);
     }
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -76,7 +79,7 @@ export function DovilleHero() {
 
     <div className="dv-hero-head shell">
       <nav className="dv-crumbs" aria-label="Хлебные крошки">
-        <a href="/#top">Alean Collection</a><span aria-hidden="true">·</span>
+        <Link href="/#top">Alean Collection</Link><span aria-hidden="true">·</span>
         <a href="https://aleancollection.ru/hotels/" target="_blank" rel="noreferrer">Отели</a><span aria-hidden="true">·</span>
         <span>Alean Family Doville</span>
       </nav>
