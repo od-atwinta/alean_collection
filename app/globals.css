@@ -417,7 +417,7 @@ body{background:#f8f8f6}
    Слои одного размера и совмещены; смещение по bottom подобрано так, чтобы ближние
    планы никогда не поднимались выше своего места и не открывали дубль гряды. */
 .ridge-mid,.ridge-near{background-size:100% auto;opacity:0}
-.season-summer .about-parallax-layers>div{left:-6%;width:112%;height:auto;aspect-ratio:3/2;background-size:100% 100%;background-position:center bottom}
+.season-summer .about-parallax-layers>div{left:0;width:100%;height:auto;aspect-ratio:3/2;background-size:100% 100%;background-position:center bottom}
 /* Дальние планы стоят ниже ровно на свой размах, поэтому выше исходного места не поднимаются. */
 .season-summer .about-parallax{--shift-far:-70;--shift-mid:-55;--shift-near:0}
 .season-summer .ridge-far{bottom:-70px;background-image:url('/arkhyz-summer-far.webp')}
