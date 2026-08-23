@@ -18,7 +18,10 @@ export function ScrollReveal() {
         }
       });
     }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
-    pending().forEach((item) => observer.observe(item));
+    // Повторный observe уже известного элемента ничего не ломает, поэтому просто
+    // перебираем всё, что ещё не показано.
+    const наблюдать = () => pending().forEach((item) => observer.observe(item));
+    наблюдать();
 
     // Подстраховка: если наблюдатель промолчал (вкладка была скрыта, возврат по истории,
     // экономия ресурсов браузером), показываем всё, что уже попало на экран.
@@ -38,12 +41,22 @@ export function ScrollReveal() {
     };
 
     sweep();
+
+    // Карточки под фильтрами создаются заново уже после загрузки страницы.
+    // Без этого они остаются невидимыми до первой прокрутки.
+    const мутации = new MutationObserver(() => {
+      наблюдать();
+      scheduleSweep();
+    });
+    мутации.observe(document.body, { childList: true, subtree: true });
+
     window.addEventListener("scroll", scheduleSweep, { passive: true });
     window.addEventListener("resize", scheduleSweep);
     window.addEventListener("pageshow", scheduleSweep);
     document.addEventListener("visibilitychange", scheduleSweep);
     return () => {
       observer.disconnect();
+      мутации.disconnect();
       window.clearTimeout(timer);
       window.removeEventListener("scroll", scheduleSweep);
       window.removeEventListener("resize", scheduleSweep);
