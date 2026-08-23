@@ -125,8 +125,7 @@ export default function AleanFamilyDovillePage() {
         <div className="section-head"><div><p className="micro">Концепция</p><h2>Ультра всё<br/>включено</h2></div>
           <p className="dv-pillars-lead">Самый широкий спектр услуг, включённых в стоимость проживания, — для беззаботного и по-настоящему комфортного отдыха каждого гостя.</p>
         </div>
-        <div className="dv-pillar-grid">{pillars.map((pillar, index) => <article className="dv-pillar reveal" key={pillar.title}>
-          <span className="dv-pillar-num">0{index + 1}</span>
+        <div className="dv-pillar-grid">{pillars.map((pillar) => <article className="dv-pillar reveal" key={pillar.title}>
           <h3>{pillar.title}</h3>
           <p>{pillar.text}</p>
         </article>)}</div>
@@ -161,14 +160,14 @@ export default function AleanFamilyDovillePage() {
       </section>
 
       <section className="catalog shell" id="rooms">
-        <div className="section-head"><div><p className="micro">Номера</p><h2>17 категорий —<br/>от стандарта до апартаментов</h2></div><a className="line-link" href="https://dovilleresort.ru/nomera/" target="_blank" rel="noreferrer">Все номера <span className="arrow-ne" aria-hidden="true" /></a></div>
+        <div className="section-head"><div><p className="micro">Номера</p><h2>17 категорий —<br/>от стандарта до апартаментов</h2></div><span className="line-link">Все номера <span className="arrow-ne" aria-hidden="true" /></span></div>
         <div className="hotel-grid">{rooms.map((room) => <article className="hotel-card room-card reveal" key={room.name}>
-          <a className="hotel-photo" href="https://dovilleresort.ru/nomera/" target="_blank" rel="noreferrer" style={{ backgroundImage: `url('${room.image}')` }} aria-label={`Подробнее: ${room.name}`}></a>
+          <span className="hotel-photo" style={{ backgroundImage: `url('${room.image}')` }} aria-label={`Подробнее: ${room.name}`}></span>
           <div>
             <p>{room.latin}</p>
             <h3>{room.name}</h3>
             <ul className="room-facts"><li>{room.area}</li><li>{room.rooms}</li></ul>
-            <a className="room-book" href="https://booking.aleancollection.ru/" target="_blank" rel="noreferrer">Забронировать <span className="arrow-ne" aria-hidden="true" /></a>
+            <span className="room-book">Забронировать <span className="arrow-ne" aria-hidden="true" /></span>
           </div>
         </article>)}</div>
       </section>
@@ -198,7 +197,7 @@ export default function AleanFamilyDovillePage() {
       <LoyaltySection />
 
       <section className="hotel-reviews shell">
-        <div className="section-head"><div><p className="micro">Отзывы</p><h2>Что говорят<br/>гости курорта</h2></div><a className="line-link" href="https://dovilleresort.ru/otzyvy/" target="_blank" rel="noreferrer">Все отзывы <span className="arrow-ne" aria-hidden="true" /></a></div>
+        <div className="section-head"><div><p className="micro">Отзывы</p><h2>Что говорят<br/>гости курорта</h2></div><span className="line-link">Все отзывы <span className="arrow-ne" aria-hidden="true" /></span></div>
         <div className="hotel-reviews-grid">{reviews.map((review) => <blockquote className="reveal" key={review.author}><p>«{review.text}»</p><cite>{review.author}</cite></blockquote>)}</div>
       </section>
 
@@ -213,7 +212,7 @@ export default function AleanFamilyDovillePage() {
             <li><strong>Ж/д вокзал Анапа</strong><span>~25 минут на машине</span></li>
             <li><strong>Автовокзал</strong><span>Маршрутка №100 или 114 до указателя курорта</span></li>
           </ul>
-          <a className="dark-button" href="https://dovilleresort.ru/transfer/" target="_blank" rel="noreferrer">Заказать трансфер <span className="arrow-ne" aria-hidden="true" /></a>
+          <span className="dark-button">Заказать трансфер <span className="arrow-ne" aria-hidden="true" /></span>
         </div>
       </section>
 
@@ -227,13 +226,13 @@ export default function AleanFamilyDovillePage() {
         </div>
       </section>
 
-      <section className="contact shell">
+      <section className="contact shell" id="contacts">
         <div>
           <p className="micro">Контакты курорта</p>
           <h2>Alean Family Doville,<br/>Анапа</h2>
           <a href="tel:88002500030">8 800 250 00 30</a>
           <a href="mailto:spir_doville@aleancollection.ru">spir_doville@aleancollection.ru</a>
-          <a href="https://yandex.ru/maps/?text=Анапа, Пионерский проспект, 14" target="_blank" rel="noreferrer">г. Анапа, Пионерский проспект, д. 14</a>
+          <span>г. Анапа, Пионерский проспект, д. 14</span>
         </div>
         <div className="map" aria-label="Карта: Анапа, Alean Family Doville">
           <iframe src="https://yandex.ru/map-widget/v1/?ll=37.3080%2C44.9060&z=15&l=map" title="Карта: Alean Family Doville, Анапа" loading="lazy" allowFullScreen />

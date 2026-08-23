@@ -77,7 +77,7 @@ export function OffersCarousel({ offers = defaultOffers, eyebrow = "Специа
     </div>
     <div className="offer-track shell" key={start} aria-live="polite" ref={trackRef} onScroll={onTrackScroll} onPointerDown={startDrag} onPointerMove={drag} onPointerUp={stopDrag} onPointerCancel={stopDrag} onClickCapture={(event) => { if (dragRef.current.moved) { event.preventDefault(); event.stopPropagation(); dragRef.current.moved = false; } }}>
       {orderedOffers.map((offer, index) => <article className={index === 0 ? "offer-large" : "offer-small"} key={offer.title} style={{backgroundImage:`url('${offer.image}')`}}>
-        <span>{offer.label}</span><h3>{offer.title}</h3>{offer.text && <p>{offer.text}</p>}<a href="#booking">Подробнее <span className="arrow-ne" aria-hidden="true" /></a>
+        <span>{offer.label}</span><h3>{offer.title}</h3>{offer.text && <p>{offer.text}</p>}<a href="#booking-bar">Подробнее <span className="arrow-ne" aria-hidden="true" /></a>
       </article>)}
     </div>
     <div className="offer-pagination shell" aria-hidden="true"><span>0{activePosition}</span><i/><span>0{offers.length}</span></div>

@@ -41,7 +41,7 @@ export function BookingBar({ destinations, fixedDestination, submitLabel = "На
   const guestLabel = `${adults} ${adults === 1 ? "взрослый" : "взрослых"}${childrenTotal ? `, ${childrenTotal} ${childrenTotal === 1 ? "ребенок" : childrenTotal < 5 ? "ребенка" : "детей"}` : ""}`;
   const locked = destinations === null;
 
-  return <form className="booking shell" action={action} ref={bookingRef} onSubmit={() => setBookingOpen(null)}>
+  return <form className="booking shell" id="booking-bar" action={action} ref={bookingRef} onSubmit={() => setBookingOpen(null)}>
     <div className={`booking-field${bookingOpen === "destination" ? " active" : ""}${locked ? " locked" : ""}`}>
       {locked
         ? <span className="booking-trigger booking-static"><span>Отель</span><strong>{fixedDestination}</strong></span>

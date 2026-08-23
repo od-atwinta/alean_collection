@@ -9,7 +9,7 @@
 .development-caption{margin:14px 2px 0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#fff}.development-grid>p{grid-column:2;margin:20px 0 0;max-width:580px;font-size:14px;line-height:1.7}.contact{display:grid;grid-template-columns:1fr 1fr;gap:70px}.contact>div:first-child{display:flex;flex-direction:column;align-items:flex-start}.contact h2{margin-bottom:54px}.contact a{font-size:14px;margin-top:12px;border-bottom:1px solid var(--ink)}.map{min-height:500px;background:var(--ice);position:relative;border-radius:50% 50% 42% 58%/44% 44% 56% 56%;display:grid;place-items:center}.map i{font-style:normal;font-size:120px;color:var(--teal)}.map span{position:absolute;font-size:10px;text-transform:uppercase;letter-spacing:.12em}.map span:nth-child(1){top:20%;left:20%}.map span:nth-child(2){bottom:25%;left:18%}.map span:nth-child(3){right:15%;bottom:28%}.map span:nth-child(4){right:24%;top:18%}.scroll-top-button{position:fixed;right:24px;bottom:24px;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--ink);color:#fff;display:grid;place-items:center;cursor:pointer;z-index:40;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .25s ease,transform .25s ease}.scroll-top-button.visible{opacity:1;transform:translateY(0);pointer-events:auto}
 /* В подвале оранжевый на пару тонов глубже: мелкий белый текст на светлом фирменном
    давал контраст 3:1, на этом - 4,6:1. Остальные элементы остаются на фирменном. */
-footer{background:var(--brand-orange-deep);color:#fff;padding:70px 0 24px}.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}.footer-top img{filter:brightness(0) invert(1);width:180px}.footer-top>div p{color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.12em}.footer-top>div:first-child p{text-transform:none;letter-spacing:0;font-size:13px}.footer-top>div a{display:block;font-size:13px;margin:12px 0}.footer-bottom{border-top:1px solid rgba(255,255,255,.32);margin-top:70px;padding-top:20px;display:flex;justify-content:space-between;color:#fff;font-size:10px}
+footer{background:var(--brand-orange-deep);color:#fff;padding:70px 0 24px}.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}.footer-top img{filter:brightness(0) invert(1);width:180px}.footer-top>div p{color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.12em}.footer-top>div:first-child p{text-transform:none;letter-spacing:0;font-size:13px}.footer-top>div a,.footer-top>div>span{display:block;font-size:13px;margin:12px 0}.footer-bottom{border-top:1px solid rgba(255,255,255,.32);margin-top:70px;padding-top:20px;display:flex;justify-content:space-between;color:#fff;font-size:10px}
 
 @media(max-width:900px){.shell{width:min(100% - 28px,700px)}.nav{grid-template-columns:1fr auto}.nav nav,.nav-actions>a{display:none}.hero-stage{grid-template-columns:1fr}.hero-photo{min-height:610px}.hero-copy{padding:50px 24px}.hero-copy h1{font-size:58px}.halo{width:300px;height:300px;right:-80px;bottom:-60px}.halo span{font-size:100px}.hero-switcher{padding:18px}.switcher-label{margin-bottom:20px}.switcher-items{display:grid;grid-template-columns:repeat(3,1fr)}.switcher-items button{height:62px;border-bottom:1px solid #393b4c;grid-template-columns:24px 1fr}.switcher-items button i{display:none}.switcher-items button strong{font-size:15px}.booking{grid-template-columns:1fr 1fr}.booking label{min-height:75px}.booking button{min-height:60px}.signal,.catalog,.moments,.events,.faq,.contact,.loyalty{padding:90px 0}.signal h2,.section-head h2,.loyalty h2,.faq h2,.development h2,.contact h2{font-size:52px}.benefit-run{grid-template-columns:1fr 1fr}.section-head{grid-template-columns:1fr;margin-bottom:40px}.brand-grid,.hotel-grid{grid-template-columns:1fr}.brand-card{height:500px}.offer-track{grid-template-columns:1fr}.loyalty{grid-template-columns:1fr}.loyalty-visual{min-height:530px}.loyalty-copy{padding:55px 28px}.moment-grid{grid-template-columns:1fr;grid-template-rows:420px 300px auto}.moment-a{grid-row:auto}.moment-grid blockquote{min-height:300px}.event-list article{grid-template-columns:65px 1fr 30px}.event-list p{display:none}.faq{grid-template-columns:1fr;gap:50px}.development-grid{grid-template-columns:1fr}.development-grid>div:first-child{min-height:350px}.development-grid>p{grid-column:1}.contact{grid-template-columns:1fr}.footer-top{grid-template-columns:1.5fr 1fr 1fr}.social-recap{padding:40px 0 60px}.social-recap-grid{grid-template-columns:repeat(2,1fr);gap:18px}.social-recap-grid article:nth-child(3n){margin-top:0}.social-recap-grid article:nth-child(even){margin-top:44px}.social-recap-grid img,.social-recap-grid video{height:220px}}
 @media(max-width:560px){.shell{width:calc(100% - 20px)}.nav{height:62px}.logo img{width:125px}.nav-actions button{padding:9px 13px}.hero-photo{min-height:540px}.hero-copy{padding:38px 18px}.hero-copy h1{font-size:45px}.hero-note{display:block}.hero-note p{margin-top:14px}.halo{opacity:.6}.switcher-items button strong{font-size:13px}.booking{grid-template-columns:1fr}.booking label{border-bottom:1px solid var(--line);border-right:0}.signal h2,.section-head h2,.loyalty h2,.faq h2,.development h2,.contact h2{font-size:43px}.signal{padding-top:95px}.benefit-run{margin-top:55px;grid-template-columns:1fr}.benefit-run span{border-right:0;border-bottom:1px solid var(--line)}.brands{padding:85px 0}.brand-card{height:440px}.brand-card h3{font-size:48px}.hotel-photo{height:360px}.offers{padding:85px 0}.offer-track article{height:440px}.offer-track h3{font-size:42px}.loyalty-orbit{width:280px;height:280px;font-size:100px}.loyalty-visual{min-height:420px}.loyalty-copy{padding:42px 20px}.moment-grid{grid-template-rows:350px 240px auto}.moment-grid blockquote{font-size:20px;padding:30px}.event-list article{grid-template-columns:58px 1fr 25px}.event-list h3{font-size:17px}.map{min-height:350px}.footer-top{grid-template-columns:1fr 1fr}.footer-top>div:first-child{grid-column:1/3}.footer-bottom{gap:16px;flex-direction:column}.social-recap-grid{grid-template-columns:1fr}.social-recap-grid article:nth-child(even){margin-top:0}.social-recap-grid img{height:240px}}
@@ -164,10 +164,10 @@ body{background:#f8f8f6}
 .site-menu{position:fixed;z-index:9;inset:0;background:rgba(247,241,231,.98);color:var(--ink);opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .25s ease,visibility .25s ease,transform .25s ease;overflow:auto;padding:118px 0 48px}
 .site-menu.open{opacity:1;visibility:visible;transform:none}.menu-open{overflow:hidden}
 .site-menu-inner{display:grid;grid-template-columns:1.55fr 1fr;gap:60px 70px}.site-menu-inner>div>p{margin:0 0 22px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.16em}
-.site-menu-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 34px}.site-menu-main nav a{display:flex;justify-content:space-between;gap:18px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}.site-menu-main nav a span{font-size:12px}
+.site-menu-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 34px}.site-menu-main nav a,.site-menu-main nav>span{display:flex;justify-content:space-between;gap:18px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}.site-menu-main nav a span{font-size:12px}
 .hotel-explorer{display:grid;grid-template-columns:minmax(190px,.82fr) minmax(220px,1.18fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.hotel-groups{padding:18px 28px 18px 0;border-right:1px solid var(--line)}.hotel-groups button{width:100%;border:0;background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:9px 0;text-align:left;cursor:pointer;font-size:15px}.hotel-groups button i{font-style:normal;font-size:20px;color:var(--muted);transition:transform .2s ease}.hotel-groups button:hover,.hotel-groups button.active{color:var(--teal)}.hotel-groups button.active i{transform:translateX(4px);color:var(--teal)}
 .hotel-group-item{display:contents}.mobile-group-hotels{display:none}
-.group-hotels{padding:25px 0 25px 30px}.group-hotels>strong{display:block;margin-bottom:14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.group-hotels nav{display:grid;grid-template-columns:1fr;gap:0}.group-hotels nav a{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}.group-hotels nav a span{font-size:11px}.empty-group{max-width:230px;margin:20px 0!important;color:var(--muted);font-size:13px!important;line-height:1.6;text-transform:none!important;letter-spacing:0!important}.all-hotels-link{display:inline-flex;gap:36px;margin-top:20px;padding-bottom:8px;border-bottom:1px solid var(--ink);font-size:13px}
+.group-hotels{padding:25px 0 25px 30px}.group-hotels>strong{display:block;margin-bottom:14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.group-hotels nav{display:grid;grid-template-columns:1fr;gap:0}.group-hotels nav a,.group-hotels nav>span{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}.group-hotels nav a span{font-size:11px}.empty-group{max-width:230px;margin:20px 0!important;color:var(--muted);font-size:13px!important;line-height:1.6;text-transform:none!important;letter-spacing:0!important}.all-hotels-link{display:inline-flex;gap:36px;margin-top:20px;padding-bottom:8px;border-bottom:1px solid var(--ink);font-size:13px}
 /* На телефоне липкой полосы разделов нет, поэтому разделы отеля живут в меню. */
 .site-menu-page{grid-column:1/3;border-bottom:1px solid var(--line);padding-bottom:24px}
 .site-menu-page-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
@@ -175,10 +175,10 @@ body{background:#f8f8f6}
 .site-menu-page-links a{display:flex;align-items:center;gap:8px;font-size:14px}
 .site-menu-page-links a span{color:var(--muted);font-size:11px}
 .site-menu-contact{grid-column:1/3;display:flex;align-items:center;gap:30px;border-top:1px solid var(--line);padding-top:24px}.site-menu-contact p{margin:0!important}.site-menu-contact a{font-size:14px}
-@media(max-width:1280px){.nav nav a:nth-last-child(-n+3){display:none}.callback-link{display:none}}
+@media(max-width:1280px){.callback-link{display:none}}
 @media(max-width:900px){.nav nav,.nav-actions>a{display:none}.site-menu{padding-top:96px}.site-menu-inner{grid-template-columns:1fr;gap:42px}.site-menu-contact{grid-column:auto;align-items:flex-start;flex-direction:column;gap:12px}.site-menu-columns{grid-template-columns:1fr 1fr}}
-@media(max-width:900px){.hotel-explorer{display:block}.hotel-groups{border-right:0;border-bottom:1px solid var(--line);padding:8px 0}.hotel-group-item{display:block;border-bottom:1px solid var(--line)}.hotel-group-item:last-child{border-bottom:0}.hotel-groups button{min-height:48px;padding:8px 0}.hotel-groups button.active i{transform:rotate(90deg);color:var(--teal)}.group-hotels{display:none}.mobile-group-hotels{display:none;padding:0 0 14px 14px}.mobile-group-hotels[aria-hidden="false"]{display:block}.mobile-group-hotels nav{display:grid}.mobile-group-hotels nav a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid rgba(11,33,64,.1);font-size:12px}.mobile-group-hotels nav a:last-child{border-bottom:0}.mobile-group-hotels nav a span{font-size:10px}.mobile-group-hotels p{margin:0;padding:4px 28px 8px 0;color:var(--muted);font-size:12px;line-height:1.55}}
-@media(max-width:560px){.menu-label{display:none}.menu-button{width:44px;height:44px;justify-content:center;padding:0!important}.menu-button .menu-icon{margin:0}.site-menu{padding:88px 0 36px}.site-menu-main nav a{font-size:13px;padding:10px 0}.site-menu-columns{grid-template-columns:1fr;gap:18px}.site-menu-inner{gap:34px}.hotel-explorer{display:block}.hotel-groups{border-right:0;border-bottom:1px solid var(--line);padding:8px 0}.hotel-group-item{display:block;border-bottom:1px solid var(--line)}.hotel-group-item:last-child{border-bottom:0}.hotel-groups button{min-height:48px;padding:8px 0}.hotel-groups button.active i{transform:rotate(90deg);color:var(--teal)}.group-hotels{display:none}.mobile-group-hotels{display:none;padding:0 0 14px 14px}.mobile-group-hotels[aria-hidden="false"]{display:block}.mobile-group-hotels nav{display:grid}.mobile-group-hotels nav a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid rgba(11,33,64,.1);font-size:12px}.mobile-group-hotels nav a:last-child{border-bottom:0}.mobile-group-hotels nav a span{font-size:10px}.mobile-group-hotels p{margin:0;padding:4px 28px 8px 0;color:var(--muted);font-size:12px;line-height:1.55}.group-hotels nav a{font-size:13px}}
+@media(max-width:900px){.hotel-explorer{display:block}.hotel-groups{border-right:0;border-bottom:1px solid var(--line);padding:8px 0}.hotel-group-item{display:block;border-bottom:1px solid var(--line)}.hotel-group-item:last-child{border-bottom:0}.hotel-groups button{min-height:48px;padding:8px 0}.hotel-groups button.active i{transform:rotate(90deg);color:var(--teal)}.group-hotels{display:none}.mobile-group-hotels{display:none;padding:0 0 14px 14px}.mobile-group-hotels[aria-hidden="false"]{display:block}.mobile-group-hotels nav{display:grid}.mobile-group-hotels nav a,.mobile-group-hotels nav>span{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid rgba(11,33,64,.1);font-size:12px}.mobile-group-hotels nav a:last-child{border-bottom:0}.mobile-group-hotels nav a span{font-size:10px}.mobile-group-hotels p{margin:0;padding:4px 28px 8px 0;color:var(--muted);font-size:12px;line-height:1.55}}
+@media(max-width:560px){.menu-label{display:none}.menu-button{width:44px;height:44px;justify-content:center;padding:0!important}.menu-button .menu-icon{margin:0}.site-menu{padding:88px 0 36px}.site-menu-main nav a,.site-menu-main nav>span{font-size:13px;padding:10px 0}.site-menu-columns{grid-template-columns:1fr;gap:18px}.site-menu-inner{gap:34px}.hotel-explorer{display:block}.hotel-groups{border-right:0;border-bottom:1px solid var(--line);padding:8px 0}.hotel-group-item{display:block;border-bottom:1px solid var(--line)}.hotel-group-item:last-child{border-bottom:0}.hotel-groups button{min-height:48px;padding:8px 0}.hotel-groups button.active i{transform:rotate(90deg);color:var(--teal)}.group-hotels{display:none}.mobile-group-hotels{display:none;padding:0 0 14px 14px}.mobile-group-hotels[aria-hidden="false"]{display:block}.mobile-group-hotels nav{display:grid}.mobile-group-hotels nav a,.mobile-group-hotels nav>span{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid rgba(11,33,64,.1);font-size:12px}.mobile-group-hotels nav a:last-child{border-bottom:0}.mobile-group-hotels nav a span{font-size:10px}.mobile-group-hotels p{margin:0;padding:4px 28px 8px 0;color:var(--muted);font-size:12px;line-height:1.55}.group-hotels nav a,.group-hotels nav>span{font-size:13px}}
 
 /* Интерактивная форма поиска */
 .booking{overflow:visible}.booking-field{position:relative;border-right:1px solid var(--line)}
@@ -434,7 +434,7 @@ body{background:#f8f8f6}
    measured cap 0.72em vs x-height 0.54em, so the block drops half the difference. */
 
 /* Описание лежит на горах под плашками, поэтому белым и с мягкой тенью для читаемости. */
-.about-lead{max-width:740px;margin:120px 0 0 -40px;padding:26px 40px;background:radial-gradient(85% 120% at 22% 50%,rgba(7,22,34,.5) 0%,rgba(7,22,34,.3) 45%,rgba(7,22,34,0) 78%)}
+.about-lead{max-width:760px;margin:110px 0 0;padding:30px 36px;border:1px solid rgba(255,255,255,.22);border-radius:var(--radius-small);background:linear-gradient(135deg,rgba(4,30,38,.62),rgba(4,30,38,.42));backdrop-filter:blur(16px) saturate(130%);-webkit-backdrop-filter:blur(16px) saturate(130%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 16px 44px rgba(4,30,38,.22)}
 .about-lead p{margin:0;font-size:18px;line-height:1.72;color:#fff;text-shadow:0 1px 2px rgba(6,26,16,.45),0 2px 30px rgba(6,26,16,.5)}
 /* Glass stat panels read over both the sky and the ridge below them. */
 .hotel-advantages{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:none;margin-top:96px;background:none}
@@ -584,8 +584,8 @@ html{overflow-x:clip}
 /* На телефоне панорама начинается ниже описания, фотографии под текстом нет,
    поэтому белый шрифт с затемнением там читался бы как серая плашка на бежевом. */
 @media(max-width:560px){
-  .about-lead{max-width:none;margin:34px 0 0;padding:0;background:none}
-  .about-lead p{font-size:16px;color:var(--ink);text-shadow:none}
+  .about-lead{max-width:none;margin:34px 0 0}
+  .about-lead p{font-size:16px}
 }
 
 /* Детали на оранжевом: логотип подвала возвращаем в тёмный, а переключатель сезона
@@ -604,12 +604,12 @@ html{overflow-x:clip}
    синий #045575. Все правила ограничены классом .doville, чтобы страница
    Софии осталась нетронутой.
    ========================================================================== */
-.doville{--dv-deep:#215c66;--dv-deep-dark:#173f47;--dv-blue:#045575;--dv-pale:#adc0c6;--dv-mist:#e7eef0;--dv-sand:#efe6d4;--dv-gold:#aeb391;--season-band:var(--dv-deep);--season-band-line:rgba(255,255,255,.32)}
+.doville{--dv-deep:#215c66;--dv-deep-dark:#173f47;--dv-blue:#045575;--dv-pale:#adc0c6;--dv-mist:#e7eef0;--dv-sand:#efe6d4;--dv-gold:#aeb391;--season-band:var(--dv-deep);--season-band-line:rgba(255,255,255,.32);--teal:var(--dv-deep)}
 
 /* Шапка и полоса разделов берут бирюзу курорта вместо оранжевого Архыза. */
 .doville .hotel-hero{background-color:var(--dv-deep)}
 .doville .hero .nav{background:rgba(33,92,102,.62);border-bottom-color:rgba(255,255,255,.2)}
-.doville .hero .nav.scrolled{background:var(--dv-deep)}
+
 .doville .hotel-inpage-nav{border-top-color:var(--season-band-line)}
 .doville section[id]{scroll-margin-top:168px}
 .doville .section-head .micro,.doville .about-parallax .micro,.doville .faq .micro,.doville .contact .micro,.doville .active-rest-copy .micro,.doville .dv-location .micro,.doville .loyalty .micro{color:var(--dv-deep)}
@@ -618,7 +618,7 @@ html{overflow-x:clip}
 .doville .hotel-advantages strong{color:var(--dv-deep)}
 .doville .entertainment{background:var(--dv-mist);padding-top:90px}
 .doville .outline-arrows.dark button:hover{border-color:var(--dv-deep);color:var(--dv-deep)}
-.doville .loyalty-orbit{background:var(--dv-deep)}
+.doville footer{background:var(--dv-deep)}
 
 /* --- Первый экран: заголовок над мозаикой, как на странице курорта Club Med --- */
 .dv-hero-head{position:relative;z-index:2;color:#fff;padding:132px 0 34px}
@@ -628,15 +628,11 @@ html{overflow-x:clip}
 .dv-hero-head .micro{color:var(--dv-pale);margin-bottom:16px}
 .dv-hero-head h1{margin:0;font-size:clamp(46px,6.4vw,96px);line-height:.92;letter-spacing:-.055em;font-weight:500}
 .dv-hero-note{max-width:580px;margin:22px 0 0;font-size:15px;line-height:1.66;color:rgba(255,255,255,.84)}
-.dv-hero-facts{list-style:none;display:flex;flex-wrap:wrap;gap:36px;margin:32px 0 0;padding:0}
-.dv-hero-facts li{display:flex;flex-direction:column;gap:5px}
-.dv-hero-facts strong{font-size:18px;font-weight:500;letter-spacing:-.02em}
-.dv-hero-facts span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.58)}
 
 /* Триптих: крупное видео слева, две фотоплашки справа со сдвигом вниз. */
 .dv-triptych{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) 32%;grid-template-rows:auto auto;gap:20px}
 .dv-tile{position:relative;margin:0;overflow:hidden;border-radius:var(--radius-small);background-size:cover;background-position:center;isolation:isolate}
-.dv-tile-video{grid-column:1;grid-row:1;height:560px}
+.dv-tile-video,.dv-tile-lead{grid-column:1;grid-row:1;height:560px}
 .dv-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .dv-tile-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,10,21,0) 46%,rgba(6,10,21,.62))}
 .dv-tile figcaption{position:absolute;left:22px;right:22px;bottom:18px;z-index:2;color:#fff;font-size:12px;line-height:1.4}
@@ -645,7 +641,7 @@ html{overflow-x:clip}
 /* Правая колонка спускается ниже видео и заканчивается на одной линии с кнопкой галереи. */
 .dv-side{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;gap:20px;margin-top:56px}
 .dv-side .dv-tile{flex:1;min-height:0}
-.dv-gallery-link{grid-column:1;grid-row:2;display:flex;align-items:center;justify-content:center;gap:14px;min-height:52px;border:1px solid rgba(255,255,255,.38);border-radius:var(--radius-small);color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;transition:background .25s ease,border-color .25s ease}
+.dv-gallery-link{grid-column:1;grid-row:2;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:14px;min-height:52px;border:1px solid rgba(255,255,255,.38);border-radius:var(--radius-small);color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;transition:background .25s ease,border-color .25s ease}
 .dv-gallery-link:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7)}
 .dv-nav-badge{flex:0 0 auto;padding:8px 16px;border:1px solid var(--season-band-line);border-radius:999px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);transition:background .25s ease}
 .dv-nav-badge:hover{background:rgba(255,255,255,.14);color:#fff}
@@ -657,25 +653,30 @@ html{overflow-x:clip}
 /* Вода — сплошной план от линии горизонта вниз; волны поверх неё только добавляют глубину. */
 .sea-water{position:absolute;left:0;right:0;top:44%;bottom:0;background:linear-gradient(180deg,#9dc3ce 0%,#5d94a4 34%,#3a7885 70%,#2b636f 100%)}
 .sea-horizon{position:absolute;left:0;right:0;top:44%;height:2px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.85) 28%,rgba(255,255,255,.85) 72%,rgba(255,255,255,0))}
-.sea-far,.sea-mid,.sea-near{position:absolute;left:-4%;width:108%;will-change:transform}
-.sea-far svg,.sea-mid svg,.sea-near svg{display:block;width:100%;height:100%}
-.sea-far svg path,.sea-mid svg path,.sea-near svg path{fill:currentColor}
+.sea-far,.sea-mid,.sea-near,.sea-sand{position:absolute;left:-4%;width:108%;will-change:transform}
+.sea-far svg,.sea-mid svg,.sea-near svg,.sea-sand svg{display:block;width:100%;height:100%}
+.sea-far svg path,.sea-mid svg path,.sea-near svg path,.sea-sand svg path{fill:currentColor}
 .sea-far{bottom:250px;height:260px;color:#7fadbb;opacity:.7}
 .sea-mid{bottom:120px;height:290px;color:#316d7c}
 .sea-near{bottom:0;height:300px;color:var(--dv-deep-dark)}
-.sea-sand{position:absolute;left:0;right:0;bottom:0;height:34px;background:linear-gradient(180deg,rgba(239,230,212,0),var(--dv-sand))}
-/* Подпись лежит на воде, поэтому подложка под ней плотнее, чем в горном блоке. */
-.doville .about-lead{background:radial-gradient(80% 118% at 24% 50%,rgba(6,32,40,.62) 0%,rgba(6,32,40,.4) 48%,rgba(6,32,40,0) 80%)}
-.doville .about-parallax:after{background:linear-gradient(180deg,var(--dv-sand) 0%,#f8f8f6 72%)}
+/* Берег — не прямая полоса, а такая же волна цветом страницы: прямой горизонтальный
+   срез внизу перебивал воду и читался как «ровная волна». */
+.sea-sand{bottom:0;height:170px;color:#f8f8f6;z-index:2;will-change:auto}
+/* Подпись лежит на воде: вместо размытого пятна из горного блока — та же стеклянная
+   панель, что и плашки с цифрами выше, только тёмная. По левому краю встаёт в общую
+   сетку (в горном блоке она намеренно выходила за неё на 40px). */
+
+.doville .about-lead p{text-shadow:none}
+.doville .about-parallax:after{display:none}
 @media(prefers-reduced-motion:reduce){.sea-layers>div{transform:none!important}}
 
 /* --- Концепция «Ультра всё включено» --- */
 .dv-pillars{padding:0 0 130px}
 .dv-pillars-lead{max-width:470px;margin:0;font-size:15px;line-height:1.72;color:var(--muted)}
 .dv-pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.dv-pillar{background:#fff;border-radius:var(--radius-small);border-top:3px solid var(--dv-deep);padding:28px 26px 32px}
-.dv-pillar-num{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--dv-pale)}
-.dv-pillar h3{margin:18px 0 10px;font-size:20px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
+/* Верх карточки отбит тонкой серой линией — тем же приёмом, что и вопросы в FAQ. */
+.dv-pillar{background:#fff;border-radius:var(--radius-small);border-top:1px solid var(--line);padding:26px 26px 30px}
+.dv-pillar h3{margin:0 0 10px;font-size:20px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
 .dv-pillar p{margin:0;font-size:13px;line-height:1.65;color:var(--muted)}
 
 /* --- Локация --- */
@@ -694,16 +695,16 @@ html{overflow-x:clip}
 @media(max-width:1180px){.dv-pillar-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){
   .dv-hero-head{padding:110px 0 26px}
-  .dv-hero-facts{gap:26px}
   .dv-triptych{grid-template-columns:1fr;grid-template-rows:auto auto auto}
-  .dv-tile-video{grid-row:1;height:340px}
+  .dv-tile-video,.dv-tile-lead{grid-row:1;height:340px}
   .dv-side{grid-column:1;grid-row:2;flex-direction:row;margin-top:0}
   .dv-side .dv-tile{flex:1;height:190px}
   .dv-gallery-link{grid-column:1;grid-row:3}
   .sea-parallax{min-height:820px;padding-top:85px}
   .doville .about-parallax-content{padding-bottom:270px}
-  .sea-far,.sea-mid,.sea-near{left:-24%;width:148%}
-  .doville .about-lead{margin-left:0;padding-inline:20px}
+  .sea-far,.sea-mid,.sea-near,.sea-sand{left:-24%;width:148%}
+  .sea-sand{height:110px}
+  .about-lead{margin-top:70px;padding:24px 22px}
   .sea-far{bottom:150px;height:220px}
   .sea-mid{bottom:78px;height:220px}
   .sea-near{bottom:0;height:240px}
@@ -714,9 +715,7 @@ html{overflow-x:clip}
 }
 @media(max-width:560px){
   .dv-hero-head{padding:96px 0 22px}
-  .dv-hero-facts{gap:18px 24px}
-  .dv-hero-facts li{width:calc(50% - 12px)}
-  .dv-tile-video{height:260px}
+  .dv-tile-video,.dv-tile-lead{height:260px}
   /* В колонку высота плашки задаётся напрямую: flex-basis:0 обнулял бы её. */
   .dv-side{flex-direction:column}
   .dv-side .dv-tile{flex:0 0 auto;height:190px}
@@ -725,3 +724,38 @@ html{overflow-x:clip}
   .sea-parallax{min-height:700px}
   .doville .about-parallax-content{padding-bottom:230px}
 }
+
+/* Внутренние страницы: при прокрутке шапка становится белой с фирменным синим текстом.
+   Логотип в ней перестаёт выворачиваться в белый, а рамки, рассчитанные на тёмный фон, темнеют. */
+.hotel-hero .nav.scrolled{background:#fff;color:var(--ink);border-bottom:1px solid var(--line);box-shadow:0 12px 34px rgba(11,33,64,.12)}
+.hotel-hero .nav.scrolled .logo img{filter:none}
+.hotel-hero .nav.scrolled .booking-link{border-color:rgba(11,33,64,.3)}
+.hotel-hero .nav.scrolled .nav-page-title:before{opacity:.28}
+.hotel-hero .nav.scrolled .menu-button{background:var(--ink);color:#fff}
+.hotel-hero .nav.scrolled .mobile-phone svg{fill:var(--ink)}
+
+/* Пункты, оставшиеся подписями, не должны выглядеть кликабельными. */
+.site-menu-main nav>span,.group-hotels nav>span,.mobile-group-hotels nav>span,.footer-top>div>span{cursor:default;opacity:.72}
+.catalog-count{margin:26px 0 0;font-size:12px;color:var(--muted)}
+
+/* Галерея фотографий поверх страницы. */
+body.gallery-open{overflow:hidden}
+.gallery-overlay{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:32px;background:rgba(6,16,28,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+.gallery-overlay.open{opacity:1;visibility:visible}
+.gallery-frame{position:relative;width:min(1180px,100%);max-height:100%;display:flex;flex-direction:column;gap:14px}
+.gallery-close{position:absolute;top:-6px;right:0;transform:translateY(-100%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.gallery-close:hover{background:rgba(255,255,255,.28)}
+.gallery-stage{flex:1;min-height:0;height:min(64vh,620px);border-radius:var(--radius);background-size:cover;background-position:center}
+.gallery-bar{display:flex;align-items:center;gap:18px;color:#fff}
+.gallery-bar p{flex:1;margin:0;display:flex;flex-direction:column;gap:4px;font-size:13px}
+.gallery-bar span{font-size:11px;color:rgba(255,255,255,.62)}
+.gallery-bar button{width:44px;height:44px;border:1px solid rgba(255,255,255,.4);border-radius:50%;background:transparent;color:#fff;font-size:16px;cursor:pointer;transition:background .2s ease}
+.gallery-bar button:hover{background:rgba(255,255,255,.18)}
+.gallery-thumbs{display:flex;gap:10px;overflow:auto;padding-bottom:4px}
+.gallery-thumbs button{flex:0 0 96px;height:64px;border:2px solid transparent;border-radius:10px;background-size:cover;background-position:center;cursor:pointer;opacity:.55;transition:opacity .2s ease,border-color .2s ease}
+.gallery-thumbs button:hover{opacity:.85}
+.gallery-thumbs button.active{opacity:1;border-color:#fff}
+@media(max-width:560px){.gallery-overlay{padding:18px}.gallery-stage{height:44vh}.gallery-thumbs button{flex:0 0 74px;height:52px}.gallery-close{top:0;right:0;transform:none;width:38px;height:38px}}
+.moments-more,.faq-more,.all-hotels-link{cursor:default}
+/* Кнопка брони в карточке номера перестала быть ссылкой, и её накрыло правило для подписей. */
+.hotel-card .room-book{color:#fff}

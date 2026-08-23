@@ -4,10 +4,21 @@ import { useEffect, useRef, type ReactNode } from "react";
 
 // Морской аналог горного параллакса: планы собраны из волн, а не из фотографий,
 // поэтому блок не зависит от вырезанных PNG-слоёв и работает на любом экране.
-function Wave({ className, inner }: { className: string; inner: (node: HTMLDivElement | null) => void }) {
+// У каждого плана свой контур: одинаковая волна на трёх слоях читается как
+// параллельные полосы, а не как вода. Дальний — частая мелкая рябь, средний —
+// волна вдвое длиннее и выше, ближний — редкая крупная зыбь. Периоды не кратны
+// друг другу, поэтому гребни пересекаются и рисунок нигде не повторяется.
+const wavePaths = {
+  far: "M0 124c80 0 160-16 240-16s160 16 240 16 160-16 240-16 160 16 240 16 160-16 240-16 160 16 240 16V220H0Z",
+  mid: "M0 108c150 0 300-36 450-36s300 36 450 36 300-30 450-30 240 22 340 26V220H0Z",
+  near: "M0 78c240 0 400 68 660 68s430-76 680-76c50 0 90 12 100 16V220H0Z",
+  shore: "M0 152c180 0 300-48 520-48s360 54 560 54c130 0 250-20 360-32V220H0Z",
+};
+
+function Wave({ className, shape, inner }: { className: string; shape: keyof typeof wavePaths; inner: (node: HTMLDivElement | null) => void }) {
   return <div className={className} ref={inner} aria-hidden="true">
     <svg viewBox="0 0 1440 220" preserveAspectRatio="none" focusable="false">
-      <path d="M0 96c96-30 192-45 288-45s192 15 288 45 192 45 288 45 192-15 288-45 192-45 288-45v220H0z" />
+      <path d={wavePaths[shape]} />
     </svg>
   </div>;
 }
@@ -106,10 +117,10 @@ export function SeaParallax({ text, stats }: { text: ReactNode; stats: ReactNode
       <div className="sea-sun" ref={sunRef} />
       <div className="sea-water" />
       <div className="sea-horizon" />
-      <Wave className="sea-far" inner={(element) => { farRef.current = element; }} />
-      <Wave className="sea-mid" inner={(element) => { midRef.current = element; }} />
-      <Wave className="sea-near" inner={(element) => { nearRef.current = element; }} />
-      <div className="sea-sand" />
+      <Wave className="sea-far" shape="far" inner={(element) => { farRef.current = element; }} />
+      <Wave className="sea-mid" shape="mid" inner={(element) => { midRef.current = element; }} />
+      <Wave className="sea-near" shape="near" inner={(element) => { nearRef.current = element; }} />
+      <Wave className="sea-sand" shape="shore" inner={() => {}} />
     </div>
     <div className="about-parallax-content shell">
       <div className="about-text" ref={textRef}>{text}</div>

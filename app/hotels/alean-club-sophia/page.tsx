@@ -83,14 +83,14 @@ export default function AleanClubSophiaPage() {
       </section>
 
       <section className="catalog shell" id="rooms">
-        <div className="section-head"><div><p className="micro">Номера</p><h2>Выберите свой<br/>вид на горы</h2></div><a className="line-link" href="https://aleanclubsophia.ru/nomera-price/" target="_blank" rel="noreferrer">Все номера <span className="arrow-ne" aria-hidden="true" /></a></div>
+        <div className="section-head"><div><p className="micro">Номера</p><h2>Выберите свой<br/>вид на горы</h2></div><span className="line-link">Все номера <span className="arrow-ne" aria-hidden="true" /></span></div>
         <div className="hotel-grid">{rooms.map((room) => <article className="hotel-card room-card reveal" key={room.name}>
-          <a className="hotel-photo" href="https://aleanclubsophia.ru/nomera-price/" target="_blank" rel="noreferrer" style={{ backgroundImage: `url('${room.image}')` }} aria-label={`Подробнее: ${room.name}`}></a>
+          <span className="hotel-photo" style={{ backgroundImage: `url('${room.image}')` }} aria-label={`Подробнее: ${room.name}`}></span>
           <div>
             <p>{room.latin}</p>
             <h3>{room.name}</h3>
             <ul className="room-facts"><li>{room.area}</li><li>{room.rooms}</li></ul>
-            <a className="room-book" href="https://booking.aleancollection.ru/" target="_blank" rel="noreferrer">Забронировать <span className="arrow-ne" aria-hidden="true" /></a>
+            <span className="room-book">Забронировать <span className="arrow-ne" aria-hidden="true" /></span>
           </div>
         </article>)}</div>
       </section>
@@ -110,6 +110,21 @@ export default function AleanClubSophiaPage() {
         <div className="hotel-reviews-grid">{reviews.map((review) => <blockquote className="reveal" key={review.author}><p>«{review.text}»</p><cite>{review.author}</cite></blockquote>)}</div>
       </section>
 
+      <section className="dv-location shell reveal" aria-label="О локации">
+        <div className="dv-location-visual" style={{ backgroundImage: "url('/sophia-nature-routes.webp')" }} />
+        <div className="dv-location-copy">
+          <p className="micro">Локация</p>
+          <h2>Архыз,<br/>у самых подъёмников</h2>
+          <p>Отель стоит в 200 метрах от канатных дорог всесезонного курорта Архыз в Карачаево-Черкесии. Зимой трассы начинаются сразу за порогом, летом отсюда уходят пешие и конные маршруты к озёрам и перевалам.</p>
+          <ul className="dv-location-facts">
+            <li><strong>Аэропорт Минеральные Воды</strong><span>около 210 км, 3-4 часа на машине</span></li>
+            <li><strong>Железная дорога</strong><span>ближайший вокзал - Черкесск, пересадка на станции Невинномысская</span></li>
+            <li><strong>Автобусы</strong><span>рейсы из Пятигорска, Черкесска, Кисловодска и Ставрополя</span></li>
+          </ul>
+          <a className="dark-button" href="#contacts">Связаться с отелем <span className="arrow-ne" aria-hidden="true" /></a>
+        </div>
+      </section>
+
       <section className="faq shell">
         <div><p className="micro">Частые вопросы</p><h2>Перед поездкой<br/>в Архыз</h2></div>
         <div className="faq-list">
@@ -119,7 +134,7 @@ export default function AleanClubSophiaPage() {
         </div>
       </section>
 
-      <section className="contact shell">
+      <section className="contact shell" id="contacts">
         <div>
           <p className="micro">Контакты отеля</p>
           <h2>Alean Club Sophia,<br/>Архыз</h2>

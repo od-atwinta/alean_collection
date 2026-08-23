@@ -1,7 +1,9 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import Link from "next/link";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { BookingBar } from "./booking-bar";
+import { PhotoGallery } from "./photo-gallery";
 import { SiteHeader } from "./site-header";
 
 type Season = "summer" | "winter";
@@ -31,67 +33,70 @@ function SeasonToggle() {
   </div>;
 }
 
-const seasonGallery = {
-  summer: [
-    "/sophia-summer-1.jpg",
-    "/sophia-summer-2.webp",
-    "/alean-official-hotel-sophia.webp",
-    "/sophia-nature-routes.webp",
-  ],
-  winter: [
-    "/sophia-winter-1.webp",
-    "/sophia-winter-2.webp",
-    "/sophia-winter-3.webp",
-    "/sophia-pool.webp",
-  ],
+// Три кадра на сезон: крупный слева, два поменьше справа - как на странице курорта в Анапе.
+const heroScenes = {
+  summer: {
+    lead: { image: "/sophia-summer-1.jpg", caption: "Отель у подъёмника, Архыз" },
+    side: [
+      { image: "/sophia-summer-2.webp", caption: "Территория летом" },
+      { image: "/sophia-nature-routes.webp", caption: "Маршруты к озёрам и перевалам" },
+    ],
+  },
+  winter: {
+    lead: { image: "/sophia-winter-1.webp", caption: "Отель у подъёмника, Архыз" },
+    side: [
+      { image: "/sophia-winter-2.webp", caption: "Трассы курорта в двух шагах" },
+      { image: "/sophia-pool.webp", caption: "Бассейн и спа после склона" },
+    ],
+  },
 };
+
+
+const sophiaPhotos = [
+  { src: "/sophia-summer-1.jpg", caption: "Отель у подъёмника, Архыз" },
+  { src: "/sophia-winter-1.webp", caption: "Курорт зимой" },
+  { src: "/sophia-nature-routes.webp", caption: "Маршруты к озёрам и перевалам" },
+  { src: "/sophia-pool.webp", caption: "Бассейн" },
+  { src: "/sophia-spa.jpg", caption: "Спа-комплекс" },
+  { src: "/sophia-restaurant.webp", caption: "Ресторан «Всё включено»" },
+  { src: "/sophia-lounge-bar.webp", caption: "Лаундж-бар" },
+  { src: "/sophia-room-family.webp", caption: "Семейный люкс" },
+  { src: "/sophia-kids.webp", caption: "Детский клуб" },
+  { src: "/sophia-ski.jpg", caption: "Трассы курорта" },
+];
 
 export function HotelHero() {
   const { season } = useSeason();
-  const galleryImages = seasonGallery[season];
-  const [activeSlide, setActiveSlide] = useState(0);
-  const parallaxRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setActiveSlide(0);
-  }, [season]);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => setActiveSlide((value) => (value + 1) % galleryImages.length), 4500);
-    return () => window.clearInterval(timer);
-  }, [galleryImages.length]);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion || !parallaxRef.current) return;
-    let frame = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        if (parallaxRef.current) parallaxRef.current.style.transform = `translateY(${Math.min(window.scrollY * 0.28, 140)}px)`;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(frame);
-    };
-  }, []);
+  const scene = heroScenes[season];
 
   return <section className="hero hotel-hero" id="top">
-    <SiteHeader homeHref="/#top" bookingHref="https://booking.aleancollection.ru/" bookingLabel="Забронировать Sophia" title="Alean Club Sophia" menuSections={<HotelMenuSections />} />
-    <div className="hotel-hero-stage">
-      <div className="hotel-hero-parallax" ref={parallaxRef} aria-hidden="true">
-        {galleryImages.map((image, index) => <span key={image} className={index === activeSlide ? "active" : ""} style={{ backgroundImage: `url('${image}')` }} />)}
-      </div>
-      <div className="hotel-hero-gradient" aria-hidden="true" />
-      <div className="hotel-hero-copy shell">
-        <p className="micro">Alean Club · Архыз · 4*</p>
-        <h1>Alean Club Sophia</h1>
-        <p className="hotel-hero-note">Единственный горный отель коллекции у самого подъёмника — тишина сосен и вид на хребет Архыза</p>
-      </div>
-      <div className="hotel-hero-dots" aria-hidden="true">{galleryImages.map((image, index) => <span key={image} className={index === activeSlide ? "active" : ""} />)}</div>
+    <SiteHeader homeHref="/#top" bookingHref="#booking-bar" bookingLabel="Забронировать Sophia" title="Alean Club Sophia" menuSections={<HotelMenuSections />} />
+
+    <div className="dv-hero-head shell">
+      <nav className="dv-crumbs" aria-label="Хлебные крошки">
+        <Link href="/#top">Alean Collection</Link><span aria-hidden="true">·</span>
+        <span>Отели</span><span aria-hidden="true">·</span>
+        <span>Alean Club Sophia</span>
+      </nav>
+      <p className="micro">Alean Club · Архыз · 4*</p>
+      <h1>Alean Club Sophia</h1>
+      <p className="dv-hero-note">Единственный горный отель коллекции у самого подъёмника — тишина сосен, вид на хребет Архыза и «Всё включено» в 200 метрах от канатных дорог.</p>
     </div>
+
+    <div className="dv-triptych shell">
+      <figure className="dv-tile dv-tile-lead" style={{ backgroundImage: `url('${scene.lead.image}')` }}>
+        <span className="dv-tile-shade" aria-hidden="true" />
+        <figcaption>{scene.lead.caption}</figcaption>
+      </figure>
+      <div className="dv-side">
+        {scene.side.map((tile) => <figure className="dv-tile" key={tile.image} style={{ backgroundImage: `url('${tile.image}')` }}>
+          <span className="dv-tile-shade" aria-hidden="true" />
+          <figcaption>{tile.caption}</figcaption>
+        </figure>)}
+      </div>
+      <PhotoGallery photos={sophiaPhotos} />
+    </div>
+
     <div className="hotel-booking-band">
       <BookingBar destinations={null} fixedDestination="Alean Club Sophia" submitLabel="Подобрать номер" action="#rooms" />
     </div>

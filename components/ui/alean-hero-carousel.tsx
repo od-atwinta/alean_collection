@@ -14,8 +14,8 @@ const slides = [
 
 export function BrandLocationCards() {
   return <>
-    <article className="brand-card brand-family reveal"><div className="brand-copy"><h3>Отдых у моря<br/>для всей семьи</h3><p>Анапа, Геленджик и Сочи. Первая береговая линия, детские клубы, SPA и формат «Ультра все включено».</p><ul><li>7 семейных курортов</li><li>Отели 4* и 5*</li></ul></div><a href="https://aleancollection.ru/brands/">Все бренды <i className="arrow-ne" aria-hidden="true" /></a></article>
-    <article className="brand-card brand-club reveal"><div className="brand-copy"><h3>Архыз<br/>круглый год</h3><p>Зимой - катание, летом - маршруты, воздух и тишина. Для семейных поездок и отдыха вдвоем.</p><ul><li>Горнолыжный сезон</li><li>SPA и бассейны</li></ul></div><a href="https://aleancollection.ru/hotels/">Все локации <i className="arrow-ne" aria-hidden="true" /></a></article>
+    <article className="brand-card brand-family reveal"><div className="brand-copy"><h3>Отдых у моря<br/>для всей семьи</h3><p>Анапа, Геленджик и Сочи. Первая береговая линия, детские клубы, SPA и формат «Ультра все включено».</p><ul><li>7 семейных курортов</li><li>Отели 4* и 5*</li></ul></div><span >Все бренды <i className="arrow-ne" aria-hidden="true" /></span></article>
+    <article className="brand-card brand-club reveal"><div className="brand-copy"><h3>Архыз<br/>круглый год</h3><p>Зимой - катание, летом - маршруты, воздух и тишина. Для семейных поездок и отдыха вдвоем.</p><ul><li>Горнолыжный сезон</li><li>SPA и бассейны</li></ul></div><span >Все локации <i className="arrow-ne" aria-hidden="true" /></span></article>
   </>;
 }
 

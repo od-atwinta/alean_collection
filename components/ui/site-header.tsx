@@ -2,61 +2,59 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 
+// В концепции есть только две страницы отелей - на них навигация и ведёт.
 const headerLinks = [
-  { label: "Бренды", href: "https://aleancollection.ru/brands/" },
-  { label: "Отели", href: "https://aleancollection.ru/hotels/" },
-  { label: "Девелопмент", href: "https://aleancollection.ru/hotel-management/" },
-  { label: "Alean Invest Club", href: "https://aleancollection.ru/alean-invest-club/" },
-  { label: "Медиа", href: "https://aleancollection.ru/press-about-us/" },
-  { label: "Конференции и мероприятия", href: "https://aleancollection.ru/meropriyatiya/" },
+  { label: "Отель в Анапе", href: "/hotels/alean-family-doville" },
+  { label: "Отель в Архызе", href: "/hotels/alean-club-sophia" },
 ];
 
+// Разделы показывают структуру сайта, но переходов в концепции нет - это подписи.
 const menuColumns = [
   [
-    { label: "Бренды", href: "https://aleancollection.ru/brands/" },
-    { label: "Отели", href: "https://aleancollection.ru/hotels/" },
-    { label: "Девелопмент", href: "https://aleancollection.ru/hotel-management/" },
-    { label: "Alean Invest Club", href: "https://aleancollection.ru/alean-invest-club/" },
-    { label: "Конференции и мероприятия", href: "https://aleancollection.ru/meropriyatiya/" },
-    { label: "Сотрудничество", href: "https://aleancollection.ru/partners/" },
+    { label: "Бренды" },
+    { label: "Отели" },
+    { label: "Девелопмент" },
+    { label: "Alean Invest Club" },
+    { label: "Конференции и мероприятия" },
+    { label: "Сотрудничество" },
   ],
   [
-    { label: "Акции", href: "https://aleancollection.ru/promotions/" },
-    { label: "Программа лояльности", href: "https://aleancollection.ru/loyalty-program/" },
-    { label: "Alean Magazine", href: "https://aleancollection.ru/magazine/" },
-    { label: "Новости", href: "https://aleancollection.ru/press-about-us/news/" },
-    { label: "Медиа", href: "https://aleancollection.ru/press-about-us/" },
-    { label: "Контакты", href: "https://aleancollection.ru/contacts/" },
+    { label: "Акции" },
+    { label: "Программа лояльности" },
+    { label: "Alean Magazine" },
+    { label: "Новости" },
+    { label: "Медиа" },
+    { label: "Контакты" },
   ],
 ];
 
 const hotelGroups = [
   { name: "Alean Family", hotels: [
     { label: "Alean Family Doville", href: "/hotels/alean-family-doville" },
-    { label: "Alean Family Riviera", href: "https://rivieraresort.ru" },
-    { label: "Alean Family Biarritz", href: "https://biarritzresort.ru" },
-    { label: "Alean Family Sputnik", href: "https://sputnikresort.ru" },
-    { label: "Alean Family Olivia", href: "https://aleancollection.ru/hotels/alean-family-olivia/" },
-    { label: "Alean Family Volna", href: "https://aleancollection.ru/hotels/alean-family-volna/" },
-    { label: "Alean Family Evian", href: "https://aleancollection.ru/hotels/alean-family-evian/" },
+    { label: "Alean Family Riviera", href: null },
+    { label: "Alean Family Biarritz", href: null },
+    { label: "Alean Family Sputnik", href: null },
+    { label: "Alean Family Olivia", href: null },
+    { label: "Alean Family Volna", href: null },
+    { label: "Alean Family Evian", href: null },
   ]},
   { name: "Alean Extency", hotels: [] },
-  { name: "Alean Health", hotels: [{ label: "Alean Health Essentuki", href: "https://aleancollection.ru/hotels/essentuki/" }] },
-  { name: "Alean Emerald", hotels: [{ label: "Alean Emerald Mandarin Garden", href: "https://aleancollection.ru/hotels/alean-emerald-mandarin-garden/" }] },
+  { name: "Alean Health", hotels: [{ label: "Alean Health Essentuki", href: null }] },
+  { name: "Alean Emerald", hotels: [{ label: "Alean Emerald Mandarin Garden", href: null }] },
   { name: "Alean Club", hotels: [
-    { label: "Alean Club Majestic", href: "https://majestik-hotel.ru" },
+    { label: "Alean Club Majestic", href: null },
     { label: "Alean Club Sophia", href: "/hotels/alean-club-sophia" },
   ]},
   { name: "Alean Select", hotels: [
-    { label: "Alean Select Olginka", href: "https://aleanolginka.ru" },
-    { label: "Alean Select Altair", href: "https://aleanselectaltair.ru" },
-    { label: "Alean Select Pino", href: "https://aleanselectpino.ru" },
-    { label: "Alean Select Arkhyz", href: "https://aleancollection.ru/hotels/alean-select-arkhyz/" },
-    { label: "Alean Select Agoy", href: "https://aleancollection.ru/hotels/alean-select-agoy/" },
-    { label: "Alean Select Montvert", href: "https://aleancollection.ru/hotels/alean-select-montvert/" },
-    { label: "Alean Select Luchi", href: "https://aleancollection.ru/hotels/alean-select-luchi/" },
+    { label: "Alean Select Olginka", href: null },
+    { label: "Alean Select Altair", href: null },
+    { label: "Alean Select Pino", href: null },
+    { label: "Alean Select Arkhyz", href: null },
+    { label: "Alean Select Agoy", href: null },
+    { label: "Alean Select Montvert", href: null },
+    { label: "Alean Select Luchi", href: null },
   ]},
-  { name: "Alean Residence", hotels: [{ label: "Alean Residence Montvert", href: "https://aleancollection.ru/hotels/alean-residence-montvert/" }] },
+  { name: "Alean Residence", hotels: [{ label: "Alean Residence Montvert", href: null }] },
 ];
 
 function PhoneIcon() {
@@ -68,7 +66,7 @@ function CalendarIcon() {
 }
 
 // На странице отеля логотип ведёт на главную, а кнопка брони — на бронирование этого отеля.
-export function SiteHeader({ homeHref = "#top", bookingHref = "https://booking.aleancollection.ru/", bookingLabel = "Бронирование", title, menuSections }: {
+export function SiteHeader({ homeHref = "#top", bookingHref = "#booking-bar", bookingLabel = "Бронирование", title, menuSections }: {
   homeHref?: string;
   bookingHref?: string;
   bookingLabel?: string;
@@ -105,13 +103,13 @@ export function SiteHeader({ homeHref = "#top", bookingHref = "https://booking.a
         {title ? <span className="nav-page-title">{title}</span> : null}
       </div>
       <nav aria-label="Основная навигация">{headerLinks.map((item) => <a key={item.label} href={item.href}>{item.label}</a>)}</nav>
-      <div className="nav-actions"><a className="mobile-phone" href="tel:88002500030" aria-label="Позвонить"><PhoneIcon /></a><a className="nav-phone" href="tel:88002500030">8 800 250 00 30</a><a className="callback-link" href="https://aleancollection.ru/contacts/">Заказать звонок</a><a className="booking-link" href={bookingHref} aria-label={bookingLabel}><span className="booking-text">{bookingLabel}</span><span className="booking-icon"><CalendarIcon /></span></a><button className="menu-button" type="button" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => { if (!menuOpen) setActiveHotelGroup(null); setMenuOpen((value) => !value); }}><span className="menu-label">Меню</span><span className="menu-icon" aria-hidden="true">{menuOpen ? "×" : "≡"}</span></button></div>
+      <div className="nav-actions"><a className="mobile-phone" href="tel:88002500030" aria-label="Позвонить"><PhoneIcon /></a><a className="nav-phone" href="tel:88002500030">8 800 250 00 30</a><a className="callback-link" href="#contacts">Заказать звонок</a><a className="booking-link" href={bookingHref} aria-label={bookingLabel}><span className="booking-text">{bookingLabel}</span><span className="booking-icon"><CalendarIcon /></span></a><button className="menu-button" type="button" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => { if (!menuOpen) setActiveHotelGroup(null); setMenuOpen((value) => !value); }}><span className="menu-label">Меню</span><span className="menu-icon" aria-hidden="true">{menuOpen ? "×" : "≡"}</span></button></div>
     </header>
     <div className={`site-menu${menuOpen ? " open" : ""}`} id="site-menu" aria-hidden={!menuOpen}>
       <div className="site-menu-inner shell">
         {menuSections ? <div className="site-menu-page">{menuSections}</div> : null}
-        <div className="site-menu-hotels"><p>Alean Collection</p><div className="hotel-explorer"><div className="hotel-groups" role="tablist" aria-label="Группы отелей">{hotelGroups.map((group, index) => <div className={`hotel-group-item${activeHotelGroup === index ? " active" : ""}`} key={group.name}><button type="button" role="tab" aria-selected={activeHotelGroup === index} aria-expanded={activeHotelGroup === index} className={activeHotelGroup === index ? "active" : ""} onClick={() => setActiveHotelGroup(activeHotelGroup === index ? null : index)}><span>{group.name}</span><i aria-hidden="true">›</i></button><div className="mobile-group-hotels" aria-hidden={activeHotelGroup !== index}>{group.hotels.length ? <nav aria-label={`Отели ${group.name}`}>{group.hotels.map((item) => <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a>)}</nav> : <p>Новые отели группы появятся в коллекции позже</p>}</div></div>)}</div><div className="group-hotels" role="tabpanel">{activeHotelGroup === null ? <p className="empty-group">Выберите группу отелей</p> : <><strong>{hotelGroups[activeHotelGroup].name}</strong>{hotelGroups[activeHotelGroup].hotels.length ? <nav aria-label={`Отели ${hotelGroups[activeHotelGroup].name}`}>{hotelGroups[activeHotelGroup].hotels.map((item) => <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a>)}</nav> : <p className="empty-group">Новые отели группы появятся в коллекции позже</p>}</>}</div></div><a className="all-hotels-link" href="https://aleancollection.ru/hotels/" onClick={() => setMenuOpen(false)}>Все отели <span aria-hidden="true">↗</span></a></div>
-        <div className="site-menu-main"><p>Разделы</p><div className="site-menu-columns">{menuColumns.map((column, index) => <nav aria-label={`Разделы сайта, столбец ${index + 1}`} key={index}>{column.map((item) => <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a>)}</nav>)}</div></div>
+        <div className="site-menu-hotels"><p>Alean Collection</p><div className="hotel-explorer"><div className="hotel-groups" role="tablist" aria-label="Группы отелей">{hotelGroups.map((group, index) => <div className={`hotel-group-item${activeHotelGroup === index ? " active" : ""}`} key={group.name}><button type="button" role="tab" aria-selected={activeHotelGroup === index} aria-expanded={activeHotelGroup === index} className={activeHotelGroup === index ? "active" : ""} onClick={() => setActiveHotelGroup(activeHotelGroup === index ? null : index)}><span>{group.name}</span><i aria-hidden="true">›</i></button><div className="mobile-group-hotels" aria-hidden={activeHotelGroup !== index}>{group.hotels.length ? <nav aria-label={`Отели ${group.name}`}>{group.hotels.map((item) => item.href ? <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a> : <span key={item.label}>{item.label}</span>)}</nav> : <p>Новые отели группы появятся в коллекции позже</p>}</div></div>)}</div><div className="group-hotels" role="tabpanel">{activeHotelGroup === null ? <p className="empty-group">Выберите группу отелей</p> : <><strong>{hotelGroups[activeHotelGroup].name}</strong>{hotelGroups[activeHotelGroup].hotels.length ? <nav aria-label={`Отели ${hotelGroups[activeHotelGroup].name}`}>{hotelGroups[activeHotelGroup].hotels.map((item) => item.href ? <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<span aria-hidden="true">↗</span></a> : <span key={item.label}>{item.label}</span>)}</nav> : <p className="empty-group">Новые отели группы появятся в коллекции позже</p>}</>}</div></div></div>
+        <div className="site-menu-main"><p>Разделы</p><div className="site-menu-columns">{menuColumns.map((column, index) => <nav aria-label={`Разделы сайта, столбец ${index + 1}`} key={index}>{column.map((item) => <span key={item.label}>{item.label}</span>)}</nav>)}</div></div>
         <div className="site-menu-contact"><p>Единая служба бронирования</p><a href="tel:88002500030">8 800 250 00 30</a><a href="mailto:booking@aleancollection.ru">booking@aleancollection.ru</a></div>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { PhotoGallery } from "./photo-gallery";
 import { BookingBar } from "./booking-bar";
 import { SiteHeader } from "./site-header";
 
@@ -23,18 +24,22 @@ const tiles = [
   { image: "/doville-g2-518.webp", caption: "Территория в нормандском стиле" },
 ];
 
-const heroFacts = [
-  { value: "5*", label: "Категория курорта" },
-  { value: "500 м", label: "До собственного пляжа" },
-  { value: "Ультра всё включено", label: "Формат отдыха" },
-  { value: "Круглый год", label: "Сезон работы" },
-];
-
 function PlayIcon({ paused }: { paused: boolean }) {
   return <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor">
     {paused ? <path d="M8 5.5v13l11-6.5z" /> : <><rect x="8" y="5.5" width="3.2" height="13" rx="1" /><rect x="13.8" y="5.5" width="3.2" height="13" rx="1" /></>}
   </svg>;
 }
+
+const dovillePhotos = [
+  { src: "/doville-wide-1.webp", caption: "Курорт на Пионерском проспекте" },
+  { src: "/doville-pools.webp", caption: "Бассейны курорта" },
+  { src: "/doville-beach.webp", caption: "Собственный пляж" },
+  { src: "/doville-room-family-superior.webp", caption: "Семейный номер Superior" },
+  { src: "/doville-room-apart.webp", caption: "Апартаменты" },
+  { src: "/doville-cafe-karamelka.webp", caption: "Кафе «Карамелька»" },
+  { src: "/doville-animation.webp", caption: "Анимация для детей" },
+  { src: "/doville-academy-sport.webp", caption: "Спортивная академия" },
+];
 
 export function DovilleHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -71,7 +76,7 @@ export function DovilleHero() {
   return <section className="hero hotel-hero doville-hero" id="top">
     <SiteHeader
       homeHref="/#top"
-      bookingHref="https://booking.aleancollection.ru/"
+      bookingHref="#booking-bar"
       bookingLabel="Забронировать Doville"
       title="Alean Family Doville"
       menuSections={<DovilleMenuSections />}
@@ -80,13 +85,12 @@ export function DovilleHero() {
     <div className="dv-hero-head shell">
       <nav className="dv-crumbs" aria-label="Хлебные крошки">
         <Link href="/#top">Alean Collection</Link><span aria-hidden="true">·</span>
-        <a href="https://aleancollection.ru/hotels/" target="_blank" rel="noreferrer">Отели</a><span aria-hidden="true">·</span>
+        <span>Отели</span><span aria-hidden="true">·</span>
         <span>Alean Family Doville</span>
       </nav>
       <p className="micro">Alean Family · Анапа · 5*</p>
       <h1>Alean Family Doville</h1>
       <p className="dv-hero-note">Собрание семейных впечатлений: динамичное множество услуг, которые каждый раз складываются в новые эмоции — и в спокойствие за детей.</p>
-      <ul className="dv-hero-facts">{heroFacts.map((fact) => <li key={fact.label}><strong>{fact.value}</strong><span>{fact.label}</span></li>)}</ul>
     </div>
 
     <div className="dv-triptych shell">
@@ -106,9 +110,7 @@ export function DovilleHero() {
           <figcaption>{tile.caption}</figcaption>
         </figure>)}
       </div>
-      <a className="dv-gallery-link" href="https://dovilleresort.ru/" target="_blank" rel="noreferrer">
-        Посмотреть все фотографии <span className="arrow-ne" aria-hidden="true" />
-      </a>
+      <PhotoGallery photos={dovillePhotos} />
     </div>
 
     <div className="hotel-booking-band">
@@ -156,7 +158,7 @@ export function DovilleInPageNav() {
   return <div className="hotel-inpage-bar">
     <nav className="hotel-inpage-nav shell" aria-label="Разделы страницы курорта">
       <div className="hotel-inpage-links">{dovilleLinks.map((item) => <a key={item.href} href={item.href} className={active === item.href.slice(1) ? "active" : ""} aria-current={active === item.href.slice(1) ? "true" : undefined}>{item.label}</a>)}</div>
-      <a className="dv-nav-badge" href="https://dovilleresort.ru/" target="_blank" rel="noreferrer">Ультра всё включено <span aria-hidden="true">↗</span></a>
+      <span className="dv-nav-badge">Ультра всё включено <span aria-hidden="true">↗</span></span>
     </nav>
   </div>;
 }
