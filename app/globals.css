@@ -497,9 +497,10 @@ body{background:#f8f8f6}
 }
 
 /* Season palette: summer runs warm/orange, winter runs cold turquoise. */
-.season-summer{--season-accent:#c9611f;--season-accent-soft:#f3d9c4;--season-wash:#fbf1e7;--season-sky-top:#f7efe6;--season-sky-mid:#f0dcc6;--season-sky-low:#e3c3a2}
+.season-summer,.season-winter{--season-accent:#c9611f;--season-accent-soft:#f3d9c4;--season-wash:#fbf1e7;
+  /* Небо за слоями гор одинаковое в оба сезона: под ним фотографии, а не сезонная тема. */
+  --season-sky-top:#eef4f6;--season-sky-mid:#d5e6ec;--season-sky-low:#b6d2dc}
 /* Сезон меняет только небо в блоке с параллаксом. Фирменный цвет страницы остаётся прежним. */
-.season-winter{--season-accent:#c9611f;--season-accent-soft:#f3d9c4;--season-wash:#fbf1e7;--season-sky-top:#eef4f6;--season-sky-mid:#d5e6ec;--season-sky-low:#b6d2dc}
 .season-summer .about-parallax,.season-winter .about-parallax{background:linear-gradient(180deg,var(--season-sky-top) 0%,var(--season-sky-mid) 46%,var(--season-sky-low) 100%)}
 .season-summer .about-parallax .micro,.season-winter .about-parallax .micro,
 .season-summer .entertainment .micro,.season-winter .entertainment .micro{color:var(--season-accent)}
