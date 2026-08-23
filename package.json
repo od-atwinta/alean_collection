@@ -45,5 +45,14 @@
     "vite": "8.0.13",
     "wrangler": "4.92.0"
   },
-  "type": "module"
+  "type": "module",
+  "browserslist": [
+    "> 0.2%",
+    "last 3 versions",
+    "Safari >= 14",
+    "iOS >= 14",
+    "Firefox ESR",
+    "not dead",
+    "not op_mini all"
+  ]
 }
