@@ -14,6 +14,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL("pages-src/index.html", import.meta.url)),
         aleanClubSophia: fileURLToPath(new URL("pages-src/hotels/alean-club-sophia/index.html", import.meta.url)),
+        aleanFamilyDoville: fileURLToPath(new URL("pages-src/hotels/alean-family-doville/index.html", import.meta.url)),
       },
     },
   },
