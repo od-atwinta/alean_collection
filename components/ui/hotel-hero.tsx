@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { BookingBar } from "./booking-bar";
 import { PhotoGallery } from "./photo-gallery";
@@ -74,7 +73,8 @@ export function HotelHero() {
 
     <div className="dv-hero-head shell">
       <nav className="dv-crumbs" aria-label="Хлебные крошки">
-        <Link href="/#top">Alean Collection</Link><span aria-hidden="true">·</span>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a href="/#top">Alean Collection</a><span aria-hidden="true">·</span>
         <span>Отели</span><span aria-hidden="true">·</span>
         <span>Alean Club Sophia</span>
       </nav>

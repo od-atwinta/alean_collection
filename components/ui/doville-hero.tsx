@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { PhotoGallery } from "./photo-gallery";
 import { BookingBar } from "./booking-bar";
@@ -84,7 +83,8 @@ export function DovilleHero() {
 
     <div className="dv-hero-head shell">
       <nav className="dv-crumbs" aria-label="Хлебные крошки">
-        <Link href="/#top">Alean Collection</Link><span aria-hidden="true">·</span>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a href="/#top">Alean Collection</a><span aria-hidden="true">·</span>
         <span>Отели</span><span aria-hidden="true">·</span>
         <span>Alean Family Doville</span>
       </nav>
