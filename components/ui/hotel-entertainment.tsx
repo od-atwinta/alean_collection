@@ -1,6 +1,8 @@
 "use client";
 
-import { useRef, type PointerEvent } from "react";
+import { useRef, type PointerEvent, type ReactNode } from "react";
+
+export type Activity = { title: string; text: string; image: string };
 import { useSeason } from "./hotel-hero";
 
 // Услуги и развлечения — с официального сайта отеля aleanclubsophia.ru
@@ -23,8 +25,14 @@ const activities = {
   ],
 };
 
-export function HotelEntertainment() {
+export function HotelEntertainment({ items, eyebrow, heading, sectionId = "entertainment" }: {
+  items?: Activity[];
+  eyebrow?: string;
+  heading?: ReactNode;
+  sectionId?: string;
+} = {}) {
   const { season } = useSeason();
+  const list = items ?? activities[season];
   const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ active: false, startX: 0, scrollLeft: 0, moved: false });
 
@@ -57,16 +65,16 @@ export function HotelEntertainment() {
     trackRef.current.classList.remove("dragging");
   };
 
-  return <section className="entertainment" id="entertainment">
+  return <section className="entertainment" id={sectionId}>
     <div className="shell section-head">
-      <div><p className="micro">Услуги и развлечения · {season === "summer" ? "лето" : "зима"}</p><h2>Чем заняться<br/>в Архызе</h2></div>
+      <div><p className="micro">{eyebrow ?? `Услуги и развлечения · ${season === "summer" ? "лето" : "зима"}`}</p><h2>{heading ?? <>Чем заняться<br/>в Архызе</>}</h2></div>
       <div className="outline-arrows dark" aria-label="Пролистать услуги">
         <button type="button" onClick={() => move(-1)} aria-label="Предыдущие услуги">←</button>
         <button type="button" onClick={() => move(1)} aria-label="Следующие услуги">→</button>
       </div>
     </div>
     <div className="activity-gallery shell" ref={trackRef} onPointerDown={startDrag} onPointerMove={drag} onPointerUp={stopDrag} onPointerCancel={stopDrag}>
-      {activities[season].map((item) => <article key={item.title}>
+      {list.map((item) => <article key={item.title}>
         <div className="activity-photo" style={{ backgroundImage: `url('${item.image}')` }} />
         <h3>{item.title}</h3>
         <p>{item.text}</p>

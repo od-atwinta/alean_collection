@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
+
+export type AmenityCategory = { label: string; items: { title: string; text: string; image: string }[] };
 
 // Состав услуг — с официального сайта отеля aleanclubsophia.ru
 const categories = [
@@ -46,12 +48,18 @@ const categories = [
   },
 ];
 
-export function HotelAmenities() {
+export function HotelAmenities({ categories: groups = categories, eyebrow = "Инфраструктура и услуги", heading = <>Всё для вашего<br/>отдыха в горах</>, sectionId = "infrastructure" }: {
+  categories?: AmenityCategory[];
+  eyebrow?: string;
+  heading?: ReactNode;
+  sectionId?: string;
+} = {}) {
   const [active, setActive] = useState(0);
-  return <section className="amenities shell" id="infrastructure">
-    <div className="section-head"><div><p className="micro">Инфраструктура и услуги</p><h2>Всё для вашего<br/>отдыха в горах</h2></div></div>
-    <div className="filters" aria-label="Категории услуг отеля">{categories.map((category, index) => <button type="button" key={category.label} className={index === active ? "active" : ""} onClick={() => setActive(index)}>{category.label}</button>)}</div>
-    <div className="amenity-grid">{categories[active].items.map((item) => <article className="amenity-card reveal" key={item.title}>
+  const current = groups[Math.min(active, groups.length - 1)];
+  return <section className="amenities shell" id={sectionId}>
+    <div className="section-head"><div><p className="micro">{eyebrow}</p><h2>{heading}</h2></div></div>
+    <div className="filters" aria-label="Категории услуг отеля">{groups.map((category, index) => <button type="button" key={category.label} className={index === active ? "active" : ""} onClick={() => setActive(index)}>{category.label}</button>)}</div>
+    <div className="amenity-grid">{current.items.map((item) => <article className="amenity-card reveal" key={item.title}>
       <img src={item.image} alt="" />
       <div><h3>{item.title}</h3><p>{item.text}</p></div>
     </article>)}</div>
