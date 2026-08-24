@@ -397,7 +397,11 @@ body{background:#f8f8f6}
 .hotel-hero-dots span.active{background:#fff}
 
 .hotel-inpage-nav{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.14)}
-.hotel-inpage-links{display:flex;gap:26px;overflow:auto;font-size:12px}
+/* Запас снизу — чтобы подчёркивание активного пункта (bottom:-6px) помещалось внутри
+   прокручиваемой строки: иначе оно уезжает за край, само становится невидимым, а браузер
+   рисует у правого края вертикальную полосу прокрутки — тот самый белый квадратик. */
+.hotel-inpage-links{display:flex;gap:26px;overflow-x:auto;overflow-y:hidden;padding-bottom:8px;margin-bottom:-8px;font-size:12px;scrollbar-width:none}
+.hotel-inpage-links::-webkit-scrollbar{display:none}
 .hotel-inpage-links a{color:rgba(255,255,255,.72);white-space:nowrap;transition:color .2s ease}
 .hotel-inpage-links a:hover{color:#fff}
 .hotel-inpage-links a.active{color:#fff;position:relative}
