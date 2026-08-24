@@ -774,4 +774,3 @@ body.gallery-open{overflow:hidden}
    мутный коричневый. Делаем плёнку своего цвета - так же, как на морской странице. */
 .season-summer .hero .nav,.season-winter .hero .nav{background:rgba(225,116,70,.62);border-bottom-color:rgba(255,255,255,.22)}
 .season-summer .hero .nav.scrolled,.season-winter .hero .nav.scrolled{background:#fff}
-
