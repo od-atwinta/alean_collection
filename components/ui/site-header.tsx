@@ -70,7 +70,7 @@ export function SiteHeader({ homeHref = "#top", bookingHref = "#booking-bar", bo
   homeHref?: string;
   bookingHref?: string;
   bookingLabel?: string;
-  // Название страницы проявляется в плотной шапке, когда обложка уже уехала вверх.
+  // Название страницы стоит рядом с логотипом всё время, и над обложкой тоже.
   title?: string;
   // Разделы конкретной страницы: на телефоне это единственный способ до них добраться.
   menuSections?: ReactNode;

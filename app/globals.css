@@ -153,11 +153,10 @@ body{background:#f8f8f6}
 
 /* Меню и шапка на основе структуры официального сайта Alean Collection */
 .nav{grid-template-columns:minmax(160px,auto) minmax(0,1fr) auto;gap:24px}
-/* Название страницы проявляется только в плотной шапке — над обложкой оно мешало бы заголовку. */
 .nav-brand{display:flex;align-items:center;gap:16px;min-width:0}
-.nav-page-title{position:relative;padding-left:16px;font-size:13px;font-weight:600;white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
+/* Название отеля стоит рядом с логотипом всегда, а не проявляется при прокрутке. */
+.nav-page-title{position:relative;padding-left:16px;font-size:13px;font-weight:600;white-space:nowrap}
 .nav-page-title:before{content:"";position:absolute;left:0;top:50%;width:1px;height:18px;margin-top:-9px;background:currentColor;opacity:.35}
-.nav.scrolled .nav-page-title{opacity:1;transform:none;pointer-events:auto}
 .nav nav{gap:18px;justify-content:flex-start;white-space:nowrap;font-size:11px}
 .nav-actions{gap:12px;white-space:nowrap}.nav-phone{font-weight:600}.callback-link{border-bottom:1px solid currentColor;padding-bottom:3px}.booking-link{border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:10px 14px}
 .menu-button{display:flex;align-items:center;gap:9px;cursor:pointer}.menu-button .menu-icon{width:18px;margin:0;font-size:20px;line-height:1;text-align:center}
@@ -325,7 +324,8 @@ body{background:#f8f8f6}
 }
 
 @media(min-width:561px) and (max-width:900px){
-  .hero .nav{grid-template-columns:150px 1fr;padding:0 20px}
+  /* Колонка с логотипом растёт под название отеля: при жёстких 150px логотип сжимался в ноль. */
+  .hero .nav{grid-template-columns:minmax(150px,auto) 1fr;padding:0 20px}
   .hero .nav-actions{justify-self:end;display:grid;grid-template-columns:44px auto 44px;align-items:center;gap:10px}
   .hero .nav-actions .mobile-phone,.hero .nav-actions .booking-link{display:flex}
   .mobile-phone{width:44px;height:44px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.5);border-radius:50%;font-size:18px;color:#fff}
@@ -555,6 +555,7 @@ section[id],div[id]{scroll-margin-top:104px}
 @media(max-width:560px){.hotel-booking-band{padding:14px 10px 18px}.hotel-booking-band .booking{width:auto}}
 .season-summer section[id],.season-winter section[id]{scroll-margin-top:168px}
 @media(max-width:900px){.hotel-inpage-bar{display:none}.season-summer section[id],.season-winter section[id]{scroll-margin-top:96px}}
+/* На телефоне название не помещается рядом с логотипом — логотип обрезается, поэтому прячем. */
 @media(max-width:560px){.nav-page-title{display:none}.site-menu-page-links{flex-direction:column;align-items:flex-start}}
 /* Мобильное меню: один столбец, чтобы разделы отеля читались сверху, а отели шли ниже. */
 @media(max-width:900px){.site-menu .site-menu-inner{grid-template-columns:1fr;gap:34px}.site-menu .site-menu-page{grid-column:auto;padding-bottom:20px}.site-menu .site-menu-columns{grid-template-columns:1fr}.site-menu-page-links{flex-direction:column;align-items:stretch;gap:14px}.site-menu-page-links nav{display:grid;gap:0}.site-menu-page-links nav a{justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line)}.site-menu-page-links nav a:last-child{border-bottom:0}}
