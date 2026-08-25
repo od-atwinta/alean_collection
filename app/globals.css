@@ -546,8 +546,10 @@ section[id],div[id]{scroll-margin-top:104px}
 /* Меню страницы отеля липнет под шапкой и остаётся доступным на всей странице. */
 .hotel-inpage-bar{position:sticky;top:84px;z-index:8;background:var(--season-band,var(--ink));box-shadow:0 14px 34px rgba(3,12,25,.16)}
 /* Форма подбора номера на странице отеля: отдельная полоса под фото, отель уже выбран. */
-.hotel-booking-band{position:relative;z-index:6;padding:22px 0 26px}
-.hotel-booking-band .booking{position:relative;left:auto;right:auto;bottom:auto;transform:none;margin-inline:auto}
+/* Без собственного слоя: иначе выпадающий календарь запирается внутри полосы
+   и липкое меню разделов накрывает его сверху. */
+.hotel-booking-band{position:relative;padding:22px 0 26px}
+.hotel-booking-band .booking{position:relative;z-index:auto;left:auto;right:auto;bottom:auto;transform:none;margin-inline:auto}
 .booking-field.locked{background:#f4f6f4}
 .booking-field.locked .booking-static{width:100%;min-height:76px;display:grid;align-content:center;gap:7px;padding:0 26px;text-align:left}
 .booking-field.locked .booking-static>span{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
